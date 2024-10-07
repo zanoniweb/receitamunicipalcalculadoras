@@ -1,0 +1,1319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROJETOS PENDENTES AGUARDANDO LANÇAMENTO.</title>
+    
+    <style>
+
+ol {
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none; /* Alterado de 'nome' para 'none' */
+    font-family: Geneva;
+    background-color: black;
+    color: white;
+}
+
+a {
+    font-family: Geneva;
+    font-size: 20px;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    padding: 5px 5px;
+}
+
+a:hover {
+    color: blue;
+}
+
+a:active { 
+    color: red;
+}        
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+td {
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+select, input {
+    width: 100%;
+    padding: 5px;
+}
+
+form {
+    width: 50%; /* Define a largura do formulário */
+    margin-left: 0; /* Alinha o formulário à esquerda */
+}
+
+.form-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px; /* Espaço entre as linhas */
+}
+
+.form-row label {
+    margin-right: 10px; /* Espaço entre o label e o input */
+    font-weight: bold;
+}
+
+input {
+    padding: 5px;
+    margin-right: 15px; /* Espaço entre os inputs */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#quadra, #lote {
+    width: 50px; /* Ajusta a largura dos inputs de quadra e lote */
+}
+
+#inscricao, #bairro {
+    width: 60%; /* Ajusta a largura do campo de inscrição e bairro */
+}
+
+@media print { 
+    #noprint { display:none; } 
+    body { background: #fff; }
+}
+
+button {
+    margin: 5px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007BFF;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #4cae4c;
+}
+
+    </style>
+
+</head>
+
+<header>
+
+    <ol>
+        <li><a href="index.html">Boas Vindas</a></li>
+        <li><a href="calculadoraareas.html">Calculadora Áreas: Edificadas</a></li>
+        <li><a href="calculadoradiferencadatas.html">Calculadora Diferença: Datas</a></li>
+        <li><a href="calculadorahistoricaiptu.html">Calculadora Evolução Histórica IPTU</a></li>
+        <li><a href="calculadorasaldo.html">Calculadora Saldos: IPTU</a></li>
+        <li><a href="calculadoravalorpercentual.html">Calculadora Variação de Valor e Percentual: IPTU</a></li>
+        <li><a href="micromanual.html">Micro Manual</a></li>
+    </ol>
+
+</header>
+
+<body>
+    
+    <center>
+    <b><h1>FORMULÁRIO PARA COLETA DE DADOS DE EDIFICAÇÕES.</h1></b>
+    </center>
+
+    <b><h1>DADOS CADASTRAIS DO LOTE:</h1></b>
+
+    <form>
+        <div class="form-row">
+            <label for="inscricao">Inscrição Imobiliária:</label>
+            <input type="text" id="inscricao" name="inscricao" required>
+        </div>
+    
+        <div class="form-row">
+            <label for="quadra">Quadra:</label>
+            <input type="text" id="quadra" name="quadra" maxlength="3" required>
+        
+            <label for="lote">Lote:</label>
+            <input type="text" id="lote" name="lote" maxlength="3" required>
+        </div>
+    
+        <div class="form-row">
+            <label for="bairro">Nome do Bairro:</label>
+            <input type="text" id="bairro" name="bairro" minlength="20" required>
+        </div>
+    </form>
+    
+
+    <b><h1>SELECIONE OS DETALHES DA 1ª EDIFICAÇÃO:</h1></b>
+
+    <table>
+        <tr>
+            <td>TIPO DE EDIFICAÇÃO</td>
+            <td>METRAGEM</td>
+            <td>COBERTURA</td>
+            <td>PISO</td>
+        </tr>
+        <tr>
+            <td>
+                <select id="tipoEdificacao" name="tipoEdificacao">
+                    <option value="selecione">Selecione</option>
+                    <option value="Apartamento_Frente">Apartamento Frente</option>
+                    <option value="Apartamento_Fundos">Apartamento Fundos</option>
+                    <option value="Casa">Casa</option>
+                    <option value="Edícula">Edícula</option>
+                    <option value="Sala_Conjunto">Sala Conjunto</option>
+                    <option value="Loja">Loja</option>
+                    <option value="Sub_Solo">Sub-Solo</option>
+                    <option value="Galpão">Galpão</option>
+                    <option value="Telheiro">Telheiro</option>
+                    <option value="Industria">Industria</option>
+                    <option value="Outros">Outros</option>
+                </select>
+            </td>
+    
+            <td>
+                <input type="number" id="areaTotalProjeto" step="0.00001">
+            </td>
+    
+            <td>
+                <select id="tipoCobertura" name="tipoCobertura">
+                    <option value="selecione">Selecione</option>
+                    <option value="Amianto">Amianto</option>
+                    <option value="Cerâmica">Cerâmica</option>
+                    <option value="Especial">Especial</option>
+                    <option value="Laje">Laje</option>
+                    <option value="Palha_de_Zinco">Palha de Zinco</option>
+                    <option value="Sem">Sem</option>
+                    <option value="Outra">Outra</option>
+                </select>
+            </td>
+    
+            <td>
+                <select id="tipoPiso" name="tipoPiso">
+                    <option value="selecione">Selecione</option>
+                    <option value="Cimento_Liso">Cimento Liso</option>
+                    <option value="Taco_Cerâmica">Taco Cerâmica</option>
+                    <option value="Terra">Terra</option>
+                    <option value="Especial">Especial</option>
+                </select>
+            </td>
+        </tr>
+    
+        <tr>
+            <td>QUANTIDADE DE SANITÁRIOS</td>
+            <td>ESQUADRIAS</td>
+            <td>FORRO</td>
+            <td>PINTURA</td>
+            <td>MATERIAL</td>
+        </tr>
+        <tr>
+            <td>
+                <select id="quantidadeSanitarios" name="quantidadeSanitarios">
+                    <option value="Selecione">Selecione</option>
+                    <option value="Um_Interno">Um Interno</option>
+                    <option value="Dois_Internos">Dois Internos</option>
+                    <option value="Mais_de_Dois">Mais de Dois</option>
+                    <option value="Sem">Sem</option>
+                </select>
+            </td>
+    
+            <td>
+                <select id="tiposEsquadrias" name="tiposEsquadrias">
+                    <option value="Selecione">Selecione</option>
+                    <option value="Alumínio">Alumínio</option>
+                    <option value="Especial">Especial</option>
+                    <option value="Ferro">Ferro</option>
+                    <option value="Madeira">Madeira</option>
+                    <option value="PVC">PVC</option>
+                    <option value="Sem">Sem</option>
+                </select>
+            </td>
+    
+            <td>
+                <select id="tiposForros" name="tiposForros">
+                    <option value="Selecione">Selecione</option>
+                    <option value="Gesso">Gesso</option>
+                    <option value="Laje">Laje</option>
+                    <option value="Madeira">Madeira</option>
+                    <option value="Ferro">Ferro</option>
+                    <option value="Sem">Sem</option>
+                </select>
+            </td>
+    
+            <td>
+                <select id="tiposPintura" name="tiposPintura">
+                    <option value="Selecione">Selecione</option>
+                    <option value="Sim">Sim</option>
+                    <option value="Não">Não</option>
+                </select>
+            </td>
+            <td>
+                <select id="tipoMaterial" name="tipoMaterial">
+                    <option value="Selecione">Selecione</option>
+                    <option value="Alvenaria">Alvenaria</option>
+                    <option value="Madeira">Madeira</option>
+                    <option value="Metal">Metal</option>
+                </select>
+            </td>
+        </tr>
+    </table>
+    
+    <br>
+
+    <b><h1>SELECIONE OS DETALHES DA 2ª EDIFICAÇÃO:</h1></b>
+    <table>
+        <tr>
+            <td>TIPO DE EDIFICAÇÃO</td>
+            <td>METRAGEM</td>
+            <td>COBERTURA</td>
+            <td>PISO</td>
+        </tr>
+        <tr>
+            <td>
+                <select id="tipoEdificacao" name="tipoEdificacao">
+                    <option value="selecione">Selecione</option>
+                    <option value="Apartamento_Frente">Apartamento Frente</option>
+                    <option value="Apartamento_Fundos">Apartamento Fundos</option>
+                    <option value="Casa">Casa</option>
+                    <option value="Edícula">Edícula</option>
+                    <option value="Sala_Conjunto">Sala Conjunto</option>
+                    <option value="Loja">Loja</option>
+                    <option value="Sub_Solo">Sub-Solo</option>
+                    <option value="Galpão">Galpão</option>
+                    <option value="Telheiro">Telheiro</option>
+                    <option value="Industria">Industria</option>
+                    <option value="Outros">Outros</option>
+                </select>
+            </td>
+    
+            <td>
+                <input type="number" id="areaTotalProjeto" step="0.00001">
+            </td>
+    
+            <td>
+                <select id="tipoCobertura" name="tipoCobertura">
+                    <option value="selecione">Selecione</option>
+                    <option value="Amianto">Amianto</option>
+                    <option value="Cerâmica">Cerâmica</option>
+                    <option value="Especial">Especial</option>
+                    <option value="Laje">Laje</option>
+                    <option value="Palha_de_Zinco">Palha de Zinco</option>
+                    <option value="Sem">Sem</option>
+                    <option value="Outra">Outra</option>
+                </select>
+            </td>
+    
+            <td>
+                <select id="tipoPiso" name="tipoPiso">
+                    <option value="selecione">Selecione</option>
+                    <option value="Cimento_Liso">Cimento Liso</option>
+                    <option value="Taco_Cerâmica">Taco Cerâmica</option>
+                    <option value="Terra">Terra</option>
+                    <option value="Especial">Especial</option>
+                </select>
+            </td>
+        </tr>
+    
+        <tr>
+            <td>QUANTIDADE DE SANITÁRIOS</td>
+            <td>ESQUADRIAS</td>
+            <td>FORRO</td>
+            <td>PINTURA</td>
+            <td>MATERIAL</td>
+        </tr>
+        <tr>
+            <td>
+                <select id="quantidadeSanitarios" name="quantidadeSanitarios">
+                    <option value="Selecione">Selecione</option>
+                    <option value="Um_Interno">Um Interno</option>
+                    <option value="Dois_Internos">Dois Internos</option>
+                    <option value="Mais_de_Dois">Mais de Dois</option>
+                    <option value="Sem">Sem</option>
+                </select>
+            </td>
+    
+            <td>
+                <select id="tiposEsquadrias" name="tiposEsquadrias">
+                    <option value="Selecione">Selecione</option>
+                    <option value="Alumínio">Alumínio</option>
+                    <option value="Especial">Especial</option>
+                    <option value="Ferro">Ferro</option>
+                    <option value="Madeira">Madeira</option>
+                    <option value="PVC">PVC</option>
+                    <option value="Sem">Sem</option>
+                </select>
+            </td>
+    
+            <td>
+                <select id="tiposForros" name="tiposForros">
+                    <option value="Selecione">Selecione</option>
+                    <option value="Gesso">Gesso</option>
+                    <option value="Laje">Laje</option>
+                    <option value="Madeira">Madeira</option>
+                    <option value="Ferro">Ferro</option>
+                    <option value="Sem">Sem</option>
+                </select>
+            </td>
+    
+            <td>
+                <select id="tiposPintura" name="tiposPintura">
+                    <option value="Selecione">Selecione</option>
+                    <option value="Sim">Sim</option>
+                    <option value="Não">Não</option>
+                </select>
+            </td>
+            <td>
+                <select id="tipoMaterial" name="tipoMaterial">
+                    <option value="Selecione">Selecione</option>
+                    <option value="Alvenaria">Alvenaria</option>
+                    <option value="Madeira">Madeira</option>
+                    <option value="Metal">Metal</option>
+                </select>
+            </td>
+        </tr>
+    </table>
+
+    <br>
+
+    <b><h1>SELECIONE OS DETALHES DA 3ª EDIFICAÇÃO:</h1></b>
+    <table>
+        <tr>
+            <td>TIPO DE EDIFICAÇÃO</td>
+            <td>METRAGEM</td>
+            <td>COBERTURA</td>
+            <td>PISO</td>
+        </tr>
+        <tr>
+            <td>
+                <select id="tipoEdificacao" name="tipoEdificacao">
+                    <option value="selecione">Selecione</option>
+                    <option value="Apartamento_Frente">Apartamento Frente</option>
+                    <option value="Apartamento_Fundos">Apartamento Fundos</option>
+                    <option value="Casa">Casa</option>
+                    <option value="Edícula">Edícula</option>
+                    <option value="Sala_Conjunto">Sala Conjunto</option>
+                    <option value="Loja">Loja</option>
+                    <option value="Sub_Solo">Sub-Solo</option>
+                    <option value="Galpão">Galpão</option>
+                    <option value="Telheiro">Telheiro</option>
+                    <option value="Industria">Industria</option>
+                    <option value="Outros">Outros</option>
+                </select>
+            </td>
+    
+            <td>
+                <input type="number" id="areaTotalProjeto" step="0.00001">
+            </td>
+    
+            <td>
+                <select id="tipoCobertura" name="tipoCobertura">
+                    <option value="selecione">Selecione</option>
+                    <option value="Amianto">Amianto</option>
+                    <option value="Cerâmica">Cerâmica</option>
+                    <option value="Especial">Especial</option>
+                    <option value="Laje">Laje</option>
+                    <option value="Palha_de_Zinco">Palha de Zinco</option>
+                    <option value="Sem">Sem</option>
+                    <option value="Outra">Outra</option>
+                </select>
+            </td>
+    
+            <td>
+                <select id="tipoPiso" name="tipoPiso">
+                    <option value="selecione">Selecione</option>
+                    <option value="Cimento_Liso">Cimento Liso</option>
+                    <option value="Taco_Cerâmica">Taco Cerâmica</option>
+                    <option value="Terra">Terra</option>
+                    <option value="Especial">Especial</option>
+                </select>
+            </td>
+        </tr>
+    
+        <tr>
+            <td>QUANTIDADE DE SANITÁRIOS</td>
+            <td>ESQUADRIAS</td>
+            <td>FORRO</td>
+            <td>PINTURA</td>
+            <td>MATERIAL</td>
+        </tr>
+        <tr>
+            <td>
+                <select id="quantidadeSanitarios" name="quantidadeSanitarios">
+                    <option value="Selecione">Selecione</option>
+                    <option value="Um_Interno">Um Interno</option>
+                    <option value="Dois_Internos">Dois Internos</option>
+                    <option value="Mais_de_Dois">Mais de Dois</option>
+                    <option value="Sem">Sem</option>
+                </select>
+            </td>
+    
+            <td>
+                <select id="tiposEsquadrias" name="tiposEsquadrias">
+                    <option value="Selecione">Selecione</option>
+                    <option value="Alumínio">Alumínio</option>
+                    <option value="Especial">Especial</option>
+                    <option value="Ferro">Ferro</option>
+                    <option value="Madeira">Madeira</option>
+                    <option value="PVC">PVC</option>
+                    <option value="Sem">Sem</option>
+                </select>
+            </td>
+    
+            <td>
+                <select id="tiposForros" name="tiposForros">
+                    <option value="Selecione">Selecione</option>
+                    <option value="Gesso">Gesso</option>
+                    <option value="Laje">Laje</option>
+                    <option value="Madeira">Madeira</option>
+                    <option value="Ferro">Ferro</option>
+                    <option value="Sem">Sem</option>
+                </select>
+            </td>
+    
+            <td>
+                <select id="tiposPintura" name="tiposPintura">
+                    <option value="Selecione">Selecione</option>
+                    <option value="Sim">Sim</option>
+                    <option value="Não">Não</option>
+                </select>
+            </td>
+            <td>
+                <select id="tipoMaterial" name="tipoMaterial">
+                    <option value="Selecione">Selecione</option>
+                    <option value="Alvenaria">Alvenaria</option>
+                    <option value="Madeira">Madeira</option>
+                    <option value="Metal">Metal</option>
+                </select>
+            </td>
+        </tr>
+    </table>
+
+    <br>
+
+    <b><h1>SELECIONE OS DETALHES DA 4ª EDIFICAÇÃO:</h1></b>
+    <table>
+        <tr>
+            <td>TIPO DE EDIFICAÇÃO</td>
+            <td>METRAGEM</td>
+            <td>COBERTURA</td>
+            <td>PISO</td>
+        </tr>
+        <tr>
+            <td>
+                <select id="tipoEdificacao" name="tipoEdificacao">
+                    <option value="selecione">Selecione</option>
+                    <option value="Apartamento_Frente">Apartamento Frente</option>
+                    <option value="Apartamento_Fundos">Apartamento Fundos</option>
+                    <option value="Casa">Casa</option>
+                    <option value="Edícula">Edícula</option>
+                    <option value="Sala_Conjunto">Sala Conjunto</option>
+                    <option value="Loja">Loja</option>
+                    <option value="Sub_Solo">Sub-Solo</option>
+                    <option value="Galpão">Galpão</option>
+                    <option value="Telheiro">Telheiro</option>
+                    <option value="Industria">Industria</option>
+                    <option value="Outros">Outros</option>
+                </select>
+            </td>
+    
+            <td>
+                <input type="number" id="areaTotalProjeto" step="0.00001">
+            </td>
+    
+            <td>
+                <select id="tipoCobertura" name="tipoCobertura">
+                    <option value="selecione">Selecione</option>
+                    <option value="Amianto">Amianto</option>
+                    <option value="Cerâmica">Cerâmica</option>
+                    <option value="Especial">Especial</option>
+                    <option value="Laje">Laje</option>
+                    <option value="Palha_de_Zinco">Palha de Zinco</option>
+                    <option value="Sem">Sem</option>
+                    <option value="Outra">Outra</option>
+                </select>
+            </td>
+    
+            <td>
+                <select id="tipoPiso" name="tipoPiso">
+                    <option value="selecione">Selecione</option>
+                    <option value="Cimento_Liso">Cimento Liso</option>
+                    <option value="Taco_Cerâmica">Taco Cerâmica</option>
+                    <option value="Terra">Terra</option>
+                    <option value="Especial">Especial</option>
+                </select>
+            </td>
+        </tr>
+    
+        <tr>
+            <td>QUANTIDADE DE SANITÁRIOS</td>
+            <td>ESQUADRIAS</td>
+            <td>FORRO</td>
+            <td>PINTURA</td>
+            <td>MATERIAL</td>
+        </tr>
+        <tr>
+            <td>
+                <select id="quantidadeSanitarios" name="quantidadeSanitarios">
+                    <option value="Selecione">Selecione</option>
+                    <option value="Um_Interno">Um Interno</option>
+                    <option value="Dois_Internos">Dois Internos</option>
+                    <option value="Mais_de_Dois">Mais de Dois</option>
+                    <option value="Sem">Sem</option>
+                </select>
+            </td>
+    
+            <td>
+                <select id="tiposEsquadrias" name="tiposEsquadrias">
+                    <option value="Selecione">Selecione</option>
+                    <option value="Alumínio">Alumínio</option>
+                    <option value="Especial">Especial</option>
+                    <option value="Ferro">Ferro</option>
+                    <option value="Madeira">Madeira</option>
+                    <option value="PVC">PVC</option>
+                    <option value="Sem">Sem</option>
+                </select>
+            </td>
+    
+            <td>
+                <select id="tiposForros" name="tiposForros">
+                    <option value="Selecione">Selecione</option>
+                    <option value="Gesso">Gesso</option>
+                    <option value="Laje">Laje</option>
+                    <option value="Madeira">Madeira</option>
+                    <option value="Ferro">Ferro</option>
+                    <option value="Sem">Sem</option>
+                </select>
+            </td>
+    
+            <td>
+                <select id="tiposPintura" name="tiposPintura">
+                    <option value="Selecione">Selecione</option>
+                    <option value="Sim">Sim</option>
+                    <option value="Não">Não</option>
+                </select>
+            </td>
+            <td>
+                <select id="tipoMaterial" name="tipoMaterial">
+                    <option value="Selecione">Selecione</option>
+                    <option value="Alvenaria">Alvenaria</option>
+                    <option value="Madeira">Madeira</option>
+                    <option value="Metal">Metal</option>
+                </select>
+            </td>
+        </tr>
+    </table>
+
+    <br>
+
+    <b><h1>SELECIONE OS DETALHES DA 5ª EDIFICAÇÃO:</h1></b>
+    <table>
+        <tr>
+            <td>TIPO DE EDIFICAÇÃO</td>
+            <td>METRAGEM</td>
+            <td>COBERTURA</td>
+            <td>PISO</td>
+        </tr>
+        <tr>
+            <td>
+                <select id="tipoEdificacao" name="tipoEdificacao">
+                    <option value="selecione">Selecione</option>
+                    <option value="Apartamento_Frente">Apartamento Frente</option>
+                    <option value="Apartamento_Fundos">Apartamento Fundos</option>
+                    <option value="Casa">Casa</option>
+                    <option value="Edícula">Edícula</option>
+                    <option value="Sala_Conjunto">Sala Conjunto</option>
+                    <option value="Loja">Loja</option>
+                    <option value="Sub_Solo">Sub-Solo</option>
+                    <option value="Galpão">Galpão</option>
+                    <option value="Telheiro">Telheiro</option>
+                    <option value="Industria">Industria</option>
+                    <option value="Outros">Outros</option>
+                </select>
+            </td>
+    
+            <td>
+                <input type="number" id="areaTotalProjeto" step="0.00001">
+            </td>
+    
+            <td>
+                <select id="tipoCobertura" name="tipoCobertura">
+                    <option value="selecione">Selecione</option>
+                    <option value="Amianto">Amianto</option>
+                    <option value="Cerâmica">Cerâmica</option>
+                    <option value="Especial">Especial</option>
+                    <option value="Laje">Laje</option>
+                    <option value="Palha_de_Zinco">Palha de Zinco</option>
+                    <option value="Sem">Sem</option>
+                    <option value="Outra">Outra</option>
+                </select>
+            </td>
+    
+            <td>
+                <select id="tipoPiso" name="tipoPiso">
+                    <option value="selecione">Selecione</option>
+                    <option value="Cimento_Liso">Cimento Liso</option>
+                    <option value="Taco_Cerâmica">Taco Cerâmica</option>
+                    <option value="Terra">Terra</option>
+                    <option value="Especial">Especial</option>
+                </select>
+            </td>
+        </tr>
+    
+        <tr>
+            <td>QUANTIDADE DE SANITÁRIOS</td>
+            <td>ESQUADRIAS</td>
+            <td>FORRO</td>
+            <td>PINTURA</td>
+            <td>MATERIAL</td>
+        </tr>
+        <tr>
+            <td>
+                <select id="quantidadeSanitarios" name="quantidadeSanitarios">
+                    <option value="Selecione">Selecione</option>
+                    <option value="Um_Interno">Um Interno</option>
+                    <option value="Dois_Internos">Dois Internos</option>
+                    <option value="Mais_de_Dois">Mais de Dois</option>
+                    <option value="Sem">Sem</option>
+                </select>
+            </td>
+    
+            <td>
+                <select id="tiposEsquadrias" name="tiposEsquadrias">
+                    <option value="Selecione">Selecione</option>
+                    <option value="Alumínio">Alumínio</option>
+                    <option value="Especial">Especial</option>
+                    <option value="Ferro">Ferro</option>
+                    <option value="Madeira">Madeira</option>
+                    <option value="PVC">PVC</option>
+                    <option value="Sem">Sem</option>
+                </select>
+            </td>
+    
+            <td>
+                <select id="tiposForros" name="tiposForros">
+                    <option value="Selecione">Selecione</option>
+                    <option value="Gesso">Gesso</option>
+                    <option value="Laje">Laje</option>
+                    <option value="Madeira">Madeira</option>
+                    <option value="Ferro">Ferro</option>
+                    <option value="Sem">Sem</option>
+                </select>
+            </td>
+    
+            <td>
+                <select id="tiposPintura" name="tiposPintura">
+                    <option value="Selecione">Selecione</option>
+                    <option value="Sim">Sim</option>
+                    <option value="Não">Não</option>
+                </select>
+            </td>
+            <td>
+                <select id="tipoMaterial" name="tipoMaterial">
+                    <option value="Selecione">Selecione</option>
+                    <option value="Alvenaria">Alvenaria</option>
+                    <option value="Madeira">Madeira</option>
+                    <option value="Metal">Metal</option>
+                </select>
+            </td>
+        </tr>
+    </table>
+
+    <br>
+
+    <b><h1>SELECIONE OS DETALHES DA 6ª EDIFICAÇÃO:</h1></b>
+    <table>
+        <tr>
+            <td>TIPO DE EDIFICAÇÃO</td>
+            <td>METRAGEM</td>
+            <td>COBERTURA</td>
+            <td>PISO</td>
+        </tr>
+        <tr>
+            <td>
+                <select id="tipoEdificacao" name="tipoEdificacao">
+                    <option value="selecione">Selecione</option>
+                    <option value="Apartamento_Frente">Apartamento Frente</option>
+                    <option value="Apartamento_Fundos">Apartamento Fundos</option>
+                    <option value="Casa">Casa</option>
+                    <option value="Edícula">Edícula</option>
+                    <option value="Sala_Conjunto">Sala Conjunto</option>
+                    <option value="Loja">Loja</option>
+                    <option value="Sub_Solo">Sub-Solo</option>
+                    <option value="Galpão">Galpão</option>
+                    <option value="Telheiro">Telheiro</option>
+                    <option value="Industria">Industria</option>
+                    <option value="Outros">Outros</option>
+                </select>
+            </td>
+    
+            <td>
+                <input type="number" id="areaTotalProjeto" step="0.00001">
+            </td>
+    
+            <td>
+                <select id="tipoCobertura" name="tipoCobertura">
+                    <option value="selecione">Selecione</option>
+                    <option value="Amianto">Amianto</option>
+                    <option value="Cerâmica">Cerâmica</option>
+                    <option value="Especial">Especial</option>
+                    <option value="Laje">Laje</option>
+                    <option value="Palha_de_Zinco">Palha de Zinco</option>
+                    <option value="Sem">Sem</option>
+                    <option value="Outra">Outra</option>
+                </select>
+            </td>
+    
+            <td>
+                <select id="tipoPiso" name="tipoPiso">
+                    <option value="selecione">Selecione</option>
+                    <option value="Cimento_Liso">Cimento Liso</option>
+                    <option value="Taco_Cerâmica">Taco Cerâmica</option>
+                    <option value="Terra">Terra</option>
+                    <option value="Especial">Especial</option>
+                </select>
+            </td>
+        </tr>
+    
+        <tr>
+            <td>QUANTIDADE DE SANITÁRIOS</td>
+            <td>ESQUADRIAS</td>
+            <td>FORRO</td>
+            <td>PINTURA</td>
+            <td>MATERIAL</td>
+        </tr>
+        <tr>
+            <td>
+                <select id="quantidadeSanitarios" name="quantidadeSanitarios">
+                    <option value="Selecione">Selecione</option>
+                    <option value="Um_Interno">Um Interno</option>
+                    <option value="Dois_Internos">Dois Internos</option>
+                    <option value="Mais_de_Dois">Mais de Dois</option>
+                    <option value="Sem">Sem</option>
+                </select>
+            </td>
+    
+            <td>
+                <select id="tiposEsquadrias" name="tiposEsquadrias">
+                    <option value="Selecione">Selecione</option>
+                    <option value="Alumínio">Alumínio</option>
+                    <option value="Especial">Especial</option>
+                    <option value="Ferro">Ferro</option>
+                    <option value="Madeira">Madeira</option>
+                    <option value="PVC">PVC</option>
+                    <option value="Sem">Sem</option>
+                </select>
+            </td>
+    
+            <td>
+                <select id="tiposForros" name="tiposForros">
+                    <option value="Selecione">Selecione</option>
+                    <option value="Gesso">Gesso</option>
+                    <option value="Laje">Laje</option>
+                    <option value="Madeira">Madeira</option>
+                    <option value="Ferro">Ferro</option>
+                    <option value="Sem">Sem</option>
+                </select>
+            </td>
+    
+            <td>
+                <select id="tiposPintura" name="tiposPintura">
+                    <option value="Selecione">Selecione</option>
+                    <option value="Sim">Sim</option>
+                    <option value="Não">Não</option>
+                </select>
+            </td>
+            <td>
+                <select id="tipoMaterial" name="tipoMaterial">
+                    <option value="Selecione">Selecione</option>
+                    <option value="Alvenaria">Alvenaria</option>
+                    <option value="Madeira">Madeira</option>
+                    <option value="Metal">Metal</option>
+                </select>
+            </td>
+        </tr>
+    </table>
+
+    <br>
+
+    <b><h1>SELECIONE OS DETALHES DA 7ª EDIFICAÇÃO:</h1></b>
+    <table>
+        <tr>
+            <td>TIPO DE EDIFICAÇÃO</td>
+            <td>METRAGEM</td>
+            <td>COBERTURA</td>
+            <td>PISO</td>
+        </tr>
+        <tr>
+            <td>
+                <select id="tipoEdificacao" name="tipoEdificacao">
+                    <option value="selecione">Selecione</option>
+                    <option value="Apartamento_Frente">Apartamento Frente</option>
+                    <option value="Apartamento_Fundos">Apartamento Fundos</option>
+                    <option value="Casa">Casa</option>
+                    <option value="Edícula">Edícula</option>
+                    <option value="Sala_Conjunto">Sala Conjunto</option>
+                    <option value="Loja">Loja</option>
+                    <option value="Sub_Solo">Sub-Solo</option>
+                    <option value="Galpão">Galpão</option>
+                    <option value="Telheiro">Telheiro</option>
+                    <option value="Industria">Industria</option>
+                    <option value="Outros">Outros</option>
+                </select>
+            </td>
+    
+            <td>
+                <input type="number" id="areaTotalProjeto" step="0.00001">
+            </td>
+    
+            <td>
+                <select id="tipoCobertura" name="tipoCobertura">
+                    <option value="selecione">Selecione</option>
+                    <option value="Amianto">Amianto</option>
+                    <option value="Cerâmica">Cerâmica</option>
+                    <option value="Especial">Especial</option>
+                    <option value="Laje">Laje</option>
+                    <option value="Palha_de_Zinco">Palha de Zinco</option>
+                    <option value="Sem">Sem</option>
+                    <option value="Outra">Outra</option>
+                </select>
+            </td>
+    
+            <td>
+                <select id="tipoPiso" name="tipoPiso">
+                    <option value="selecione">Selecione</option>
+                    <option value="Cimento_Liso">Cimento Liso</option>
+                    <option value="Taco_Cerâmica">Taco Cerâmica</option>
+                    <option value="Terra">Terra</option>
+                    <option value="Especial">Especial</option>
+                </select>
+            </td>
+        </tr>
+    
+        <tr>
+            <td>QUANTIDADE DE SANITÁRIOS</td>
+            <td>ESQUADRIAS</td>
+            <td>FORRO</td>
+            <td>PINTURA</td>
+            <td>MATERIAL</td>
+        </tr>
+        <tr>
+            <td>
+                <select id="quantidadeSanitarios" name="quantidadeSanitarios">
+                    <option value="Selecione">Selecione</option>
+                    <option value="Um_Interno">Um Interno</option>
+                    <option value="Dois_Internos">Dois Internos</option>
+                    <option value="Mais_de_Dois">Mais de Dois</option>
+                    <option value="Sem">Sem</option>
+                </select>
+            </td>
+    
+            <td>
+                <select id="tiposEsquadrias" name="tiposEsquadrias">
+                    <option value="Selecione">Selecione</option>
+                    <option value="Alumínio">Alumínio</option>
+                    <option value="Especial">Especial</option>
+                    <option value="Ferro">Ferro</option>
+                    <option value="Madeira">Madeira</option>
+                    <option value="PVC">PVC</option>
+                    <option value="Sem">Sem</option>
+                </select>
+            </td>
+    
+            <td>
+                <select id="tiposForros" name="tiposForros">
+                    <option value="Selecione">Selecione</option>
+                    <option value="Gesso">Gesso</option>
+                    <option value="Laje">Laje</option>
+                    <option value="Madeira">Madeira</option>
+                    <option value="Ferro">Ferro</option>
+                    <option value="Sem">Sem</option>
+                </select>
+            </td>
+    
+            <td>
+                <select id="tiposPintura" name="tiposPintura">
+                    <option value="Selecione">Selecione</option>
+                    <option value="Sim">Sim</option>
+                    <option value="Não">Não</option>
+                </select>
+            </td>
+            <td>
+                <select id="tipoMaterial" name="tipoMaterial">
+                    <option value="Selecione">Selecione</option>
+                    <option value="Alvenaria">Alvenaria</option>
+                    <option value="Madeira">Madeira</option>
+                    <option value="Metal">Metal</option>
+                </select>
+            </td>
+        </tr>
+    </table>
+
+    <br>
+
+    <b><h1>SELECIONE OS DETALHES DA 8ª EDIFICAÇÃO:</h1></b>
+    <table>
+        <tr>
+            <td>TIPO DE EDIFICAÇÃO</td>
+            <td>METRAGEM</td>
+            <td>COBERTURA</td>
+            <td>PISO</td>
+        </tr>
+        <tr>
+            <td>
+                <select id="tipoEdificacao" name="tipoEdificacao">
+                    <option value="selecione">Selecione</option>
+                    <option value="Apartamento_Frente">Apartamento Frente</option>
+                    <option value="Apartamento_Fundos">Apartamento Fundos</option>
+                    <option value="Casa">Casa</option>
+                    <option value="Edícula">Edícula</option>
+                    <option value="Sala_Conjunto">Sala Conjunto</option>
+                    <option value="Loja">Loja</option>
+                    <option value="Sub_Solo">Sub-Solo</option>
+                    <option value="Galpão">Galpão</option>
+                    <option value="Telheiro">Telheiro</option>
+                    <option value="Industria">Industria</option>
+                    <option value="Outros">Outros</option>
+                </select>
+            </td>
+    
+            <td>
+                <input type="number" id="areaTotalProjeto" step="0.00001">
+            </td>
+    
+            <td>
+                <select id="tipoCobertura" name="tipoCobertura">
+                    <option value="selecione">Selecione</option>
+                    <option value="Amianto">Amianto</option>
+                    <option value="Cerâmica">Cerâmica</option>
+                    <option value="Especial">Especial</option>
+                    <option value="Laje">Laje</option>
+                    <option value="Palha_de_Zinco">Palha de Zinco</option>
+                    <option value="Sem">Sem</option>
+                    <option value="Outra">Outra</option>
+                </select>
+            </td>
+    
+            <td>
+                <select id="tipoPiso" name="tipoPiso">
+                    <option value="selecione">Selecione</option>
+                    <option value="Cimento_Liso">Cimento Liso</option>
+                    <option value="Taco_Cerâmica">Taco Cerâmica</option>
+                    <option value="Terra">Terra</option>
+                    <option value="Especial">Especial</option>
+                </select>
+            </td>
+        </tr>
+    
+        <tr>
+            <td>QUANTIDADE DE SANITÁRIOS</td>
+            <td>ESQUADRIAS</td>
+            <td>FORRO</td>
+            <td>PINTURA</td>
+            <td>MATERIAL</td>
+        </tr>
+        <tr>
+            <td>
+                <select id="quantidadeSanitarios" name="quantidadeSanitarios">
+                    <option value="Selecione">Selecione</option>
+                    <option value="Um_Interno">Um Interno</option>
+                    <option value="Dois_Internos">Dois Internos</option>
+                    <option value="Mais_de_Dois">Mais de Dois</option>
+                    <option value="Sem">Sem</option>
+                </select>
+            </td>
+    
+            <td>
+                <select id="tiposEsquadrias" name="tiposEsquadrias">
+                    <option value="Selecione">Selecione</option>
+                    <option value="Alumínio">Alumínio</option>
+                    <option value="Especial">Especial</option>
+                    <option value="Ferro">Ferro</option>
+                    <option value="Madeira">Madeira</option>
+                    <option value="PVC">PVC</option>
+                    <option value="Sem">Sem</option>
+                </select>
+            </td>
+    
+            <td>
+                <select id="tiposForros" name="tiposForros">
+                    <option value="Selecione">Selecione</option>
+                    <option value="Gesso">Gesso</option>
+                    <option value="Laje">Laje</option>
+                    <option value="Madeira">Madeira</option>
+                    <option value="Ferro">Ferro</option>
+                    <option value="Sem">Sem</option>
+                </select>
+            </td>
+    
+            <td>
+                <select id="tiposPintura" name="tiposPintura">
+                    <option value="Selecione">Selecione</option>
+                    <option value="Sim">Sim</option>
+                    <option value="Não">Não</option>
+                </select>
+            </td>
+            <td>
+                <select id="tipoMaterial" name="tipoMaterial">
+                    <option value="Selecione">Selecione</option>
+                    <option value="Alvenaria">Alvenaria</option>
+                    <option value="Madeira">Madeira</option>
+                    <option value="Metal">Metal</option>
+                </select>
+            </td>
+        </tr>
+    </table>
+
+    <br>
+
+    <b><h1>SELECIONE OS DETALHES DA 9ª EDIFICAÇÃO:</h1></b>
+    <table>
+        <tr>
+            <td>TIPO DE EDIFICAÇÃO</td>
+            <td>METRAGEM</td>
+            <td>COBERTURA</td>
+            <td>PISO</td>
+        </tr>
+        <tr>
+            <td>
+                <select id="tipoEdificacao" name="tipoEdificacao">
+                    <option value="selecione">Selecione</option>
+                    <option value="Apartamento_Frente">Apartamento Frente</option>
+                    <option value="Apartamento_Fundos">Apartamento Fundos</option>
+                    <option value="Casa">Casa</option>
+                    <option value="Edícula">Edícula</option>
+                    <option value="Sala_Conjunto">Sala Conjunto</option>
+                    <option value="Loja">Loja</option>
+                    <option value="Sub_Solo">Sub-Solo</option>
+                    <option value="Galpão">Galpão</option>
+                    <option value="Telheiro">Telheiro</option>
+                    <option value="Industria">Industria</option>
+                    <option value="Outros">Outros</option>
+                </select>
+            </td>
+    
+            <td>
+                <input type="number" id="areaTotalProjeto" step="0.00001">
+            </td>
+    
+            <td>
+                <select id="tipoCobertura" name="tipoCobertura">
+                    <option value="selecione">Selecione</option>
+                    <option value="Amianto">Amianto</option>
+                    <option value="Cerâmica">Cerâmica</option>
+                    <option value="Especial">Especial</option>
+                    <option value="Laje">Laje</option>
+                    <option value="Palha_de_Zinco">Palha de Zinco</option>
+                    <option value="Sem">Sem</option>
+                    <option value="Outra">Outra</option>
+                </select>
+            </td>
+    
+            <td>
+                <select id="tipoPiso" name="tipoPiso">
+                    <option value="selecione">Selecione</option>
+                    <option value="Cimento_Liso">Cimento Liso</option>
+                    <option value="Taco_Cerâmica">Taco Cerâmica</option>
+                    <option value="Terra">Terra</option>
+                    <option value="Especial">Especial</option>
+                </select>
+            </td>
+        </tr>
+    
+        <tr>
+            <td>QUANTIDADE DE SANITÁRIOS</td>
+            <td>ESQUADRIAS</td>
+            <td>FORRO</td>
+            <td>PINTURA</td>
+            <td>MATERIAL</td>
+        </tr>
+        <tr>
+            <td>
+                <select id="quantidadeSanitarios" name="quantidadeSanitarios">
+                    <option value="Selecione">Selecione</option>
+                    <option value="Um_Interno">Um Interno</option>
+                    <option value="Dois_Internos">Dois Internos</option>
+                    <option value="Mais_de_Dois">Mais de Dois</option>
+                    <option value="Sem">Sem</option>
+                </select>
+            </td>
+    
+            <td>
+                <select id="tiposEsquadrias" name="tiposEsquadrias">
+                    <option value="Selecione">Selecione</option>
+                    <option value="Alumínio">Alumínio</option>
+                    <option value="Especial">Especial</option>
+                    <option value="Ferro">Ferro</option>
+                    <option value="Madeira">Madeira</option>
+                    <option value="PVC">PVC</option>
+                    <option value="Sem">Sem</option>
+                </select>
+            </td>
+    
+            <td>
+                <select id="tiposForros" name="tiposForros">
+                    <option value="Selecione">Selecione</option>
+                    <option value="Gesso">Gesso</option>
+                    <option value="Laje">Laje</option>
+                    <option value="Madeira">Madeira</option>
+                    <option value="Ferro">Ferro</option>
+                    <option value="Sem">Sem</option>
+                </select>
+            </td>
+    
+            <td>
+                <select id="tiposPintura" name="tiposPintura">
+                    <option value="Selecione">Selecione</option>
+                    <option value="Sim">Sim</option>
+                    <option value="Não">Não</option>
+                </select>
+            </td>
+            <td>
+                <select id="tipoMaterial" name="tipoMaterial">
+                    <option value="Selecione">Selecione</option>
+                    <option value="Alvenaria">Alvenaria</option>
+                    <option value="Madeira">Madeira</option>
+                    <option value="Metal">Metal</option>
+                </select>
+            </td>
+        </tr>
+    </table>
+
+    <br>
+
+    <b><h1>SELECIONE OS DETALHES DA 10ª EDIFICAÇÃO:</h1></b>
+    
+    <table>
+        <tr>
+            <td>TIPO DE EDIFICAÇÃO</td>
+            <td>METRAGEM</td>
+            <td>COBERTURA</td>
+            <td>PISO</td>
+        </tr>
+        <tr>
+            <td>
+                <select id="tipoEdificacao" name="tipoEdificacao">
+                    <option value="selecione">Selecione</option>
+                    <option value="Apartamento_Frente">Apartamento Frente</option>
+                    <option value="Apartamento_Fundos">Apartamento Fundos</option>
+                    <option value="Casa">Casa</option>
+                    <option value="Edícula">Edícula</option>
+                    <option value="Sala_Conjunto">Sala Conjunto</option>
+                    <option value="Loja">Loja</option>
+                    <option value="Sub_Solo">Sub-Solo</option>
+                    <option value="Galpão">Galpão</option>
+                    <option value="Telheiro">Telheiro</option>
+                    <option value="Industria">Industria</option>
+                    <option value="Outros">Outros</option>
+                </select>
+            </td>
+    
+            <td>
+                <input type="number" id="areaTotalProjeto" step="0.00001">
+            </td>
+    
+            <td>
+                <select id="tipoCobertura" name="tipoCobertura">
+                    <option value="selecione">Selecione</option>
+                    <option value="Amianto">Amianto</option>
+                    <option value="Cerâmica">Cerâmica</option>
+                    <option value="Especial">Especial</option>
+                    <option value="Laje">Laje</option>
+                    <option value="Palha_de_Zinco">Palha de Zinco</option>
+                    <option value="Sem">Sem</option>
+                    <option value="Outra">Outra</option>
+                </select>
+            </td>
+    
+            <td>
+                <select id="tipoPiso" name="tipoPiso">
+                    <option value="selecione">Selecione</option>
+                    <option value="Cimento_Liso">Cimento Liso</option>
+                    <option value="Taco_Cerâmica">Taco Cerâmica</option>
+                    <option value="Terra">Terra</option>
+                    <option value="Especial">Especial</option>
+                </select>
+            </td>
+        </tr>
+    
+        <tr>
+            <td>QUANTIDADE DE SANITÁRIOS</td>
+            <td>ESQUADRIAS</td>
+            <td>FORRO</td>
+            <td>PINTURA</td>
+            <td>MATERIAL</td>
+        </tr>
+        <tr>
+            <td>
+                <select id="quantidadeSanitarios" name="quantidadeSanitarios">
+                    <option value="Selecione">Selecione</option>
+                    <option value="Um_Interno">Um Interno</option>
+                    <option value="Dois_Internos">Dois Internos</option>
+                    <option value="Mais_de_Dois">Mais de Dois</option>
+                    <option value="Sem">Sem</option>
+                </select>
+            </td>
+    
+            <td>
+                <select id="tiposEsquadrias" name="tiposEsquadrias">
+                    <option value="Selecione">Selecione</option>
+                    <option value="Alumínio">Alumínio</option>
+                    <option value="Especial">Especial</option>
+                    <option value="Ferro">Ferro</option>
+                    <option value="Madeira">Madeira</option>
+                    <option value="PVC">PVC</option>
+                    <option value="Sem">Sem</option>
+                </select>
+            </td>
+    
+            <td>
+                <select id="tiposForros" name="tiposForros">
+                    <option value="Selecione">Selecione</option>
+                    <option value="Gesso">Gesso</option>
+                    <option value="Laje">Laje</option>
+                    <option value="Madeira">Madeira</option>
+                    <option value="Ferro">Ferro</option>
+                    <option value="Sem">Sem</option>
+                </select>
+            </td>
+    
+            <td>
+                <select id="tiposPintura" name="tiposPintura">
+                    <option value="Selecione">Selecione</option>
+                    <option value="Sim">Sim</option>
+                    <option value="Não">Não</option>
+                </select>
+            </td>
+            <td>
+                <select id="tipoMaterial" name="tipoMaterial">
+                    <option value="Selecione">Selecione</option>
+                    <option value="Alvenaria">Alvenaria</option>
+                    <option value="Madeira">Madeira</option>
+                    <option value="Metal">Metal</option>
+                </select>
+            </td>
+        </tr>
+    </table>
+
+    <button class="btn" onclick="novoCalculo()">CARREGAR PARA NOVO PREENCHIMENTO</button>
+    <button onclick="print()">IMPRIMIR</button>
+
+    
+    <center>
+        <i>
+            <footer>
+                <p>Site desenvolvido por Juliano <img src="https://d1yei2z3i6k35z.cloudfront.net/6946809/65e45ac72773e_zanoni.1.png" alt="Logo de Juliano Zanoni"></p>
+            </footer>
+        </i>
+    </center>
+
+
+</body>
+
+<script>
+
+function novoCalculo() {     window.location.href = 'projetospendentes.html'; } 
+
+</script>
+
+</html>
