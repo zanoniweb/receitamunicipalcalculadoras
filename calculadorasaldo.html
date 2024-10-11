@@ -3,62 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simulação de Dívida Ativa: Saldos.</title>
+    <title>Simulação de Dívida Ativa: Saldos</title>
     <style>
-
-    ol {
-        display: flex;
-        justify-content: space-between;
-        list-style-type: none; /* Alterado de 'nome' para 'none' */
-        font-family: Geneva;
-        background-color: black;
-        color: white;
-    }
-
-    a {
-        font-family: Geneva;
-        font-size: 20px;
-        color: white;
-        text-align: center;
-        text-decoration: none;
-        padding: 5px 5px;
-    }
-    a:hover {
-        color: blue;
-    }
-    a:active { 
-        color: red; 
-    }
-    body {
-        font-family: Arial, sans-serif;
-        margin: 20px;
-    }
-    .form-group {
-        margin-bottom: 15px;
-     }
-    label {
-        display: block;
-        margin-bottom: 5px;
-    }
-    input[type="text"], select {
-        width: 100%;
-        padding: 8px;
-        margin: 4px 0;
-        box-sizing: border-box;
-    }
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 20px;
-    }
-    table, th, td {
-        border: 1px solid #000;
-    }
-    th, td {
-        padding: 10px;
-        text-align: center;
-    }
-    button {
+        ol {
+            display: flex;
+            justify-content: space-between;
+            list-style-type: none; /* Alterado de 'nome' para 'none' */
+            font-family: Geneva;
+            background-color: black;
+            color: white;
+        }
+        a {
+            font-family: Geneva;
+            font-size: 20px;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            padding: 5px 5px;
+        }
+        a:hover {
+            color: blue;
+        }
+        a:active { 
+            color: red; 
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        input[type="number"] {
+            width: 100px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        button {
         margin: 5px;
         padding: 10px 20px;
         border: none;
@@ -66,45 +57,46 @@
         background-color: #007BFF;
         color: white;
         cursor: pointer;
-    }
-    button:hover {
+        }
+        button:hover {
         background-color: #4cae4c;
-    }
-    .footer {
+        }
+
+        @media print { 
+        #noprint { display:none; } 
+        body { background: #fff; }
+        } /* script para realizar a ação de imprimir dentro do ambiente HTML */
+
+        .footer {
         margin-top: auto;
         text-align: center;
         font-style: italic;
-    }
-    @media print { 
-    #noprint { display:none; } 
-    body { background: #fff; }
-    }
-    </style>
+        }
 
+
+    </style>
 </head>
 
 <header>
 
-        <ol>
+    <ol>
 
-            <li><a href="index.html">Boas Vindas</a></li>
-            <li><a href="calculadoraareas.html">Calculadora Áreas: Edificadas</a></li>
-            <li><a href="calculadoradiferencadatas.html">Calculadora Diferença: Datas</a></li>
-            <li><a href="calculadorahistoricaiptu.html">Calculadora Evolução Histórica IPTU</a></li>
-            <li><a href="calculadoravalorpercentual.html">Calculadora Variação de Valor e Percentual: IPTU</a></li>
-            <li><a href="micromanual.html">Micro Manual</a></li>
-            <li><a href="projetospendentes.html">Projetos Pendentes Edificações</a></li>
-        
-        </ol>
-
-    </header>
+        <li><a href="index.html">Boas Vindas</a></li>
+        <li><a href="calculadoraareas.html">Calculadora Áreas: Edificadas</a></li>
+        <li><a href="calculadoradiferencadatas.html">Calculadora Diferença: Datas</a></li>
+        <li><a href="calculadorahistoricaiptu.html">Calculadora Evolução Histórica IPTU</a></li>
+        <li><a href="calculadoravalorpercentual.html">Calculadora Variação de Valor e Percentual: IPTU</a></li>
+        <li><a href="micromanual.html">Micro Manual</a></li>
+        <li><a href="projetospendentes.html">Projetos Pendentes Edificações</a></li>
     
+    </ol>
+
+</header>
+
+
 <body>
-    
-    
 
-
-    <h1>Simulação de Dívida Ativa: Saldos.</h1>
+    <h1>Simulação de Dívida Ativa: Saldos</h1>
     <form id="simulacaoForm">
         <div class="form-group">
             <label for="inscricaoImobiliaria">Inscrição Imobiliária <b>(Campo de preenchimento obrigatório)</b>:</label>
@@ -122,131 +114,165 @@
         </div>
 
         <div class="form-group">
-            <label for="tipoAnalise">Tipo de Análise <b>(Campo de preenchimento obrigatório)</b>:</label>
-            <select id="tipoAnalise" required>
-                <option value="">Selecione</option>
-                <option value="Análise Judicial">Análise Judicial</option>
-                <option value="Análise Para Prescrição">Análise Para Prescrição</option>
-                <option value="Análise Para Revisão">Análise Para Revisão</option>
-                <option value="Simulação em Geral">Simulação em Geral</option>
+            <label for="simulacao">Simulação (parcelas):</label>
+            <select id="simulacao">
+                <option value="0">Selecione</option>
+                <option value="1">Quitação</option>
+                <option value="2">2 vezes</option>
+                <option value="3">3 vezes</option>
+                <option value="4">4 vezes</option>
+                <option value="5">5 vezes</option>
+                <option value="6">6 vezes</option>
+                <option value="7">7 vezes</option>
+                <option value="8">8 vezes</option>
+                <option value="10">10 vezes</option>
+                <option value="12">12 vezes</option>
+                <option value="24">24 vezes</option>
+                <option value="30">30 vezes</option>
+                <option value="36">36 vezes</option>
+                <option value="50">50 vezes</option>
+                <option value="60">60 vezes</option>
+                <option value="70">70 vezes</option>
+                <option value="80">80 vezes</option>
+                <option value="120">120 vezes</option>
             </select>
         </div>
 
-        <div class="form-group">
-            <label>Valores em Reais <b>(Campos de preenchimento obrigatórios utilizar pelos menos duas casas após a vírgula)</b>:</label>
-            <input type="number" id="valor1" placeholder="0,00" step="0.01" required>
-            <input type="number" id="valor2" placeholder="0,00" step="0.01" required>
-            <input type="number" id="valor3" placeholder="0,00" step="0.01" required>
-            <input type="number" id="valor4" placeholder="0,00" step="0.01" required>
-            <input type="number" id="valor5" placeholder="0,00" step="0.01" required>
-            <input type="number" id="valor6" placeholder="0,00" step="0.01" required>
-            <input type="number" id="valor7" placeholder="0,00" step="0.01" required>
-            <input type="number" id="valor8" placeholder="0,00" step="0.01" required>
-            <input type="number" id="valor9" placeholder="0,00" step="0.01" required>
-            <input type="number" id="valor10" placeholder="0,00" step="0.01" required>
-        </div>
+
+    <center>
+        <table id="tabelaSaldos">
+            <thead>
+                <tr>
+                    <th>Saldo</th>
+                    <th>Correção Monetária</th>
+                    <th>Multa</th>
+                    <th>Juros</th>
+                    <th>% Desconto (Multa/Juros)</th>
+                    <th>Sub-total</th>
+                    <th>Observação</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Linhas serão adicionadas via JavaScript -->
+            </tbody>
+        </table>
+    
 
         <div class="buttons">
             <button type="button" onclick="calcular()">Calcular</button>
             <button type="reset">Limpar</button>
-            <button class="btn" onclick="novoCalculo()">Carregar para novo Cálcululo</button>
+            <button class="btn" onclick="novoCalculo()">Carregar para novo Cálculo</button>
             <button onclick="print()">Imprimir</button>
 
         </div>
     </form>
-
-    <div id="resultado" style="display:none;">
-        <h2>Resultado da Simulação</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Tipo de Pagamento</th>
-                    <th>Valor</th>
-                </tr>
-            </thead>
-            <tbody id="tabelaResultados">
-            </tbody>
-        </table>
-    </div>
-
-<br><br><br><br>
+    </center>
 
     <center>
-        <i>    
-    <footer>
-    
-        <p>Site desenvolvido por Juliano <img src="https://d1yei2z3i6k35z.cloudfront.net/6946809/65e45ac72773e_zanoni.1.png" alt="Logo de Juliano Zanoni"></p>
-    
-    </footer>
-        <i>
+    <div id="resultado"></div>
     </center>
-    
-    <script> 
+
+    <script>
+        // Função para gerar as linhas da tabela dinamicamente
+        function gerarLinhas() {
+            const tbody = document.querySelector('#tabelaSaldos tbody');
+            for (let i = 0; i < 10; i++) {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td><input type="number" id="saldo${i}" step="0.00001" value="0.00000"></td>
+                    <td><input type="number" id="correcao${i}" step="0.00001" value="0.00000"></td>
+                    <td><input type="number" id="multa${i}" step="0.00001" value="0.00000"></td>
+                    <td><input type="number" id="juros${i}" step="0.00001" value="0.00000"></td>
+                    <td><input type="number" id="desconto${i}" step="0.00001" value="0.00000"></td>
+                    <td id="subtotal${i}">0.00000</td>
+                    <td><input type="text" id="campoTexto${i}" maxlength="20" placeholder="Nº Lei REFIS"></td>
+                `;
+                tbody.appendChild(row);
+            }
+        }
+
+        // Chama a função para gerar as linhas ao carregar a página
+        window.onload = gerarLinhas;
+
         function calcular() {
-            // Obtendo os valores do formulário
-            const inscricaoImobiliaria = document.getElementById("inscricaoImobiliaria").value;
-            const tributo = document.getElementById("tributo").value;
-            const tipoAnalise = document.getElementById("tipoAnalise").value;
-            
-            // Verifica se todos os campos obrigatórios foram preenchidos
-            if (!inscricaoImobiliaria || !tributo || !tipoAnalise) {
-                alert("Por favor, preencha todos os campos obrigatórios.");
-                return;
+            let totalGeral = 0;
+            let totalDesconto = 0; // Variável para o total de descontos aplicados
+
+            for (let i = 0; i < 10; i++) {
+                const saldo = parseFloat(document.getElementById(`saldo${i}`).value) || 0;
+                const correcao = parseFloat(document.getElementById(`correcao${i}`).value) || 0;
+                const multa = parseFloat(document.getElementById(`multa${i}`).value) || 0;
+                const juros = parseFloat(document.getElementById(`juros${i}`).value) || 0;
+                const desconto = parseFloat(document.getElementById(`desconto${i}`).value) || 0;
+
+                // Calcula o valor descontado sobre multa e juros
+                const valorMultaComDesconto = multa - (multa * (desconto / 100));
+                const valorJurosComDesconto = juros - (juros * (desconto / 100));
+                const descontoAplicado = (multa * (desconto / 100)) + (juros * (desconto / 100));
+
+                // Calcula o subtotal com correção e desconto aplicado
+                const subtotal = saldo + correcao + valorMultaComDesconto + valorJurosComDesconto;
+
+                // Atualiza o subtotal no campo correto
+                document.getElementById(`subtotal${i}`).innerText = subtotal.toFixed(5);
+
+                // Soma os valores totais para a dívida e desconto
+                totalGeral += subtotal;
+                totalDesconto += descontoAplicado; // Soma os descontos aplicados
             }
 
-            // Obtendo os valores numéricos
-            const valores = [
-                parseFloat(document.getElementById("valor1").value),
-                parseFloat(document.getElementById("valor2").value),
-                parseFloat(document.getElementById("valor3").value),
-                parseFloat(document.getElementById("valor4").value),
-                parseFloat(document.getElementById("valor5").value),
-                parseFloat(document.getElementById("valor6").value),
-                parseFloat(document.getElementById("valor7").value),
-                parseFloat(document.getElementById("valor8").value),
-                parseFloat(document.getElementById("valor9").value),
-                parseFloat(document.getElementById("valor10").value)
+            // Exibir simulação selecionada
+            const simulacao = document.getElementById("simulacao").value;
+            const valorFinal = (totalGeral / simulacao).toFixed(2);
 
-            ];
-
-            // Calculando o total
-            const total = valores.reduce((acc, valor) => acc + valor, 0);
-
-            // Calculando as opções de pagamento
-            const pagamentos = [
-                { tipo: "Quitação", valor: total },
-                { tipo: "02 Parcelas", valor: total / 2 },
-                { tipo: "03 Parcelas", valor: total / 3 },
-                { tipo: "04 Parcelas", valor: total / 4 },
-                { tipo: "05 Parcelas", valor: total / 5 },
-                { tipo: "06 Parcelas", valor: total / 6 },
-                { tipo: "10 Parcelas", valor: total / 10 },
-                { tipo: "12 Parcelas", valor: total / 12 },
-                { tipo: "24 Parcelas", valor: total / 24 },
-                { tipo: "30 Parcelas", valor: total / 30 },
-                { tipo: "50 Parcelas", valor: total / 50 },
-                { tipo: "60 Parcelas", valor: total / 60 },
-                { tipo: "120 Parcelas", valor: total / 120 }
-            ];
-
-            // Obtendo a referência ao tbody da tabela
-            const tabelaResultados = document.getElementById("tabelaResultados");
-
-            // Limpa o conteúdo anterior da tabela
-            tabelaResultados.innerHTML = "";
-
-            // Adicionando as opções de pagamento à tabela
-            pagamentos.forEach(pagamento => {
-                const row = document.createElement("tr");
-                row.innerHTML = `<td>${pagamento.tipo}</td><td>R$ ${pagamento.valor.toFixed(2)}</td>`;
-                tabelaResultados.appendChild(row);
-            });
-
-            // Exibindo o resultado
-            document.getElementById("resultado").style.display = "block";
+            // Exibe o resultado incluindo o total de desconto em forma de tabela
+            document.getElementById('resultado').innerHTML = `
+                <h3>Resultado da Simulação</h3>
+                <table border="1" style="border-collapse: collapse; width: 100%;">
+                    <thead>
+                        <tr>
+                            <th>Descrição</th>
+                            <th>Valor</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Total Geral da Dívida:</strong></td>
+                            <td>R$ ${totalGeral.toFixed(2)}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Valor de Desconto aplicado (sobre Multa e Juros):</strong></td>
+                            <td>R$ ${totalDesconto.toFixed(2)}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Valor por Parcela (${simulacao} vezes):</strong></td>
+                            <td>R$ ${valorFinal}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Observação:</strong></td>
+                            <td>INFORMATIVO: HAVERÁ REAJUSTES EM CASO DE DÍVIDAS PARCELADAS.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            `;
         }
-        function novoCalculo() {     window.location.href = 'calculadorasaldo.html'; } 
+
+        function novoCalculo() {
+    window.location.href = 'calculadorasaldo.html';
+}
+
     </script>
+
+
+<center>
+    <i>    
+<footer>
+
+    <p>Site desenvolvido por Juliano <img src="https://d1yei2z3i6k35z.cloudfront.net/6946809/65e45ac72773e_zanoni.1.png" alt="Logo de Juliano Zanoni"></p>
+
+</footer>
+    <i>
+</center>
+
 </body>
 </html>
-
