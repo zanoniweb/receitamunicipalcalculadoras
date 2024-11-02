@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.13/jspdf.plugin.autotable.min.js"></script>
+
     <title>PROJETOS PENDENTES AGUARDANDO LANÇAMENTO.</title>
     
     <style>
@@ -79,6 +82,72 @@ input {
     width: 60%; /* Ajusta a largura do campo de inscrição e bairro */
 }
 
+h1 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 30px;
+    color: black;
+}
+
+h2 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 30px;
+    color: black;
+}
+
+h3 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 30px;
+    color: black;
+}
+
+h4 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 30px;
+    color: black;
+}
+
+h5 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 30px;
+    color: black;
+}
+
+h6 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 30px;
+    color: black;
+}
+
+h7 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 30px;
+    color: black;
+}
+
+h8 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 30px;
+    color: black;
+}
+
+h9 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 30px;
+    color: black;
+}
+
+h10 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 30px;
+    color: black;
+}
+
+h11 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 30px;
+    color: black;
+}
+
 @media print { 
     #noprint { display:none; } 
     body { background: #fff; }
@@ -97,6 +166,7 @@ button {
 button:hover {
     background-color: #4cae4c;
 }
+
 
     </style>
 
@@ -117,7 +187,9 @@ button:hover {
 </header>
 
 <body>
-    
+
+    <form id="formulario">
+
     <center>
     <b><h1>FORMULÁRIO PARA COLETA DE DADOS DE EDIFICAÇÕES.</h1></b>
     </center>
@@ -125,9 +197,12 @@ button:hover {
     <b><h1>DADOS CADASTRAIS DO LOTE:</h1></b>
 
     <form>
+
         <div class="form-row">
+
             <label for="inscricao">Inscrição Imobiliária:</label>
             <input type="text" id="inscricao" name="inscricao" required>
+
         </div>
     
         <div class="form-row">
@@ -135,7 +210,7 @@ button:hover {
             <input type="text" id="quadra" name="quadra" maxlength="3" required>
         
             <label for="lote">Lote:</label>
-            <input type="text" id="lote" name="lote" maxlength="3" required>
+            <input type="text" id="lote" name="lote" maxlength="4" required>
 
             <label for="documentoDigitalizado">Documento (s) Digitalizado (S) (Sim ou Não):</label>
             <input type="text" id="documentoDigitalizado" name="documentoDigitalizado" maxlength="3" required>
@@ -162,10 +237,11 @@ button:hover {
 
     </form>
     
+    <table id="edificacao1">
 
-    <b><h1>SELECIONE OS DETALHES DA 1ª EDIFICAÇÃO:</h1></b>
+    <b><h2>SELECIONE OS DETALHES DA 1ª EDIFICAÇÃO:</h2></b>
 
-    <table>
+    
  
         <tr>
             <td><b><i>TIPO DE EDIFICAÇÃO</i></b></td>
@@ -177,7 +253,7 @@ button:hover {
 
         <tr>
             <td>
-                <select id="tipoEdificacao" name="tipoEdificacao">
+                <select id="tipoEdificacao1" name="tipoEdificacao1">
                     <option value="selecione">Selecione</option>
                     <option value="Apartamento_Frente">Apartamento Frente</option>
                     <option value="Apartamento_Fundos">Apartamento Fundos</option>
@@ -194,7 +270,7 @@ button:hover {
             </td>
     
             <td>
-                <select id="tipoUtilizacao" name="tipoUtilizacao">
+                <select id="tipoUtilizacao1" name="tipoUtilizacao1">
                     <option value="selecione">Selecione</option>
                     <option value="Residencial">Residencial</option>
                     <option value="Complementar">Complementar</option>
@@ -213,11 +289,11 @@ button:hover {
 
 
             <td>
-                <input type="number" id="areaTotalProjeto" step="0.00001">
+                <input type="number" id="areaTotalProjeto1" step="0.00001">
             </td>
     
             <td>
-                <select id="tipoCobertura" name="tipoCobertura">
+                <select id="tipoCobertura1" name="tipoCobertura1">
                     <option value="selecione">Selecione</option>
                     <option value="Amianto">Amianto</option>
                     <option value="Cerâmica">Cerâmica</option>
@@ -230,7 +306,7 @@ button:hover {
             </td>
     
             <td>
-                <select id="tipoPiso" name="tipoPiso">
+                <select id="tipoPiso1" name="tipoPiso1">
                     <option value="selecione">Selecione</option>
                     <option value="Cimento_Liso">Cimento Liso</option>
                     <option value="Taco_Cerâmica">Taco Cerâmica</option>
@@ -250,7 +326,7 @@ button:hover {
 
         <tr>
             <td>
-                <select id="quantidadeSanitarios" name="quantidadeSanitarios">
+                <select id="quantidadeSanitarios1" name="quantidadeSanitarios1">
                     <option value="Selecione">Selecione</option>
                     <option value="Um_Interno">Um Interno</option>
                     <option value="Dois_Internos">Dois Internos</option>
@@ -260,7 +336,7 @@ button:hover {
             </td>
     
             <td>
-                <select id="tiposEsquadrias" name="tiposEsquadrias">
+                <select id="tiposEsquadrias1" name="tiposEsquadrias1">
                     <option value="Selecione">Selecione</option>
                     <option value="Alumínio">Alumínio</option>
                     <option value="Especial">Especial</option>
@@ -272,7 +348,7 @@ button:hover {
             </td>
     
             <td>
-                <select id="tiposForros" name="tiposForros">
+                <select id="tiposForros1" name="tiposForros1">
                     <option value="Selecione">Selecione</option>
                     <option value="Especial">Especial</option>
                     <option value="Gesso">Gesso</option>
@@ -283,14 +359,14 @@ button:hover {
             </td>
     
             <td>
-                <select id="tiposPintura" name="tiposPintura">
+                <select id="tiposPintura1" name="tiposPintura1">
                     <option value="Selecione">Selecione</option>
                     <option value="Sim">Sim</option>
                     <option value="Não">Não</option>
                 </select>
             </td>
             <td>
-                <select id="tipoMaterial" name="tipoMaterial">
+                <select id="tipoMaterial1" name="tipoMaterial1">
                     <option value="Selecione">Selecione</option>
                     <option value="Alvenaria">Alvenaria</option>
                     <option value="Madeira">Madeira</option>
@@ -308,7 +384,7 @@ button:hover {
 
     <tr>
         <td>
-            <select id="tipoAr" name="tipoAr">
+            <select id="tipoAr1" name="tipoAr1">
                 <option value="selecione">Selecione</option>
                 <option value="Não">Não</option>
                 <option value="Sim">Sim</option>
@@ -316,7 +392,7 @@ button:hover {
         </td>
 
         <td>
-            <select id="tipoEscada" name="tipoEscada">
+            <select id="tipoEscada1" name="tipoEscada1">
                 <option value="selecione">Selecione</option>
                 <option value="Não">Não</option>
                 <option value="Sim">Sim</option>
@@ -325,7 +401,7 @@ button:hover {
 
 
         <td>
-            <select id="tipoElevador" name="tipoElevador">
+            <select id="tipoElevador1" name="tipoElevador1">
                 <option value="selecione">Selecione</option>
                 <option value="Não">Não</option>
         <option value="Sim">Sim</option>
@@ -333,7 +409,7 @@ button:hover {
         </td>
 
         <td>
-            <select id="areaPiscina" name="areaPiscina">
+            <select id="areaPiscina1" name="areaPiscina1">
                 <option value="selecione">Selecione</option>
                 <option value="Até 20 m²">Até 20 m²</option>
                 <option value="De 20 até 40 m²">De 20 até 40 m²</option>
@@ -346,8 +422,10 @@ button:hover {
 
     <br>
 
-    <b><h1>SELECIONE OS DETALHES DA 2ª EDIFICAÇÃO:</h1></b>
-    <table>
+    <table id="edificacao2">
+
+    <b><h3>SELECIONE OS DETALHES DA 2ª EDIFICAÇÃO:</h3></b>
+    
 
         <tr>
             <td><b><i>TIPO DE EDIFICAÇÃO</i></b></td>
@@ -359,7 +437,7 @@ button:hover {
 
         <tr>
             <td>
-                <select id="tipoEdificacao" name="tipoEdificacao">
+                <select id="tipoEdificacao2" name="tipoEdificacao2">
                     <option value="selecione">Selecione</option>
                     <option value="Apartamento_Frente">Apartamento Frente</option>
                     <option value="Apartamento_Fundos">Apartamento Fundos</option>
@@ -376,7 +454,7 @@ button:hover {
             </td>
     
             <td>
-                <select id="tipotipoUtilizacao" name="tipotipoUtilizacao">
+                <select id="tipotipoUtilizacao2" name="tipotipoUtilizacao2">
                     <option value="selecione">Selecione</option>
                     <option value="Residencial">Residencial</option>
                     <option value="Complementar">Complementar</option>
@@ -395,11 +473,11 @@ button:hover {
 
 
             <td>
-                <input type="number" id="areaTotalProjeto" step="0.00001">
+                <input type="number" id="areaTotalProjeto2" step="0.00001">
             </td>
     
             <td>
-                <select id="tipoCobertura" name="tipoCobertura">
+                <select id="tipoCobertura2" name="tipoCobertura2">
                     <option value="selecione">Selecione</option>
                     <option value="Amianto">Amianto</option>
                     <option value="Cerâmica">Cerâmica</option>
@@ -412,7 +490,7 @@ button:hover {
             </td>
     
             <td>
-                <select id="tipoPiso" name="tipoPiso">
+                <select id="tipoPiso2" name="tipoPiso2">
                     <option value="selecione">Selecione</option>
                     <option value="Cimento_Liso">Cimento Liso</option>
                     <option value="Taco_Cerâmica">Taco Cerâmica</option>
@@ -432,7 +510,7 @@ button:hover {
 
         <tr>
             <td>
-                <select id="quantidadeSanitarios" name="quantidadeSanitarios">
+                <select id="quantidadeSanitarios2" name="quantidadeSanitarios2">
                     <option value="Selecione">Selecione</option>
                     <option value="Um_Interno">Um Interno</option>
                     <option value="Dois_Internos">Dois Internos</option>
@@ -442,7 +520,7 @@ button:hover {
             </td>
     
             <td>
-                <select id="tiposEsquadrias" name="tiposEsquadrias">
+                <select id="tiposEsquadrias2" name="tiposEsquadrias2">
                     <option value="Selecione">Selecione</option>
                     <option value="Alumínio">Alumínio</option>
                     <option value="Especial">Especial</option>
@@ -454,7 +532,7 @@ button:hover {
             </td>
     
             <td>
-                <select id="tiposForros" name="tiposForros">
+                <select id="tiposForros2" name="tiposForros2">
                     <option value="Selecione">Selecione</option>
                     <option value="Especial">Especial</option>
                     <option value="Gesso">Gesso</option>
@@ -465,14 +543,14 @@ button:hover {
             </td>
     
             <td>
-                <select id="tiposPintura" name="tiposPintura">
+                <select id="tiposPintura2" name="tiposPintura2">
                     <option value="Selecione">Selecione</option>
                     <option value="Sim">Sim</option>
                     <option value="Não">Não</option>
                 </select>
             </td>
             <td>
-                <select id="tipoMaterial" name="tipoMaterial">
+                <select id="tipoMaterial2" name="tipoMaterial2">
                     <option value="Selecione">Selecione</option>
                     <option value="Alvenaria">Alvenaria</option>
                     <option value="Madeira">Madeira</option>
@@ -490,7 +568,7 @@ button:hover {
     
         <tr>
             <td>
-                <select id="tipoAr" name="tipoAr">
+                <select id="tipoAr2" name="tipoAr2">
                     <option value="selecione">Selecione</option>
                     <option value="Não">Não</option>
                     <option value="Sim">Sim</option>
@@ -498,7 +576,7 @@ button:hover {
             </td>
     
             <td>
-                <select id="tipoEscada" name="tipoEscada">
+                <select id="tipoEscada2" name="tipoEscada2">
                     <option value="selecione">Selecione</option>
                     <option value="Não">Não</option>
                     <option value="Sim">Sim</option>
@@ -507,7 +585,7 @@ button:hover {
     
     
             <td>
-                <select id="tipoElevador" name="tipoElevador">
+                <select id="tipoElevador2" name="tipoElevador2">
                     <option value="selecione">Selecione</option>
                     <option value="Não">Não</option>
             <option value="Sim">Sim</option>
@@ -515,7 +593,7 @@ button:hover {
             </td>
     
             <td>
-                <select id="areaPiscina" name="areaPiscina">
+                <select id="areaPiscina2" name="areaPiscina2">
                     <option value="selecione">Selecione</option>
                     <option value="Até 20 m²">Até 20 m²</option>
                     <option value="De 20 até 40 m²">De 20 até 40 m²</option>
@@ -527,8 +605,10 @@ button:hover {
 
     <br>
 
-    <b><h1>SELECIONE OS DETALHES DA 3ª EDIFICAÇÃO:</h1></b>
-    <table>
+    <table id="edificacao3">
+    
+    <b><h4>SELECIONE OS DETALHES DA 3ª EDIFICAÇÃO:</h4></b>
+    
 
         <tr>
             <td><b><i>TIPO DE EDIFICAÇÃO</i></b></td>
@@ -541,7 +621,7 @@ button:hover {
 
         <tr>
             <td>
-                <select id="tipoEdificacao" name="tipoEdificacao">
+                <select id="tipoEdificacao3" name="tipoEdificacao3">
                     <option value="selecione">Selecione</option>
                     <option value="Apartamento_Frente">Apartamento Frente</option>
                     <option value="Apartamento_Fundos">Apartamento Fundos</option>
@@ -558,7 +638,7 @@ button:hover {
             </td>
 
             <td>
-                <select id="tipoUtilizacao" name="tipoUtilizacao">
+                <select id="tipoUtilizacao3" name="tipoUtilizacao3">
                     <option value="selecione">Selecione</option>
                     <option value="Residencial">Residencial</option>
                     <option value="Complementar">Complementar</option>
@@ -576,11 +656,11 @@ button:hover {
             </td>
     
             <td>
-                <input type="number" id="areaTotalProjeto" step="0.00001">
+                <input type="number" id="areaTotalProjeto3" step="0.00001">
             </td>
     
             <td>
-                <select id="tipoCobertura" name="tipoCobertura">
+                <select id="tipoCobertura3" name="tipoCobertura3">
                     <option value="selecione">Selecione</option>
                     <option value="Amianto">Amianto</option>
                     <option value="Cerâmica">Cerâmica</option>
@@ -593,7 +673,7 @@ button:hover {
             </td>
     
             <td>
-                <select id="tipoPiso" name="tipoPiso">
+                <select id="tipoPiso3" name="tipoPiso3">
                     <option value="selecione">Selecione</option>
                     <option value="Cimento_Liso">Cimento Liso</option>
                     <option value="Taco_Cerâmica">Taco Cerâmica</option>
@@ -613,7 +693,7 @@ button:hover {
 
         <tr>
             <td>
-                <select id="quantidadeSanitarios" name="quantidadeSanitarios">
+                <select id="quantidadeSanitarios3" name="quantidadeSanitarios3">
                     <option value="Selecione">Selecione</option>
                     <option value="Um_Interno">Um Interno</option>
                     <option value="Dois_Internos">Dois Internos</option>
@@ -623,7 +703,7 @@ button:hover {
             </td>
     
             <td>
-                <select id="tiposEsquadrias" name="tiposEsquadrias">
+                <select id="tiposEsquadrias3" name="tiposEsquadrias3">
                     <option value="Selecione">Selecione</option>
                     <option value="Alumínio">Alumínio</option>
                     <option value="Especial">Especial</option>
@@ -635,7 +715,7 @@ button:hover {
             </td>
     
             <td>
-                <select id="tiposForros" name="tiposForros">
+                <select id="tiposForros3" name="tiposForros3">
                     <option value="Selecione">Selecione</option>
                     <option value="Especial">Especial</option>
                     <option value="Gesso">Gesso</option>
@@ -646,14 +726,14 @@ button:hover {
             </td>
     
             <td>
-                <select id="tiposPintura" name="tiposPintura">
+                <select id="tiposPintura3" name="tiposPintura3">
                     <option value="Selecione">Selecione</option>
                     <option value="Sim">Sim</option>
                     <option value="Não">Não</option>
                 </select>
             </td>
             <td>
-                <select id="tipoMaterial" name="tipoMaterial">
+                <select id="tipoMaterial3" name="tipoMaterial3">
                     <option value="Selecione">Selecione</option>
                     <option value="Alvenaria">Alvenaria</option>
                     <option value="Madeira">Madeira</option>
@@ -671,7 +751,7 @@ button:hover {
     
         <tr>
             <td>
-                <select id="tipoAr" name="tipoAr">
+                <select id="tipoAr3" name="tipoAr3">
                     <option value="selecione">Selecione</option>
                     <option value="Não">Não</option>
                     <option value="Sim">Sim</option>
@@ -679,7 +759,7 @@ button:hover {
             </td>
     
             <td>
-                <select id="tipoEscada" name="tipoEscada">
+                <select id="tipoEscada3" name="tipoEscada3">
                     <option value="selecione">Selecione</option>
                     <option value="Não">Não</option>
                     <option value="Sim">Sim</option>
@@ -688,7 +768,7 @@ button:hover {
     
     
             <td>
-                <select id="tipoElevador" name="tipoElevador">
+                <select id="tipoElevador3" name="tipoElevador3">
                     <option value="selecione">Selecione</option>
                     <option value="Não">Não</option>
             <option value="Sim">Sim</option>
@@ -696,7 +776,7 @@ button:hover {
             </td>
     
             <td>
-                <select id="areaPiscina" name="areaPiscina">
+                <select id="areaPiscina3" name="areaPiscina3">
                     <option value="selecione">Selecione</option>
                     <option value="Até 20 m²">Até 20 m²</option>
                     <option value="De 20 até 40 m²">De 20 até 40 m²</option>
@@ -709,8 +789,10 @@ button:hover {
 
     <br>
 
-    <b><h1>SELECIONE OS DETALHES DA 4ª EDIFICAÇÃO:</h1></b>
-    <table>
+    <table id="edificacao4">
+
+    <b><h5>SELECIONE OS DETALHES DA 4ª EDIFICAÇÃO:</h5></b>
+    
 
         <tr>
             <td><b><i>TIPO DE EDIFICAÇÃO</i></b></td>
@@ -722,7 +804,7 @@ button:hover {
 
         <tr>
             <td>
-                <select id="tipoEdificacao" name="tipoEdificacao">
+                <select id="tipoEdificacao4" name="tipoEdificacao4">
                     <option value="selecione">Selecione</option>
                     <option value="Apartamento_Frente">Apartamento Frente</option>
                     <option value="Apartamento_Fundos">Apartamento Fundos</option>
@@ -739,7 +821,7 @@ button:hover {
             </td>
 
             <td>
-                <select id="tipoUtilizacao" name="tipoUtilizacao">
+                <select id="tipoUtilizacao4" name="tipoUtilizacao4">
                     <option value="selecione">Selecione</option>
                     <option value="Residencial">Residencial</option>
                     <option value="Complementar">Complementar</option>
@@ -757,11 +839,11 @@ button:hover {
             </td>
     
             <td>
-                <input type="number" id="areaTotalProjeto" step="0.00001">
+                <input type="number" id="areaTotalProjeto4" step="0.00001">
             </td>
     
             <td>
-                <select id="tipoCobertura" name="tipoCobertura">
+                <select id="tipoCobertura4" name="tipoCobertura4">
                     <option value="selecione">Selecione</option>
                     <option value="Amianto">Amianto</option>
                     <option value="Cerâmica">Cerâmica</option>
@@ -774,7 +856,7 @@ button:hover {
             </td>
     
             <td>
-                <select id="tipoPiso" name="tipoPiso">
+                <select id="tipoPiso4" name="tipoPiso4">
                     <option value="selecione">Selecione</option>
                     <option value="Cimento_Liso">Cimento Liso</option>
                     <option value="Taco_Cerâmica">Taco Cerâmica</option>
@@ -794,7 +876,7 @@ button:hover {
 
         <tr>
             <td>
-                <select id="quantidadeSanitarios" name="quantidadeSanitarios">
+                <select id="quantidadeSanitarios4" name="quantidadeSanitarios4">
                     <option value="Selecione">Selecione</option>
                     <option value="Um_Interno">Um Interno</option>
                     <option value="Dois_Internos">Dois Internos</option>
@@ -804,7 +886,7 @@ button:hover {
             </td>
     
             <td>
-                <select id="tiposEsquadrias" name="tiposEsquadrias">
+                <select id="tiposEsquadrias4" name="tiposEsquadrias4">
                     <option value="Selecione">Selecione</option>
                     <option value="Alumínio">Alumínio</option>
                     <option value="Especial">Especial</option>
@@ -816,7 +898,7 @@ button:hover {
             </td>
     
             <td>
-                <select id="tiposForros" name="tiposForros">
+                <select id="tiposForros4" name="tiposForros4">
                     <option value="Selecione">Selecione</option>
                      <option value="Especial">Especial</option>
                     <option value="Gesso">Gesso</option>
@@ -827,14 +909,14 @@ button:hover {
             </td>
     
             <td>
-                <select id="tiposPintura" name="tiposPintura">
+                <select id="tiposPintura4" name="tiposPintura4">
                     <option value="Selecione">Selecione</option>
                     <option value="Sim">Sim</option>
                     <option value="Não">Não</option>
                 </select>
             </td>
             <td>
-                <select id="tipoMaterial" name="tipoMaterial">
+                <select id="tipoMaterial4" name="tipoMaterial4">
                     <option value="Selecione">Selecione</option>
                     <option value="Alvenaria">Alvenaria</option>
                     <option value="Madeira">Madeira</option>
@@ -852,7 +934,7 @@ button:hover {
     
         <tr>
             <td>
-                <select id="tipoAr" name="tipoAr">
+                <select id="tipoAr4" name="tipoAr4">
                     <option value="selecione">Selecione</option>
                     <option value="Não">Não</option>
                     <option value="Sim">Sim</option>
@@ -860,7 +942,7 @@ button:hover {
             </td>
     
             <td>
-                <select id="tipoEscada" name="tipoEscada">
+                <select id="tipoEscada4" name="tipoEscada4">
                     <option value="selecione">Selecione</option>
                     <option value="Não">Não</option>
                     <option value="Sim">Sim</option>
@@ -868,7 +950,7 @@ button:hover {
             </td>
     
             <td>
-                <select id="tipoElevador" name="tipoElevador">
+                <select id="tipoElevador4" name="tipoElevador4">
                     <option value="selecione">Selecione</option>
                     <option value="Não">Não</option>
             <option value="Sim">Sim</option>
@@ -876,7 +958,7 @@ button:hover {
             </td>
     
             <td>
-                <select id="areaPiscina" name="areaPiscina">
+                <select id="areaPiscina4" name="areaPiscina4">
                     <option value="selecione">Selecione</option>
                     <option value="Até 20 m²">Até 20 m²</option>
                     <option value="De 20 até 40 m²">De 20 até 40 m²</option>
@@ -889,8 +971,9 @@ button:hover {
 
     <br>
 
-    <b><h1>SELECIONE OS DETALHES DA 5ª EDIFICAÇÃO:</h1></b>
-    <table>
+    <table id="edificacao5">
+
+    <b><h6>SELECIONE OS DETALHES DA 5ª EDIFICAÇÃO:</h6></b>
 
         <tr>
             <td><b><i>TIPO DE EDIFICAÇÃO</i></b></td>
@@ -902,7 +985,7 @@ button:hover {
 
         <tr>
             <td>
-                <select id="tipoEdificacao" name="tipoEdificacao">
+                <select id="tipoEdificacao5" name="tipoEdificacao5">
                     <option value="selecione">Selecione</option>
                     <option value="Apartamento_Frente">Apartamento Frente</option>
                     <option value="Apartamento_Fundos">Apartamento Fundos</option>
@@ -919,7 +1002,7 @@ button:hover {
             </td>
 
             <td>
-                <select id="tipoUtilizacao" name="tipoUtilizacao">
+                <select id="tipoUtilizacao5" name="tipoUtilizacao5">
                     <option value="selecione">Selecione</option>
                     <option value="Residencial">Residencial</option>
                     <option value="Complementar">Complementar</option>
@@ -937,11 +1020,11 @@ button:hover {
             </td>
     
             <td>
-                <input type="number" id="areaTotalProjeto" step="0.00001">
+                <input type="number" id="areaTotalProjeto5" step="0.00001">
             </td>
     
             <td>
-                <select id="tipoCobertura" name="tipoCobertura">
+                <select id="tipoCobertura5" name="tipoCobertura5">
                     <option value="selecione">Selecione</option>
                     <option value="Amianto">Amianto</option>
                     <option value="Cerâmica">Cerâmica</option>
@@ -954,7 +1037,7 @@ button:hover {
             </td>
     
             <td>
-                <select id="tipoPiso" name="tipoPiso">
+                <select id="tipoPiso5" name="tipoPiso5">
                     <option value="selecione">Selecione</option>
                     <option value="Cimento_Liso">Cimento Liso</option>
                     <option value="Taco_Cerâmica">Taco Cerâmica</option>
@@ -974,7 +1057,7 @@ button:hover {
 
         <tr>
             <td>
-                <select id="quantidadeSanitarios" name="quantidadeSanitarios">
+                <select id="quantidadeSanitarios5" name="quantidadeSanitarios5">
                     <option value="Selecione">Selecione</option>
                     <option value="Um_Interno">Um Interno</option>
                     <option value="Dois_Internos">Dois Internos</option>
@@ -984,7 +1067,7 @@ button:hover {
             </td>
     
             <td>
-                <select id="tiposEsquadrias" name="tiposEsquadrias">
+                <select id="tiposEsquadrias5" name="tiposEsquadrias5">
                     <option value="Selecione">Selecione</option>
                     <option value="Alumínio">Alumínio</option>
                     <option value="Especial">Especial</option>
@@ -996,7 +1079,7 @@ button:hover {
             </td>
     
             <td>
-                <select id="tiposForros" name="tiposForros">
+                <select id="tiposForros5" name="tiposForros5">
                     <option value="Selecione">Selecione</option>
                     <option value="Especial">Especial</option>
                     <option value="Gesso">Gesso</option>
@@ -1007,14 +1090,14 @@ button:hover {
             </td>
     
             <td>
-                <select id="tiposPintura" name="tiposPintura">
+                <select id="tiposPintura5" name="tiposPintura5">
                     <option value="Selecione">Selecione</option>
                     <option value="Sim">Sim</option>
                     <option value="Não">Não</option>
                 </select>
             </td>
             <td>
-                <select id="tipoMaterial" name="tipoMaterial">
+                <select id="tipoMaterial5" name="tipoMaterial5">
                     <option value="Selecione">Selecione</option>
                     <option value="Alvenaria">Alvenaria</option>
                     <option value="Madeira">Madeira</option>
@@ -1032,7 +1115,7 @@ button:hover {
     
         <tr>
             <td>
-                <select id="tipoAr" name="tipoAr">
+                <select id="tipoAr5" name="tipoAr5">
                     <option value="selecione">Selecione</option>
                     <option value="Não">Não</option>
                     <option value="Sim">Sim</option>
@@ -1040,7 +1123,7 @@ button:hover {
             </td>
     
             <td>
-                <select id="tipoEscada" name="tipoEscada">
+                <select id="tipoEscada5" name="tipoEscada5">
                     <option value="selecione">Selecione</option>
                     <option value="Não">Não</option>
                     <option value="Sim">Sim</option>
@@ -1049,7 +1132,7 @@ button:hover {
     
     
             <td>
-                <select id="tipoElevador" name="tipoElevador">
+                <select id="tipoElevador5" name="tipoElevador5">
                     <option value="selecione">Selecione</option>
                     <option value="Não">Não</option>
             <option value="Sim">Sim</option>
@@ -1057,7 +1140,7 @@ button:hover {
             </td>
     
             <td>
-                <select id="areaPiscina" name="areaPiscina">
+                <select id="areaPiscina5" name="areaPiscina5">
                     <option value="selecione">Selecione</option>
                     <option value="Até 20 m²">Até 20 m²</option>
                     <option value="De 20 até 40 m²">De 20 até 40 m²</option>
@@ -1070,8 +1153,9 @@ button:hover {
 
     <br>
 
-    <b><h1>SELECIONE OS DETALHES DA 6ª EDIFICAÇÃO:</h1></b>
-    <table>
+    <table id="edificacao6">
+
+    <b><h7>SELECIONE OS DETALHES DA 6ª EDIFICAÇÃO:</h7></b>
 
         <tr>
             <td><b><i>TIPO DE EDIFICAÇÃO</i></b></td>
@@ -1083,7 +1167,7 @@ button:hover {
 
         <tr>
             <td>
-                <select id="tipoEdificacao" name="tipoEdificacao">
+                <select id="tipoEdificacao6" name="tipoEdificacao6">
                     <option value="selecione">Selecione</option>
                     <option value="Apartamento_Frente">Apartamento Frente</option>
                     <option value="Apartamento_Fundos">Apartamento Fundos</option>
@@ -1100,7 +1184,7 @@ button:hover {
             </td>
 
             <td>
-                <select id="tipoUtilizacao" name="tipoUtilizacao">
+                <select id="tipoUtilizacao6" name="tipoUtilizacao6">
                     <option value="selecione">Selecione</option>
                     <option value="Residencial">Residencial</option>
                     <option value="Complementar">Complementar</option>
@@ -1118,11 +1202,11 @@ button:hover {
             </td>
     
             <td>
-                <input type="number" id="areaTotalProjeto" step="0.00001">
+                <input type="number" id="areaTotalProjeto6" step="0.00001">
             </td>
     
             <td>
-                <select id="tipoCobertura" name="tipoCobertura">
+                <select id="tipoCobertura6" name="tipoCobertura6">
                     <option value="selecione">Selecione</option>
                     <option value="Amianto">Amianto</option>
                     <option value="Cerâmica">Cerâmica</option>
@@ -1135,7 +1219,7 @@ button:hover {
             </td>
     
             <td>
-                <select id="tipoPiso" name="tipoPiso">
+                <select id="tipoPiso6" name="tipoPiso6">
                     <option value="selecione">Selecione</option>
                     <option value="Cimento_Liso">Cimento Liso</option>
                     <option value="Taco_Cerâmica">Taco Cerâmica</option>
@@ -1155,7 +1239,7 @@ button:hover {
 
         <tr>
             <td>
-                <select id="quantidadeSanitarios" name="quantidadeSanitarios">
+                <select id="quantidadeSanitarios6" name="quantidadeSanitarios6">
                     <option value="Selecione">Selecione</option>
                     <option value="Um_Interno">Um Interno</option>
                     <option value="Dois_Internos">Dois Internos</option>
@@ -1165,7 +1249,7 @@ button:hover {
             </td>
     
             <td>
-                <select id="tiposEsquadrias" name="tiposEsquadrias">
+                <select id="tiposEsquadrias6" name="tiposEsquadrias6">
                     <option value="Selecione">Selecione</option>
                     <option value="Alumínio">Alumínio</option>
                     <option value="Especial">Especial</option>
@@ -1177,7 +1261,7 @@ button:hover {
             </td>
     
             <td>
-                <select id="tiposForros" name="tiposForros">
+                <select id="tiposForros6" name="tiposForros6">
                     <option value="Selecione">Selecione</option>
                     <option value="Especial">Especial</option>
                     <option value="Gesso">Gesso</option>
@@ -1188,14 +1272,14 @@ button:hover {
             </td>
     
             <td>
-                <select id="tiposPintura" name="tiposPintura">
+                <select id="tiposPintura6" name="tiposPintura6">
                     <option value="Selecione">Selecione</option>
                     <option value="Sim">Sim</option>
                     <option value="Não">Não</option>
                 </select>
             </td>
             <td>
-                <select id="tipoMaterial" name="tipoMaterial">
+                <select id="tipoMaterial6" name="tipoMaterial6">
                     <option value="Selecione">Selecione</option>
                     <option value="Alvenaria">Alvenaria</option>
                     <option value="Madeira">Madeira</option>
@@ -1213,7 +1297,7 @@ button:hover {
     
         <tr>
             <td>
-                <select id="tipoAr" name="tipoAr">
+                <select id="tipoAr6" name="tipoAr6">
                     <option value="selecione">Selecione</option>
                     <option value="Não">Não</option>
                     <option value="Sim">Sim</option>
@@ -1221,7 +1305,7 @@ button:hover {
             </td>
     
             <td>
-                <select id="tipoEscada" name="tipoEscada">
+                <select id="tipoEscada6" name="tipoEscada6">
                     <option value="selecione">Selecione</option>
                     <option value="Não">Não</option>
                     <option value="Sim">Sim</option>
@@ -1229,7 +1313,7 @@ button:hover {
             </td>
     
             <td>
-                <select id="tipoElevador" name="tipoElevador">
+                <select id="tipoElevador6" name="tipoElevador6">
                     <option value="selecione">Selecione</option>
                     <option value="Não">Não</option>
             <option value="Sim">Sim</option>
@@ -1237,7 +1321,7 @@ button:hover {
             </td>
     
             <td>
-                <select id="areaPiscina" name="areaPiscina">
+                <select id="areaPiscina6" name="areaPiscina6">
                     <option value="selecione">Selecione</option>
                     <option value="Até 20 m²">Até 20 m²</option>
                     <option value="De 20 até 40 m²">De 20 até 40 m²</option>
@@ -1250,8 +1334,9 @@ button:hover {
 
     <br>
 
-    <b><h1>SELECIONE OS DETALHES DA 7ª EDIFICAÇÃO:</h1></b>
-    <table>
+    <table id="edificacao7">
+
+    <b><h8>SELECIONE OS DETALHES DA 7ª EDIFICAÇÃO:</h8></b>
 
         <tr>
             <td><b><i>TIPO DE EDIFICAÇÃO</i></b></td>
@@ -1264,7 +1349,7 @@ button:hover {
 
         <tr>
             <td>
-                <select id="tipoEdificacao" name="tipoEdificacao">
+                <select id="tipoEdificacao7" name="tipoEdificacao7">
                     <option value="selecione">Selecione</option>
                     <option value="Apartamento_Frente">Apartamento Frente</option>
                     <option value="Apartamento_Fundos">Apartamento Fundos</option>
@@ -1281,7 +1366,7 @@ button:hover {
             </td>
     
             <td>
-                <select id="tipoUtilizacao" name="tipoUtilizacao">
+                <select id="tipoUtilizacao7" name="tipoUtilizacao7">
                     <option value="selecione">Selecione</option>
                     <option value="Residencial">Residencial</option>
                     <option value="Complementar">Complementar</option>
@@ -1299,11 +1384,11 @@ button:hover {
             </td>
 
             <td>
-                <input type="number" id="areaTotalProjeto" step="0.00001">
+                <input type="number" id="areaTotalProjeto7" step="0.00001">
             </td>
     
             <td>
-                <select id="tipoCobertura" name="tipoCobertura">
+                <select id="tipoCobertura7" name="tipoCobertura7">
                     <option value="selecione">Selecione</option>
                     <option value="Amianto">Amianto</option>
                     <option value="Cerâmica">Cerâmica</option>
@@ -1316,7 +1401,7 @@ button:hover {
             </td>
     
             <td>
-                <select id="tipoPiso" name="tipoPiso">
+                <select id="tipoPiso7" name="tipoPiso7">
                     <option value="selecione">Selecione</option>
                     <option value="Cimento_Liso">Cimento Liso</option>
                     <option value="Taco_Cerâmica">Taco Cerâmica</option>
@@ -1336,7 +1421,7 @@ button:hover {
 
         <tr>
             <td>
-                <select id="quantidadeSanitarios" name="quantidadeSanitarios">
+                <select id="quantidadeSanitarios7" name="quantidadeSanitarios7">
                     <option value="Selecione">Selecione</option>
                     <option value="Um_Interno">Um Interno</option>
                     <option value="Dois_Internos">Dois Internos</option>
@@ -1346,7 +1431,7 @@ button:hover {
             </td>
     
             <td>
-                <select id="tiposEsquadrias" name="tiposEsquadrias">
+                <select id="tiposEsquadrias7" name="tiposEsquadrias7">
                     <option value="Selecione">Selecione</option>
                     <option value="Alumínio">Alumínio</option>
                     <option value="Especial">Especial</option>
@@ -1358,7 +1443,7 @@ button:hover {
             </td>
     
             <td>
-                <select id="tiposForros" name="tiposForros">
+                <select id="tiposForros7" name="tiposForros7">
                     <option value="Selecione">Selecione</option>
                     <option value="Especial">Especial</option>
                     <option value="Gesso">Gesso</option>
@@ -1369,14 +1454,14 @@ button:hover {
             </td>
     
             <td>
-                <select id="tiposPintura" name="tiposPintura">
+                <select id="tiposPintura7" name="tiposPintura7">
                     <option value="Selecione">Selecione</option>
                     <option value="Sim">Sim</option>
                     <option value="Não">Não</option>
                 </select>
             </td>
             <td>
-                <select id="tipoMaterial" name="tipoMaterial">
+                <select id="tipoMaterial7" name="tipoMaterial7">
                     <option value="Selecione">Selecione</option>
                     <option value="Alvenaria">Alvenaria</option>
                     <option value="Madeira">Madeira</option>
@@ -1394,7 +1479,7 @@ button:hover {
     
         <tr>
             <td>
-                <select id="tipoAr" name="tipoAr">
+                <select id="tipoAr7" name="tipoAr7">
                     <option value="selecione">Selecione</option>
                     <option value="Não">Não</option>
                     <option value="Sim">Sim</option>
@@ -1402,7 +1487,7 @@ button:hover {
             </td>
     
             <td>
-                <select id="tipoEscada" name="tipoEscada">
+                <select id="tipoEscada7" name="tipoEscada7">
                     <option value="selecione">Selecione</option>
                     <option value="Não">Não</option>
                     <option value="Sim">Sim</option>
@@ -1410,7 +1495,7 @@ button:hover {
             </td>
     
             <td>
-                <select id="tipoElevador" name="tipoElevador">
+                <select id="tipoElevador7" name="tipoElevador7">
                     <option value="selecione">Selecione</option>
                     <option value="Não">Não</option>
             <option value="Sim">Sim</option>
@@ -1418,7 +1503,7 @@ button:hover {
             </td>
     
             <td>
-                <select id="areaPiscina" name="areaPiscina">
+                <select id="areaPiscina7" name="areaPiscina7">
                     <option value="selecione">Selecione</option>
                     <option value="Até 20 m²">Até 20 m²</option>
                     <option value="De 20 até 40 m²">De 20 até 40 m²</option>
@@ -1431,8 +1516,9 @@ button:hover {
 
     <br>
 
-    <b><h1>SELECIONE OS DETALHES DA 8ª EDIFICAÇÃO:</h1></b>
-    <table>
+    <table id="edificacao8">
+
+    <b><h9>SELECIONE OS DETALHES DA 8ª EDIFICAÇÃO:</h9></b>
 
         <tr>
             <td><b><i>TIPO DE EDIFICAÇÃO</i></b></td>
@@ -1445,7 +1531,7 @@ button:hover {
 
         <tr>
             <td>
-                <select id="tipoEdificacao" name="tipoEdificacao">
+                <select id="tipoEdificacao8" name="tipoEdificacao8">
                     <option value="selecione">Selecione</option>
                     <option value="Apartamento_Frente">Apartamento Frente</option>
                     <option value="Apartamento_Fundos">Apartamento Fundos</option>
@@ -1462,7 +1548,7 @@ button:hover {
             </td>
 
             <td>
-                <select id="tipoUtilizacao" name="tipoUtilizacao">
+                <select id="tipoUtilizacao8" name="tipoUtilizacao8">
                     <option value="selecione">Selecione</option>
                     <option value="Residencial">Residencial</option>
                     <option value="Complementar">Complementar</option>
@@ -1480,11 +1566,11 @@ button:hover {
             </td>
     
             <td>
-                <input type="number" id="areaTotalProjeto" step="0.00001">
+                <input type="number" id="areaTotalProjeto8" step="0.00001">
             </td>
     
             <td>
-                <select id="tipoCobertura" name="tipoCobertura">
+                <select id="tipoCobertura8" name="tipoCobertura8">
                     <option value="selecione">Selecione</option>
                     <option value="Amianto">Amianto</option>
                     <option value="Cerâmica">Cerâmica</option>
@@ -1497,7 +1583,7 @@ button:hover {
             </td>
     
             <td>
-                <select id="tipoPiso" name="tipoPiso">
+                <select id="tipoPiso8" name="tipoPiso8">
                     <option value="selecione">Selecione</option>
                     <option value="Cimento_Liso">Cimento Liso</option>
                     <option value="Taco_Cerâmica">Taco Cerâmica</option>
@@ -1517,7 +1603,7 @@ button:hover {
 
         <tr>
             <td>
-                <select id="quantidadeSanitarios" name="quantidadeSanitarios">
+                <select id="quantidadeSanitarios8" name="quantidadeSanitarios8">
                     <option value="Selecione">Selecione</option>
                     <option value="Um_Interno">Um Interno</option>
                     <option value="Dois_Internos">Dois Internos</option>
@@ -1527,7 +1613,7 @@ button:hover {
             </td>
     
             <td>
-                <select id="tiposEsquadrias" name="tiposEsquadrias">
+                <select id="tiposEsquadrias8" name="tiposEsquadrias8">
                     <option value="Selecione">Selecione</option>
                     <option value="Alumínio">Alumínio</option>
                     <option value="Especial">Especial</option>
@@ -1539,7 +1625,7 @@ button:hover {
             </td>
     
             <td>
-                <select id="tiposForros" name="tiposForros">
+                <select id="tiposForros8" name="tiposForros8">
                     <option value="Selecione">Selecione</option>
                      <option value="Especial">Especial</option>
                     <option value="Gesso">Gesso</option>
@@ -1550,14 +1636,14 @@ button:hover {
             </td>
     
             <td>
-                <select id="tiposPintura" name="tiposPintura">
+                <select id="tiposPintura8" name="tiposPintura8">
                     <option value="Selecione">Selecione</option>
                     <option value="Sim">Sim</option>
                     <option value="Não">Não</option>
                 </select>
             </td>
             <td>
-                <select id="tipoMaterial" name="tipoMaterial">
+                <select id="tipoMaterial8" name="tipoMaterial8">
                     <option value="Selecione">Selecione</option>
                     <option value="Alvenaria">Alvenaria</option>
                     <option value="Madeira">Madeira</option>
@@ -1575,7 +1661,7 @@ button:hover {
     
         <tr>
             <td>
-                <select id="tipoAr" name="tipoAr">
+                <select id="tipoAr8" name="tipoAr8">
                     <option value="selecione">Selecione</option>
                     <option value="Não">Não</option>
                     <option value="Sim">Sim</option>
@@ -1583,7 +1669,7 @@ button:hover {
             </td>
     
             <td>
-                <select id="tipoEscada" name="tipoEscada">
+                <select id="tipoEscada8" name="tipoEscada8">
                     <option value="selecione">Selecione</option>
                     <option value="Não">Não</option>
                     <option value="Sim">Sim</option>
@@ -1592,7 +1678,7 @@ button:hover {
     
     
             <td>
-                <select id="tipoElevador" name="tipoElevador">
+                <select id="tipoElevador8" name="tipoElevador8">
                     <option value="selecione">Selecione</option>
                     <option value="Não">Não</option>
             <option value="Sim">Sim</option>
@@ -1600,7 +1686,7 @@ button:hover {
             </td>
     
             <td>
-                <select id="areaPiscina" name="areaPiscina">
+                <select id="areaPiscina8" name="areaPiscina8">
                     <option value="selecione">Selecione</option>
                     <option value="Até 20 m²">Até 20 m²</option>
                     <option value="De 20 até 40 m²">De 20 até 40 m²</option>
@@ -1613,8 +1699,9 @@ button:hover {
 
     <br>
 
-    <b><h1>SELECIONE OS DETALHES DA 9ª EDIFICAÇÃO:</h1></b>
-    <table>
+    <table id="edificacao9">
+
+    <b><h10>SELECIONE OS DETALHES DA 9ª EDIFICAÇÃO:</h10></b>
 
         <tr>
             <td><b><i>TIPO DE EDIFICAÇÃO</i></b></td>
@@ -1626,7 +1713,7 @@ button:hover {
     
         <tr>
             <td>
-                <select id="tipoEdificacao" name="tipoEdificacao">
+                <select id="tipoEdificacao9" name="tipoEdificacao9">
                     <option value="selecione">Selecione</option>
                     <option value="Apartamento_Frente">Apartamento Frente</option>
                     <option value="Apartamento_Fundos">Apartamento Fundos</option>
@@ -1643,7 +1730,7 @@ button:hover {
             </td>
     
             <td>
-                <select id="tipoUtilizacao" name="tipoUtilizacao">
+                <select id="tipoUtilizacao9" name="tipoUtilizacao9">
                     <option value="selecione">Selecione</option>
                     <option value="Residencial">Residencial</option>
                     <option value="Complementar">Complementar</option>
@@ -1661,11 +1748,11 @@ button:hover {
             </td>
 
             <td>
-                <input type="number" id="areaTotalProjeto" step="0.00001">
+                <input type="number" id="areaTotalProjeto9" step="0.00001">
             </td>
     
             <td>
-                <select id="tipoCobertura" name="tipoCobertura">
+                <select id="tipoCobertura9" name="tipoCobertura9">
                     <option value="selecione">Selecione</option>
                     <option value="Amianto">Amianto</option>
                     <option value="Cerâmica">Cerâmica</option>
@@ -1678,7 +1765,7 @@ button:hover {
             </td>
     
             <td>
-                <select id="tipoPiso" name="tipoPiso">
+                <select id="tipoPiso9" name="tipoPiso9">
                     <option value="selecione">Selecione</option>
                     <option value="Cimento_Liso">Cimento Liso</option>
                     <option value="Taco_Cerâmica">Taco Cerâmica</option>
@@ -1698,7 +1785,7 @@ button:hover {
 
         <tr>
             <td>
-                <select id="quantidadeSanitarios" name="quantidadeSanitarios">
+                <select id="quantidadeSanitarios9" name="quantidadeSanitarios9">
                     <option value="Selecione">Selecione</option>
                     <option value="Um_Interno">Um Interno</option>
                     <option value="Dois_Internos">Dois Internos</option>
@@ -1708,7 +1795,7 @@ button:hover {
             </td>
     
             <td>
-                <select id="tiposEsquadrias" name="tiposEsquadrias">
+                <select id="tiposEsquadrias9" name="tiposEsquadrias9">
                     <option value="Selecione">Selecione</option>
                     <option value="Alumínio">Alumínio</option>
                     <option value="Especial">Especial</option>
@@ -1720,7 +1807,7 @@ button:hover {
             </td>
     
             <td>
-                <select id="tiposForros" name="tiposForros">
+                <select id="tiposForros9" name="tiposForros9">
                     <option value="Selecione">Selecione</option>
                     <option value="Especial">Especial</option>
                     <option value="Gesso">Gesso</option>
@@ -1731,14 +1818,14 @@ button:hover {
             </td>
     
             <td>
-                <select id="tiposPintura" name="tiposPintura">
+                <select id="tiposPintura9" name="tiposPintura9">
                     <option value="Selecione">Selecione</option>
                     <option value="Sim">Sim</option>
                     <option value="Não">Não</option>
                 </select>
             </td>
             <td>
-                <select id="tipoMaterial" name="tipoMaterial">
+                <select id="tipoMaterial9" name="tipoMaterial9">
                     <option value="Selecione">Selecione</option>
                     <option value="Alvenaria">Alvenaria</option>
                     <option value="Madeira">Madeira</option>
@@ -1756,7 +1843,7 @@ button:hover {
     
         <tr>
             <td>
-                <select id="tipoAr" name="tipoAr">
+                <select id="tipoAr9" name="tipoAr9">
                     <option value="selecione">Selecione</option>
                     <option value="Não">Não</option>
                     <option value="Sim">Sim</option>
@@ -1764,7 +1851,7 @@ button:hover {
             </td>
     
             <td>
-                <select id="tipoEscada" name="tipoEscada">
+                <select id="tipoEscada9" name="tipoEscada9">
                     <option value="selecione">Selecione</option>
                     <option value="Não">Não</option>
                     <option value="Sim">Sim</option>
@@ -1772,7 +1859,7 @@ button:hover {
             </td>
     
             <td>
-                <select id="tipoElevador" name="tipoElevador">
+                <select id="tipoElevador9" name="tipoElevador9">
                     <option value="selecione">Selecione</option>
                     <option value="Não">Não</option>
             <option value="Sim">Sim</option>
@@ -1780,7 +1867,7 @@ button:hover {
             </td>
     
             <td>
-                <select id="areaPiscina" name="areaPiscina">
+                <select id="areaPiscina9" name="areaPiscina9">
                     <option value="selecione">Selecione</option>
                     <option value="Até 20 m²">Até 20 m²</option>
                     <option value="De 20 até 40 m²">De 20 até 40 m²</option>
@@ -1793,9 +1880,9 @@ button:hover {
 
     <br>
 
-    <b><h1>SELECIONE OS DETALHES DA 10ª EDIFICAÇÃO:</h1></b>
-    
-    <table>
+    <table id="edificacao10">
+
+    <b><h11>SELECIONE OS DETALHES DA 10ª EDIFICAÇÃO:</h11></b>
 
         <tr>
             <td><b><i>TIPO DE EDIFICAÇÃO</i></b></td>
@@ -1807,7 +1894,7 @@ button:hover {
 
         <tr>
             <td>
-                <select id="tipoEdificacao" name="tipoEdificacao">
+                <select id="tipoEdificacao10" name="tipoEdificacao10">
                     <option value="selecione">Selecione</option>
                     <option value="Apartamento_Frente">Apartamento Frente</option>
                     <option value="Apartamento_Fundos">Apartamento Fundos</option>
@@ -1824,7 +1911,7 @@ button:hover {
             </td>
     
             <td>
-                <select id="tipoUtilizacao" name="tipoUtilizacao">
+                <select id="tipoUtilizacao10" name="tipoUtilizacao10">
                     <option value="selecione">Selecione</option>
                     <option value="Residencial">Residencial</option>
                     <option value="Complementar">Complementar</option>
@@ -1842,11 +1929,11 @@ button:hover {
             </td>
 
             <td>
-                <input type="number" id="areaTotalProjeto" step="0.00001">
+                <input type="number" id="areaTotalProjeto10" step="0.00001">
             </td>
     
             <td>
-                <select id="tipoCobertura" name="tipoCobertura">
+                <select id="tipoCobertura10" name="tipoCobertura10">
                     <option value="selecione">Selecione</option>
                     <option value="Amianto">Amianto</option>
                     <option value="Cerâmica">Cerâmica</option>
@@ -1859,7 +1946,7 @@ button:hover {
             </td>
     
             <td>
-                <select id="tipoPiso" name="tipoPiso">
+                <select id="tipoPiso10" name="tipoPiso10">
                     <option value="selecione">Selecione</option>
                     <option value="Cimento_Liso">Cimento Liso</option>
                     <option value="Taco_Cerâmica">Taco Cerâmica</option>
@@ -1879,7 +1966,7 @@ button:hover {
 
         <tr>
             <td>
-                <select id="quantidadeSanitarios" name="quantidadeSanitarios">
+                <select id="quantidadeSanitarios10" name="quantidadeSanitarios10">
                     <option value="Selecione">Selecione</option>
                     <option value="Um_Interno">Um Interno</option>
                     <option value="Dois_Internos">Dois Internos</option>
@@ -1889,7 +1976,7 @@ button:hover {
             </td>
     
             <td>
-                <select id="tiposEsquadrias" name="tiposEsquadrias">
+                <select id="tiposEsquadrias10" name="tiposEsquadrias10">
                     <option value="Selecione">Selecione</option>
                     <option value="Alumínio">Alumínio</option>
                     <option value="Especial">Especial</option>
@@ -1901,7 +1988,7 @@ button:hover {
             </td>
     
             <td>
-                <select id="tiposForros" name="tiposForros">
+                <select id="tiposForros10" name="tiposForros10">
                     <option value="Selecione">Selecione</option>
                     <option value="Especial">Especial</option>
                     <option value="Gesso">Gesso</option>
@@ -1912,14 +1999,14 @@ button:hover {
             </td>
     
             <td>
-                <select id="tiposPintura" name="tiposPintura">
+                <select id="tiposPintura10" name="tiposPintura10">
                     <option value="Selecione">Selecione</option>
                     <option value="Sim">Sim</option>
                     <option value="Não">Não</option>
                 </select>
             </td>
             <td>
-                <select id="tipoMaterial" name="tipoMaterial">
+                <select id="tipoMaterial10" name="tipoMaterial10">
                     <option value="Selecione">Selecione</option>
                     <option value="Alvenaria">Alvenaria</option>
                     <option value="Madeira">Madeira</option>
@@ -1937,7 +2024,7 @@ button:hover {
     
         <tr>
             <td>
-                <select id="tipoAr" name="tipoAr">
+                <select id="tipoAr10" name="tipoAr10">
                     <option value="selecione">Selecione</option>
                     <option value="Não">Não</option>
                     <option value="Sim">Sim</option>
@@ -1945,7 +2032,7 @@ button:hover {
             </td>
     
             <td>
-                <select id="tipoEscada" name="tipoEscada">
+                <select id="tipoEscada10" name="tipoEscada10">
                     <option value="selecione">Selecione</option>
                     <option value="Não">Não</option>
                     <option value="Sim">Sim</option>
@@ -1954,7 +2041,7 @@ button:hover {
     
     
             <td>
-                <select id="tipoElevador" name="tipoElevador">
+                <select id="tipoElevador10" name="tipoElevador10">
                     <option value="selecione">Selecione</option>
                     <option value="Não">Não</option>
             <option value="Sim">Sim</option>
@@ -1962,7 +2049,7 @@ button:hover {
             </td>
     
             <td>
-                <select id="areaPiscina" name="areaPiscina">
+                <select id="areaPiscina10" name="areaPiscina10">
                     <option value="selecione">Selecione</option>
                     <option value="Até 20 m²">Até 20 m²</option>
                     <option value="De 20 até 40 m²">De 20 até 40 m²</option>
@@ -1973,8 +2060,10 @@ button:hover {
 
     </table>
 
+    <button type="reset">Limpar</button>
     <button class="btn" onclick="novoCalculo()">CARREGAR PARA NOVO PREENCHIMENTO</button>
     <button onclick="print()">IMPRIMIR</button>
+    <button onclick="salvarEmPDF()">Salvar como PDF</button>
 
     
     <center>
@@ -1986,11 +2075,95 @@ button:hover {
     </center>
 
 
+    </div>
+
+
 </body>
 
-<script>
+<script>  
 
 function novoCalculo() {     window.location.href = 'projetospendentes.html'; } 
+
+
+function salvarEmPDF() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+    const limitePagina = 280; // Limite vertical para criar uma nova página
+    const fontePequena = 10; // Define um tamanho de fonte menor
+
+    // Configura o cabeçalho do documento com informações principais
+    doc.setFontSize(fontePequena);
+    doc.text("Inscrição Imobiliária: " + document.getElementById("inscricao").value, 10, 10);
+    doc.text("Quadra: " + document.getElementById("quadra").value, 10, 20);
+    doc.text("Lote: " + document.getElementById("lote").value, 10, 30);
+    doc.text("Documento (s) Digitalizado (s) (Sim ou Não): " + document.getElementById("documentoDigitalizado").value, 10, 40);
+    doc.text("Número da Matricula: " + document.getElementById("numeroMatricula").value, 10, 50);
+    doc.text("Bairro: " + document.getElementById("bairro").value, 10, 60);
+    doc.text("Nome do Requerente: " + document.getElementById("nomeRequerente").value, 10, 70);
+    doc.text("CPF/CNPJ: " + document.getElementById("cpfCnpj").value, 10, 80);
+
+    let posY = 90;
+
+    for (let i = 1; i <= 10; i++) {
+        const tipoEdificacao = document.getElementById("tipoEdificacao" + i);
+        const tipoUtilizacao = document.getElementById("tipoUtilizacao" + i);
+        const areaTotalProjeto = document.getElementById("areaTotalProjeto" + i);
+        const tipoCobertura = document.getElementById("tipoCobertura" + i);
+        const tipoPiso = document.getElementById("tipoPiso" + i);
+        const quantidadeSanitarios = document.getElementById("quantidadeSanitarios" + i);
+        const tiposEsquadrias = document.getElementById("tiposEsquadrias" + i);
+        const tiposForros = document.getElementById("tiposForros" + i);
+        const tiposPintura = document.getElementById("tiposPintura" + i);
+        const tipoMaterial = document.getElementById("tipoMaterial" + i);
+        const tipoAr = document.getElementById("tipoAr" + i);
+        const tipoEscada = document.getElementById("tipoEscada" + i);
+        const tipoElevador = document.getElementById("tipoElevador" + i);
+        const areaPiscina = document.getElementById("areaPiscina" + i);
+
+        if (tipoEdificacao && tipoUtilizacao && areaTotalProjeto && tipoCobertura && tipoPiso && quantidadeSanitarios && tiposEsquadrias && tiposForros && tiposPintura && tipoMaterial && tipoAr && tipoEscada && tipoElevador && areaPiscina) {
+            // Verifica se precisa de nova página
+            if (posY > limitePagina) {
+                doc.addPage();
+                posY = 10; 
+            }
+
+            // Adiciona um título para cada edificação
+            doc.text(`Edificação ${i}:`, 10, posY);
+            posY += 5;
+
+            // Dados da edificação em formato de tabela
+            doc.autoTable({
+                startY: posY,
+                head: [['Campo', 'Valor']],
+                body: [
+                    ['Tipo de Edificação', tipoEdificacao.value],
+                    ['Utilização', tipoUtilizacao.value],
+                    ['Metragem', areaTotalProjeto.value],
+                    ['Cobertura', tipoCobertura.value],
+                    ['Piso', tipoPiso.value],
+                    ['Sanitários', quantidadeSanitarios.value],
+                    ['Esquadrias', tiposEsquadrias.value],
+                    ['Forro', tiposForros.value],
+                    ['Pintura', tiposPintura.value],
+                    ['Material', tipoMaterial.value],
+                    ['Ar Condicionado', tipoAr.value],
+                    ['Escada Rolante', tipoEscada.value],
+                    ['Elevador', tipoElevador.value],
+                    ['Piscina', areaPiscina.value]
+                ],
+                theme: 'grid',
+                styles: { fontSize: 8 }, // Fonte menor para tabela
+                margin: { left: 20 }
+            });
+
+            posY = doc.lastAutoTable.finalY + 10;
+        }
+    }
+
+    // Salva o arquivo em PDF
+    doc.save("formulario_edificacoes.pdf");
+}
+
 
 </script>
 
