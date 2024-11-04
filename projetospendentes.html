@@ -74,12 +74,17 @@ input {
     border-radius: 4px;
 }
 
-#quadra, #lote {
+#quadra {
     width: 50px; /* Ajusta a largura dos inputs de quadra e lote */
 }
 
+#lote {
+    width: 80px; /* Ajusta a largura dos inputs de quadra e lote */
+}
+
+
 #inscricao, #bairro {
-    width: 60%; /* Ajusta a largura do campo de inscrição e bairro */
+    width: 40%; /* Ajusta a largura do campo de inscrição e bairro */
 }
 
 h1 {
@@ -201,7 +206,7 @@ button:hover {
         <div class="form-row">
 
             <label for="inscricao">Inscrição Imobiliária:</label>
-            <input type="text" id="inscricao" name="inscricao" required>
+            <input type="text" id="inscricao" maxlength="19" placeholder="Digite a inscrição" oninput="formatarInscricao()">
 
         </div>
     
@@ -210,7 +215,7 @@ button:hover {
             <input type="text" id="quadra" name="quadra" maxlength="3" required>
         
             <label for="lote">Lote:</label>
-            <input type="text" id="lote" name="lote" maxlength="4" required>
+            <input type="text" id="lote" name="lote" maxlength="12" required>
 
             <label for="documentoDigitalizado">Documento (s) Digitalizado (S) (Sim ou Não):</label>
             <input type="text" id="documentoDigitalizado" name="documentoDigitalizado" maxlength="3" required>
@@ -422,143 +427,145 @@ button:hover {
 
     <br>
 
+    
     <table id="edificacao2">
 
-    <b><h3>SELECIONE OS DETALHES DA 2ª EDIFICAÇÃO:</h3></b>
+        <b><h2>SELECIONE OS DETALHES DA 2ª EDIFICAÇÃO:</h2></b>
     
-
-        <tr>
-            <td><b><i>TIPO DE EDIFICAÇÃO</i></b></td>
-            <td><b><i>UTILIZAÇÃO</i></b></td>
-            <td><b><i>METRAGEM</i></b></td>
-            <td><b><i>COBERTURA</i></b></td>
-            <td><b><i>PISO</i></b></td>
-        </tr>
-
-        <tr>
-            <td>
-                <select id="tipoEdificacao2" name="tipoEdificacao2">
-                    <option value="selecione">Selecione</option>
-                    <option value="Apartamento_Frente">Apartamento Frente</option>
-                    <option value="Apartamento_Fundos">Apartamento Fundos</option>
-                    <option value="Casa">Casa</option>
-                    <option value="Edícula">Edícula</option>
-                    <option value="Sala_Conjunto">Sala Conjunto</option>
-                    <option value="Loja">Loja</option>
-                    <option value="Sub_Solo">Sub-Solo</option>
-                    <option value="Galpão">Galpão</option>
-                    <option value="Telheiro">Telheiro</option>
-                    <option value="Industria">Industria</option>
-                    <option value="Outros">Outros</option>
-                </select>
-            </td>
+        
+     
+            <tr>
+                <td><b><i>TIPO DE EDIFICAÇÃO</i></b></td>
+                <td><b><i>UTILIZAÇÃO</i></b></td>
+                <td><b><i>METRAGEM</i></b></td>
+                <td><b><i>COBERTURA</i></b></td>
+                <td><b><i>PISO</i></b></td>
+            </tr>
     
-            <td>
-                <select id="tipotipoUtilizacao2" name="tipotipoUtilizacao2">
-                    <option value="selecione">Selecione</option>
-                    <option value="Residencial">Residencial</option>
-                    <option value="Complementar">Complementar</option>
-                    <option value="Comercial/Prest.Serv">Comercial/Prest.Serv</option>
-                    <option value="Industrial">Industrial</option>
-                    <option value="Esporte/Lazer">Esporte/Lazer</option>
-                    <option value="Saúde">Saúde</option>
-                    <option value="Ensino">Ensino</option>
-                    <option value="Cultura">Cultura</option>
-                    <option value="Religioso">Religioso</option>
-                    <option value="Agropecuária">Agropecuária</option>
-                    <option value="Complemenar/Não Resid.">Complementar/Não Resid.</option>
-                    <option value="Outros">Outros</option>
-                </select>
-            </td>
-
-
-            <td>
-                <input type="number" id="areaTotalProjeto2" step="0.00001">
-            </td>
+            <tr>
+                <td>
+                    <select id="tipoEdificacao2" name="tipoEdificacao2">
+                        <option value="selecione">Selecione</option>
+                        <option value="Apartamento_Frente">Apartamento Frente</option>
+                        <option value="Apartamento_Fundos">Apartamento Fundos</option>
+                        <option value="Casa">Casa</option>
+                        <option value="Edícula">Edícula</option>
+                        <option value="Sala_Conjunto">Sala Conjunto</option>
+                        <option value="Loja">Loja</option>
+                        <option value="Sub_Solo">Sub-Solo</option>
+                        <option value="Galpão">Galpão</option>
+                        <option value="Telheiro">Telheiro</option>
+                        <option value="Industria">Industria</option>
+                        <option value="Outros">Outros</option>
+                    </select>
+                </td>
+        
+                <td>
+                    <select id="tipoUtilizacao2" name="tipoUtilizacao2">
+                        <option value="selecione">Selecione</option>
+                        <option value="Residencial">Residencial</option>
+                        <option value="Complementar">Complementar</option>
+                        <option value="Comercial/Prest.Serv">Comercial/Prest.Serv</option>
+                        <option value="Industrial">Industrial</option>
+                        <option value="Esporte/Lazer">Esporte/Lazer</option>
+                        <option value="Saúde">Saúde</option>
+                        <option value="Ensino">Ensino</option>
+                        <option value="Cultura">Cultura</option>
+                        <option value="Religioso">Religioso</option>
+                        <option value="Agropecuária">Agropecuária</option>
+                        <option value="Complemenar/Não Resid.">Complementar/Não Resid.</option>
+                        <option value="Outros">Outros</option>
+                    </select>
+                </td>
     
-            <td>
-                <select id="tipoCobertura2" name="tipoCobertura2">
-                    <option value="selecione">Selecione</option>
-                    <option value="Amianto">Amianto</option>
-                    <option value="Cerâmica">Cerâmica</option>
-                    <option value="Especial">Especial</option>
-                    <option value="Laje">Laje</option>
-                    <option value="Palha_de_Zinco">Palha de Zinco</option>
-                    <option value="Sem">Sem</option>
-                    <option value="Outra">Outra</option>
-                </select>
-            </td>
     
-            <td>
-                <select id="tipoPiso2" name="tipoPiso2">
-                    <option value="selecione">Selecione</option>
-                    <option value="Cimento_Liso">Cimento Liso</option>
-                    <option value="Taco_Cerâmica">Taco Cerâmica</option>
-                    <option value="Terra">Terra</option>
-                    <option value="Especial">Especial</option>
-                </select>
-            </td>
-        </tr>
+                <td>
+                    <input type="number" id="areaTotalProjeto2" step="0.00001">
+                </td>
+        
+                <td>
+                    <select id="tipoCobertura2" name="tipoCobertura2">
+                        <option value="selecione">Selecione</option>
+                        <option value="Amianto">Amianto</option>
+                        <option value="Cerâmica">Cerâmica</option>
+                        <option value="Especial">Especial</option>
+                        <option value="Laje">Laje</option>
+                        <option value="Palha_de_Zinco">Palha de Zinco</option>
+                        <option value="Sem">Sem</option>
+                        <option value="Outra">Outra</option>
+                    </select>
+                </td>
+        
+                <td>
+                    <select id="tipoPiso2" name="tipoPiso2">
+                        <option value="Selecione">Selecione</option>
+                        <option value="Cimento_Liso">Cimento Liso</option>
+                        <option value="Taco_Cerâmica">Taco Cerâmica</option>
+                        <option value="Terra">Terra</option>
+                        <option value="Especial">Especial</option>
+                    </select>
+                </td>
+            </tr>
+        
+            <tr>
+                <td><b><i>QUANTIDADE DE SANITÁRIOS</b</i></td>
+                <td><b><i>ESQUADRIAS</b</i></td>
+                <td><b><i>FORRO</b</i></td>
+                <td><b><i>PINTURA</b</i></td>
+                <td><b><i>MATERIAL</b</i></td>
+            </tr>
     
-        <tr>
-            <td><b><i>QUANTIDADE DE SANITÁRIOS</b</i></td>
-            <td><b><i>ESQUADRIAS</b</i></td>
-            <td><b><i>FORRO</b</i></td>
-            <td><b><i>PINTURA</b</i></td>
-            <td><b><i>MATERIAL</b</i></td>
-        </tr>
-
-        <tr>
-            <td>
-                <select id="quantidadeSanitarios2" name="quantidadeSanitarios2">
-                    <option value="Selecione">Selecione</option>
-                    <option value="Um_Interno">Um Interno</option>
-                    <option value="Dois_Internos">Dois Internos</option>
-                    <option value="Mais_de_Dois_Internos">Mais de Dois Internos</option>
-                    <option value="Sem">Sem</option>
-                </select>
-            </td>
-    
-            <td>
-                <select id="tiposEsquadrias2" name="tiposEsquadrias2">
-                    <option value="Selecione">Selecione</option>
-                    <option value="Alumínio">Alumínio</option>
-                    <option value="Especial">Especial</option>
-                    <option value="Ferro">Ferro</option>
-                    <option value="Madeira">Madeira</option>
-                    <option value="PVC">PVC</option>
-                    <option value="Sem">Sem</option>
-                </select>
-            </td>
-    
-            <td>
-                <select id="tiposForros2" name="tiposForros2">
-                    <option value="Selecione">Selecione</option>
-                    <option value="Especial">Especial</option>
-                    <option value="Gesso">Gesso</option>
-                    <option value="Laje">Laje</option>
-                    <option value="Madeira">Madeira</option>
-                    <option value="Sem">Sem</option>
-                </select>
-            </td>
-    
-            <td>
-                <select id="tiposPintura2" name="tiposPintura2">
-                    <option value="Selecione">Selecione</option>
-                    <option value="Sim">Sim</option>
-                    <option value="Não">Não</option>
-                </select>
-            </td>
-            <td>
-                <select id="tipoMaterial2" name="tipoMaterial2">
-                    <option value="Selecione">Selecione</option>
-                    <option value="Alvenaria">Alvenaria</option>
-                    <option value="Madeira">Madeira</option>
-                    <option value="Metal">Metal</option>
-                </select>
-            </td>
-        </tr>
-
+            <tr>
+                <td>
+                    <select id="quantidadeSanitarios2" name="quantidadeSanitarios2">
+                        <option value="Selecione">Selecione</option>
+                        <option value="Um_Interno">Um Interno</option>
+                        <option value="Dois_Internos">Dois Internos</option>
+                        <option value="Mais_de_Dois_Internos">Mais de Dois Internos</option>
+                        <option value="Sem">Sem</option>
+                    </select>
+                </td>
+        
+                <td>
+                    <select id="tiposEsquadrias2" name="tiposEsquadrias2">
+                        <option value="Selecione">Selecione</option>
+                        <option value="Alumínio">Alumínio</option>
+                        <option value="Especial">Especial</option>
+                        <option value="Ferro">Ferro</option>
+                        <option value="Madeira">Madeira</option>
+                        <option value="PVC">PVC</option>
+                        <option value="Sem">Sem</option>
+                    </select>
+                </td>
+        
+                <td>
+                    <select id="tiposForros2" name="tiposForros2">
+                        <option value="Selecione">Selecione</option>
+                        <option value="Especial">Especial</option>
+                        <option value="Gesso">Gesso</option>
+                        <option value="Laje">Laje</option>
+                        <option value="Madeira">Madeira</option>
+                        <option value="Sem">Sem</option>
+                    </select>
+                </td>
+        
+                <td>
+                    <select id="tiposPintura2" name="tiposPintura2">
+                        <option value="Selecione">Selecione</option>
+                        <option value="Sim">Sim</option>
+                        <option value="Não">Não</option>
+                    </select>
+                </td>
+                <td>
+                    <select id="tipoMaterial2" name="tipoMaterial2">
+                        <option value="Selecione">Selecione</option>
+                        <option value="Alvenaria">Alvenaria</option>
+                        <option value="Madeira">Madeira</option>
+                        <option value="Metal">Metal</option>
+                    </select>
+                </td>
+            </tr>
+        
         <tr>
             <td><b><i>AR CONDICIONADO CENTRAL</i></b></td>
             <td><b><i>ESCADA ROLANTE</i></b></td>
@@ -601,9 +608,10 @@ button:hover {
                     <option value="Sem">Sem</option>
                 </select>
             </td>
-    </table>
-
-    <br>
+    
+        </table>
+    
+        <br>
 
     <table id="edificacao3">
     
@@ -2060,6 +2068,7 @@ button:hover {
 
     </table>
 
+    
     <button class="btn" onclick="novoCalculo()">CARREGAR PARA NOVO PREENCHIMENTO</button>
     <button onclick="print()">IMPRIMIR</button>
     <button onclick="salvarEmPDF()">Salvar como PDF</button>
@@ -2081,16 +2090,32 @@ button:hover {
 
 <script>  
 
+function formatarInscricao() {
+            const input = document.getElementById('inscricao');
+            let valor = input.value;
+
+            // Remove qualquer caractere que não seja número
+            valor = valor.replace(/\D/g, '');
+
+            // Aplica a máscara XX.XXX.XXX.XXXX.XXX
+            if (valor.length > 2) valor = valor.replace(/^(\d{2})(\d)/, '$1.$2');
+            if (valor.length > 6) valor = valor.replace(/^(\d{2})\.(\d{3})(\d)/, '$1.$2.$3');
+            if (valor.length > 9) valor = valor.replace(/^(\d{2})\.(\d{3})\.(\d{3})(\d)/, '$1.$2.$3.$4');
+            if (valor.length > 13) valor = valor.replace(/^(\d{2})\.(\d{3})\.(\d{3})\.(\d{4})(\d)/, '$1.$2.$3.$4.$5');
+            
+            // Atualiza o valor do campo de entrada
+            input.value = valor;
+        }
+
 function novoCalculo() {     window.location.href = 'projetospendentes.html'; } 
 
 
 function salvarEmPDF() {
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF();
-    const limitePagina = 280; // Limite vertical para criar uma nova página
-    const fontePequena = 10; // Define um tamanho de fonte menor
+    const limitePagina = 280;
+    const fontePequena = 10;
 
-    // Configura o cabeçalho do documento com informações principais
     doc.setFontSize(fontePequena);
     doc.text("Inscrição Imobiliária: " + document.getElementById("inscricao").value, 10, 10);
     doc.text("Quadra: " + document.getElementById("quadra").value, 10, 20);
@@ -2120,20 +2145,34 @@ function salvarEmPDF() {
         const areaPiscina = document.getElementById("areaPiscina" + i);
 
         if (tipoEdificacao && tipoUtilizacao && areaTotalProjeto && tipoCobertura && tipoPiso && quantidadeSanitarios && tiposEsquadrias && tiposForros && tiposPintura && tipoMaterial && tipoAr && tipoEscada && tipoElevador && areaPiscina) {
-            // Verifica se precisa de nova página
+            console.log(`Edificação ${i}:`, {
+                tipoEdificacao,
+                tipoUtilizacao,
+                areaTotalProjeto,
+                tipoCobertura,
+                tipoPiso,
+                quantidadeSanitarios,
+                tiposEsquadrias,
+                tiposForros,
+                tiposPintura,
+                tipoMaterial,
+                tipoAr,
+                tipoEscada,
+                tipoElevador,
+                areaPiscina
+            });
+
             if (posY > limitePagina) {
                 doc.addPage();
-                posY = 10; 
+                posY = 10;
             }
 
-            // Adiciona um título para cada edificação
             doc.text(`Edificação ${i}:`, 10, posY);
             posY += 5;
 
-            // Dados da edificação em formato de tabela
             doc.autoTable({
                 startY: posY,
-                head: [['Campo', 'Valor']],
+                head: [['Característica', 'Especificação']],
                 body: [
                     ['Tipo de Edificação', tipoEdificacao.value],
                     ['Utilização', tipoUtilizacao.value],
@@ -2151,17 +2190,19 @@ function salvarEmPDF() {
                     ['Piscina', areaPiscina.value]
                 ],
                 theme: 'grid',
-                styles: { fontSize: 8 }, // Fonte menor para tabela
+                styles: { fontSize: 12 },
                 margin: { left: 20 }
             });
 
-            posY = doc.lastAutoTable.finalY + 10;
+            posY = (doc.lastAutoTable.finalY || posY) + 10;
+        } else {
+            console.warn(`Campos faltando na Edificação ${i}`);
         }
     }
 
-    // Salva o arquivo em PDF
     doc.save("formulario_edificacoes.pdf");
 }
+
 
 
 </script>

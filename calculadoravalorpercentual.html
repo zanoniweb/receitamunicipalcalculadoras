@@ -62,11 +62,13 @@
     background-color: #4cae4c;
     }
 
-    .footer {
-    margin-top: auto;
-    text-align: center;
-    font-style: italic;
+    .footer { 
+        text-align: center; 
+        font-style: italic; 
+        background-color: #f1f1f1; /* opcional para destaque */ 
+        padding: 2px 0; /* opcional para ajustar espaço */ 
     }
+
     @media print { 
     #noprint { display:none; } 
     body { background: #fff; }
@@ -93,6 +95,9 @@
 </header>
 
 <body>
+
+<center>
+
     <h1>Calculadora de Variação de Valor</h1>
     <form id="calcForm">
         <label for="valorInicial">Valor Inicial (R$):</label>
@@ -101,13 +106,54 @@
         <label for="valorFinal">Valor Final (R$):</label>
         <input type="number" id="valorFinal" step="0.01" required>
         <br><br>
+    
         <button type="button" onclick="calcular()">Calcular</button>
         <button class="btn" onclick="limpar()">Limpar</button>
         <button class="btn" onclick="novoCalculo()">Carregar para novo Cálcululo</button>
         <button onclick="print()">Imprimir</button>
 
     </form>
+
     <div id="resultado"></div>
+
+
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+
+</center>
+
+
+
+<center>
+
+    <i>
+    
+<footer>
+
+    <p>Site desenvolvido por Juliano <img src="https://d1yei2z3i6k35z.cloudfront.net/6946809/65e45ac72773e_zanoni.1.png" alt="Logo de Juliano Zanoni"></p>
+
+</footer>
+
+    </i>
+
+</center> 
 
     <script>
         function calcular() {
@@ -161,21 +207,6 @@
 
     </script>
 
-
-
-<center>
-
-    <i>
-    
-<footer>
-
-    <p>Site desenvolvido por Juliano <img src="https://d1yei2z3i6k35z.cloudfront.net/6946809/65e45ac72773e_zanoni.1.png" alt="Logo de Juliano Zanoni"></p>
-
-</footer>
-
-    </i>
-
-</center> 
 
 </body>
 

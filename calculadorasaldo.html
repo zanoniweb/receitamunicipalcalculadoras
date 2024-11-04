@@ -96,15 +96,22 @@
 
 <body>
 
+
+    <center>
+
     <h1>Simulação de Dívida Ativa: Saldos</h1>
+
     <form id="simulacaoForm">
+
         <div class="form-group">
-            <label for="inscricaoImobiliaria">Inscrição Imobiliária <b>(Campo de preenchimento obrigatório)</b>:</label>
-            <input type="text" id="inscricaoImobiliaria" placeholder="exemplo: 03.045.346.0072.001" required>
+
+            <label for="inscricao">Inscrição Imobiliária:</label>
+            <input type="text" id="inscricao" maxlength="19" placeholder="Digite a inscrição" oninput="formatarInscricao()">
+
         </div>
 
         <div class="form-group">
-            <label for="tributo">Tributo <b>(Campo de preenchimento obrigatório)</b>:</label>
+            <label for="tributo">Tributo:</label>
             <select id="tributo" required>
                 <option value="">Selecione</option>
                 <option value="Contribuição de Melhoria">Contribuição de Melhoria</option>
@@ -114,7 +121,7 @@
         </div>
 
         <div class="form-group">
-            <label for="simulacao">Simulação (parcelas):</label>
+            <label for="simulacao">Simulação (quitação ou parcelamento):</label>
             <select id="simulacao">
                 <option value="0">Selecione</option>
                 <option value="1">Quitação</option>
@@ -138,6 +145,7 @@
             </select>
         </div>
 
+    </center>
 
     <center>
         <table id="tabelaSaldos">
@@ -145,9 +153,11 @@
                 <tr>
                     <th>Saldo</th>
                     <th>Correção Monetária</th>
+                    <th>Desconto Correção (%)</th>
                     <th>Multa</th>
+                    <th>Desconto Multa (%)</th>
                     <th>Juros</th>
-                    <th>% Desconto (Multa/Juros)</th>
+                    <th>Desconto Juros (%)</th>
                     <th>Sub-total</th>
                     <th>Observação</th>
                 </tr>
@@ -156,113 +166,129 @@
                 <!-- Linhas serão adicionadas via JavaScript -->
             </tbody>
         </table>
-    
-
+        
         <div class="buttons">
             <button type="button" onclick="calcular()">Calcular</button>
             <button type="reset">Limpar</button>
             <button class="btn" onclick="novoCalculo()">Carregar para novo Cálculo</button>
             <button onclick="print()">Imprimir</button>
-
         </div>
-    </form>
-    </center>
+        
+        <center>
+            <div id="resultado"></div>
+        </center>
+        
+        <script>
 
-    <center>
-    <div id="resultado"></div>
-    </center>
+        function formatarInscricao() {
+            const input = document.getElementById('inscricao');
+            let valor = input.value;
 
-    <script>
-        // Função para gerar as linhas da tabela dinamicamente
-        function gerarLinhas() {
-            const tbody = document.querySelector('#tabelaSaldos tbody');
-            for (let i = 0; i < 10; i++) {
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td><input type="number" id="saldo${i}" step="0.00001" value="0.00000"></td>
-                    <td><input type="number" id="correcao${i}" step="0.00001" value="0.00000"></td>
-                    <td><input type="number" id="multa${i}" step="0.00001" value="0.00000"></td>
-                    <td><input type="number" id="juros${i}" step="0.00001" value="0.00000"></td>
-                    <td><input type="number" id="desconto${i}" step="0.00001" value="0.00000"></td>
-                    <td id="subtotal${i}">0.00000</td>
-                    <td><input type="text" id="campoTexto${i}" maxlength="20" placeholder="Nº Lei REFIS"></td>
-                `;
-                tbody.appendChild(row);
-            }
+            // Remove qualquer caractere que não seja número
+            valor = valor.replace(/\D/g, '');
+
+            // Aplica a máscara XX.XXX.XXX.XXXX.XXX
+            if (valor.length > 2) valor = valor.replace(/^(\d{2})(\d)/, '$1.$2');
+            if (valor.length > 6) valor = valor.replace(/^(\d{2})\.(\d{3})(\d)/, '$1.$2.$3');
+            if (valor.length > 9) valor = valor.replace(/^(\d{2})\.(\d{3})\.(\d{3})(\d)/, '$1.$2.$3.$4');
+            if (valor.length > 13) valor = valor.replace(/^(\d{2})\.(\d{3})\.(\d{3})\.(\d{4})(\d)/, '$1.$2.$3.$4.$5');
+            
+            // Atualiza o valor do campo de entrada
+            input.value = valor;
         }
 
-        // Chama a função para gerar as linhas ao carregar a página
-        window.onload = gerarLinhas;
-
-        function calcular() {
-            let totalGeral = 0;
-            let totalDesconto = 0; // Variável para o total de descontos aplicados
-
-            for (let i = 0; i < 10; i++) {
-                const saldo = parseFloat(document.getElementById(`saldo${i}`).value) || 0;
-                const correcao = parseFloat(document.getElementById(`correcao${i}`).value) || 0;
-                const multa = parseFloat(document.getElementById(`multa${i}`).value) || 0;
-                const juros = parseFloat(document.getElementById(`juros${i}`).value) || 0;
-                const desconto = parseFloat(document.getElementById(`desconto${i}`).value) || 0;
-
-                // Calcula o valor descontado sobre multa e juros
-                const valorMultaComDesconto = multa - (multa * (desconto / 100));
-                const valorJurosComDesconto = juros - (juros * (desconto / 100));
-                const descontoAplicado = (multa * (desconto / 100)) + (juros * (desconto / 100));
-
-                // Calcula o subtotal com correção e desconto aplicado
-                const subtotal = saldo + correcao + valorMultaComDesconto + valorJurosComDesconto;
-
-                // Atualiza o subtotal no campo correto
-                document.getElementById(`subtotal${i}`).innerText = subtotal.toFixed(5);
-
-                // Soma os valores totais para a dívida e desconto
-                totalGeral += subtotal;
-                totalDesconto += descontoAplicado; // Soma os descontos aplicados
-            }
-
-            // Exibir simulação selecionada
-            const simulacao = document.getElementById("simulacao").value;
-            const valorFinal = (totalGeral / simulacao).toFixed(2);
-
-            // Exibe o resultado incluindo o total de desconto em forma de tabela
-            document.getElementById('resultado').innerHTML = `
-                <h3>Resultado da Simulação</h3>
-                <table border="1" style="border-collapse: collapse; width: 100%;">
-                    <thead>
-                        <tr>
-                            <th>Descrição</th>
-                            <th>Valor</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Total Geral da Dívida:</strong></td>
-                            <td>R$ ${totalGeral.toFixed(2)}</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Valor de Desconto aplicado (sobre Multa e Juros):</strong></td>
-                            <td>R$ ${totalDesconto.toFixed(2)}</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Valor por Parcela (${simulacao} vezes):</strong></td>
-                            <td>R$ ${valorFinal}</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Observação:</strong></td>
-                            <td>INFORMATIVO: HAVERÁ REAJUSTES EM CASO DE DÍVIDAS PARCELADAS.</td>
-                        </tr>
-                    </tbody>
-                </table>
-            `;
-        }
-
-        function novoCalculo() {
-    window.location.href = 'calculadorasaldo.html';
+       // Função para gerar as linhas da tabela dinamicamente
+function gerarLinhas() {
+    const tbody = document.querySelector('#tabelaSaldos tbody');
+    for (let i = 0; i < 10; i++) {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td><input type="number" id="saldo${i}" step="0.00001" value="0.00000"></td>
+            <td><input type="number" id="correcao${i}" step="0.00001" value="0.00000"></td>
+            <td><input type="number" id="descontoCorrecao${i}" step="0.01" value="0.00"></td>
+            <td><input type="number" id="multa${i}" step="0.00001" value="0.00000"></td>
+            <td><input type="number" id="descontoMulta${i}" step="0.01" value="0.00"></td>
+            <td><input type="number" id="juros${i}" step="0.00001" value="0.00000"></td>
+            <td><input type="number" id="descontoJuros${i}" step="0.01" value="0.00"></td>
+            <td id="subtotal${i}">0.00000</td>
+            <td><input type="text" id="campoTexto${i}" maxlength="20" placeholder="Nº Lei REFIS"></td>
+        `;
+        tbody.appendChild(row);
+    }
 }
 
-    </script>
+// Chama a função para gerar as linhas ao carregar a página
+window.onload = gerarLinhas;
 
+function calcular() {
+    let totalGeral = 0;
+    let totalDesconto = 0;
+
+    for (let i = 0; i < 10; i++) {
+        const saldo = parseFloat(document.getElementById(`saldo${i}`).value) || 0;
+        const correcao = parseFloat(document.getElementById(`correcao${i}`).value) || 0;
+        const descontoCorrecao = parseFloat(document.getElementById(`descontoCorrecao${i}`).value) || 0;
+        const multa = parseFloat(document.getElementById(`multa${i}`).value) || 0;
+        const descontoMulta = parseFloat(document.getElementById(`descontoMulta${i}`).value) || 0;
+        const juros = parseFloat(document.getElementById(`juros${i}`).value) || 0;
+        const descontoJuros = parseFloat(document.getElementById(`descontoJuros${i}`).value) || 0;
+
+        // Calcula os valores com desconto aplicado
+        const valorCorrecaoComDesconto = correcao - (correcao * (descontoCorrecao / 100));
+        const valorMultaComDesconto = multa - (multa * (descontoMulta / 100));
+        const valorJurosComDesconto = juros - (juros * (descontoJuros / 100));
+
+        const descontoAplicado = (correcao * (descontoCorrecao / 100)) +
+                                 (multa * (descontoMulta / 100)) +
+                                 (juros * (descontoJuros / 100));
+
+        // Calcula o subtotal com correção e desconto aplicado
+        const subtotal = saldo + valorCorrecaoComDesconto + valorMultaComDesconto + valorJurosComDesconto;
+
+        // Atualiza o subtotal no campo correto
+        document.getElementById(`subtotal${i}`).innerText = subtotal.toFixed(5);
+
+        // Soma os valores totais para a dívida e desconto
+        totalGeral += subtotal;
+        totalDesconto += descontoAplicado;
+    }
+
+    // Obter o número de parcelas selecionado pelo usuário
+    const simulacao = parseInt(document.getElementById("simulacao").value);
+    const valorParcela = (totalGeral / simulacao).toFixed(2);
+
+    // Exibe o resultado incluindo o total de desconto e o valor da parcela em forma de tabela
+    document.getElementById('resultado').innerHTML = `
+        <h3>Resultado da Simulação</h3>
+        <table border="1" style="border-collapse: collapse; width: 100%;">
+            <thead>
+                <tr>
+                    <th>Descrição</th>
+                    <th>Valor</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Total Geral da Dívida:</strong></td>
+                    <td>R$ ${totalGeral.toFixed(2)}</td>
+                </tr>
+                <tr>
+                    <td><strong>Valor de Desconto aplicado:</strong></td>
+                    <td>R$ ${totalDesconto.toFixed(2)}</td>
+                </tr>
+                <tr>
+                    <td><strong>Valor por Parcela (${simulacao} vezes):</strong></td>
+                    <td>R$ ${valorParcela}</td>
+                </tr>
+            </tbody>
+        </table>
+    `;
+}
+
+function novoCalculo() {
+    window.location.href = 'calculadorasaldo.html';
+}
+        </script>
 
 <center>
     <i>    

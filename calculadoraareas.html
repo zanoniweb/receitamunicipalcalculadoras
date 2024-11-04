@@ -81,8 +81,9 @@
 <body>
 <h2>Calculadora Para Auferição de Áreas Edificadas</h2>
 
-<label for="inscricaoImobiliaria">INSCRIÇÃO IMOBILIÁRIA:</label>
-<input type="text" id="inscricaoImobiliaria" maxlength="17" onkeyup="formatInscricao(this)" style="width: 250px;">
+<label for="inscricao">Inscrição Imobiliária:</label>
+<input type="text" id="inscricao" maxlength="19" placeholder="Digite a inscrição" oninput="formatarInscricao()">
+
 <br><br>
 
 <label for="areaTotalProjeto">ÁREA TOTAL DO PROJETO APROVADO PELA SECRETARIA MUNICIPAL DE OBRAS:</label>
@@ -118,7 +119,28 @@
         </tr>
     </thead>
     <tbody>
+        
         <script>
+
+            function formatarInscricao() {
+            const input = document.getElementById('inscricao');
+            let valor = input.value;
+
+            // Remove qualquer caractere que não seja número
+            valor = valor.replace(/\D/g, '');
+
+            // Aplica a máscara XX.XXX.XXX.XXXX.XXX
+            if (valor.length > 2) valor = valor.replace(/^(\d{2})(\d)/, '$1.$2');
+            if (valor.length > 6) valor = valor.replace(/^(\d{2})\.(\d{3})(\d)/, '$1.$2.$3');
+            if (valor.length > 9) valor = valor.replace(/^(\d{2})\.(\d{3})\.(\d{3})(\d)/, '$1.$2.$3.$4');
+            if (valor.length > 13) valor = valor.replace(/^(\d{2})\.(\d{3})\.(\d{3})\.(\d{4})(\d)/, '$1.$2.$3.$4.$5');
+            
+            // Atualiza o valor do campo de entrada
+            input.value = valor;
+        }
+
+
+
             const tiposEdificacao = [
                 "Selecione", "Apartamento Fundos", "Apartamento Frente", "Casa", "Edícula", "Sala Conjunto", "Loja", "Sub-Solo", "Galpão", "Telheiro", "Industria", "Outros"
             ];
