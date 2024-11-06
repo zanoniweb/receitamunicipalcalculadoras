@@ -87,6 +87,15 @@ input {
     width: 40%; /* Ajusta a largura do campo de inscrição e bairro */
 }
 
+#documentoDigitalizado {
+    width: 25%; /* Ajusta a largura do campo Documento Digitalizado */
+}
+
+#numeroMatricula{
+    width: 25%; /* Ajusta a largura do campo Número da Matrícula */
+}
+
+
 h1 {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 30px;
@@ -216,20 +225,26 @@ button:hover {
         
             <label for="lote">Lote:</label>
             <input type="text" id="lote" name="lote" maxlength="12" required>
+            
+            <label for="bairro">Nome do Bairro:</label>
+            <input type="text" id="bairro" name="bairro" minlength="20" required>
+
+        </div>
+
+        <div class="form-row">
 
             <label for="documentoDigitalizado">Documento (s) Digitalizado (S) (Sim ou Não):</label>
-            <input type="text" id="documentoDigitalizado" name="documentoDigitalizado" maxlength="3" required>
+            <select id="documentoDigitalizado" name="documentoDigitalizado">
+                <option value="Selecione">Selecione</option>
+                <option value="Não">Não</option>
+                <option value="Sim">Sim</option>
+            </select>
 
             <label for="numeroMatricula">Número da Matrícula:</label>
             <input type="text" id="numeroMatricula" name="numeroMatricula" maxlength="6" required>
-
+            
         </div>
     
-        <div class="form-row">
-            <label for="bairro">Nome do Bairro:</label>
-            <input type="text" id="bairro" name="bairro" minlength="20" required>
-        </div>
-
         <div class="form-row">
 
             <label for="nomeRequerente">Nome do Requerente (Processo Secretária de Obras):</label>
@@ -237,6 +252,30 @@ button:hover {
 
             <label for="cpfCnpj">CPF ou CNPJ (do Requerente do Projeto):</label>
             <input type="text" id="cpfCnpj" name="cpfCnpj" required>
+
+        </div> 
+        
+        
+        <div class="form-row">
+
+            <label for="nomeServidor">Nome do Servidor (Responsável pela coleta):</label>
+            <input type="text" id="nomeServidor" name="nomeServidor" required>
+
+            <label for="cargoServidor">Cargo:</label>
+            <td>
+                <select id="cargoServidor" name="cargoServidor">
+                    <option value="Selecione">Selecione</option>
+                    <option value="Agente Fazendário">Agente Fazendário</option>
+                    <option value="Assistente Administrativo I">Assistente Administrativo I</option>
+                    <option value="Assisntete Administrativo II">Assistente Administrativo II</option>
+                    <option value="Assisntete Administrativo III">Assistente Administrativo III</option>
+                    <option value="Assisntete Administrativo IV">Assistente Administrativo IV</option>
+                    <option value="Assisntete Administrativo V">Assistente Administrativo V</option>
+                    <option value="Assisntete Administrativo VI">Assistente Administrativo VI</option>
+                    <option value="Assisntete Administrativo Terceirizado">Assistente Administrativo Terceirizado</option>
+                    <option value="Direitor de Receitas Imobiliárias">Direitor de Receitas Imobliárias</option>
+                </select>
+    </td>
 
         </div>
 
@@ -326,7 +365,7 @@ button:hover {
             <td><b><i>ESQUADRIAS</b</i></td>
             <td><b><i>FORRO</b</i></td>
             <td><b><i>PINTURA</b</i></td>
-            <td><b><i>MATERIAL</b</i></td>
+            <td><b><i>ESTRUTURA</b</i></td>
         </tr>
 
         <tr>
@@ -371,16 +410,20 @@ button:hover {
                 </select>
             </td>
             <td>
-                <select id="tipoMaterial1" name="tipoMaterial1">
+                <select id="tipoEstrutura1" name="tipoEstrutura1">
                     <option value="Selecione">Selecione</option>
-                    <option value="Alvenaria">Alvenaria</option>
+                    <option value="Concreto">Concreto</option>
+                    <option value="Metalica">Metalica</option>
                     <option value="Madeira">Madeira</option>
-                    <option value="Metal">Metal</option>
+                    <option value="Mista">Mista</option>
+                    <option value="Sem">Sem</option>
+                    <option value="Outros">Outros</option>
                 </select>
             </td>
         </tr>
     
     <tr>
+        <td><b><i>PAREDE</i></b></td>
         <td><b><i>AR CONDICIONADO CENTRAL</i></b></td>
         <td><b><i>ESCADA ROLANTE</i></b></td>
         <td><b><i>ELEVADOR</i></b></td>
@@ -388,6 +431,16 @@ button:hover {
     </tr>    
 
     <tr>
+        <td>
+            <select id="tipoParede1" name="tipoParede1">
+                <option value="Selecione">Selecione</option>
+                <option value="Tijolo">Tijolo</option>
+                <option value="Concrto">Concreto</option>
+                <option value="Madeira">Madeira</option>
+                <option value="Especial">Especial</option>
+                <option value="Sem">Sem</option>
+            </select>
+        </td>
         <td>
             <select id="tipoAr1" name="tipoAr1">
                 <option value="selecione">Selecione</option>
@@ -512,7 +565,7 @@ button:hover {
                 <td><b><i>ESQUADRIAS</b</i></td>
                 <td><b><i>FORRO</b</i></td>
                 <td><b><i>PINTURA</b</i></td>
-                <td><b><i>MATERIAL</b</i></td>
+                <td><b><i>ESTRUTURA</b</i></td>
             </tr>
     
             <tr>
@@ -556,17 +609,23 @@ button:hover {
                         <option value="Não">Não</option>
                     </select>
                 </td>
+
                 <td>
-                    <select id="tipoMaterial2" name="tipoMaterial2">
+                    <select id="tipoEstrutura2" name="tipoEstrutura2">
                         <option value="Selecione">Selecione</option>
-                        <option value="Alvenaria">Alvenaria</option>
+                        <option value="Concreto">Concreto</option>
+                        <option value="Metalica">Metalica</option>
                         <option value="Madeira">Madeira</option>
-                        <option value="Metal">Metal</option>
+                        <option value="Mista">Mista</option>
+                        <option value="Sem">Sem</option>
+                        <option value="Outros">Outros</option>
                     </select>
                 </td>
+    
             </tr>
         
         <tr>
+            <td><b><i>PAREDE</i></b></td>
             <td><b><i>AR CONDICIONADO CENTRAL</i></b></td>
             <td><b><i>ESCADA ROLANTE</i></b></td>
             <td><b><i>ELEVADOR</i></b></td>
@@ -574,6 +633,18 @@ button:hover {
         </tr>    
     
         <tr>
+
+            <td>
+                <select id="tipoParede2" name="tipoParede2">
+                    <option value="Selecione">Selecione</option>
+                    <option value="Tijolo">Tijolo</option>
+                    <option value="Concrto">Concreto</option>
+                    <option value="Madeira">Madeira</option>
+                    <option value="Especial">Especial</option>
+                    <option value="Sem">Sem</option>
+                </select>
+            </td>    
+
             <td>
                 <select id="tipoAr2" name="tipoAr2">
                     <option value="selecione">Selecione</option>
@@ -696,7 +767,7 @@ button:hover {
             <td><b><i>ESQUADRIAS</b</i></td>
             <td><b><i>FORRO</b</i></td>
             <td><b><i>PINTURA</b</i></td>
-            <td><b><i>MATERIAL</b</i></td>
+            <td><b><i>ESTRUTURA</b</i></td>
         </tr>
 
         <tr>
@@ -740,17 +811,23 @@ button:hover {
                     <option value="Não">Não</option>
                 </select>
             </td>
+            
             <td>
-                <select id="tipoMaterial3" name="tipoMaterial3">
+                <select id="tipoEstrutura3" name="tipoEstrutura3">
                     <option value="Selecione">Selecione</option>
-                    <option value="Alvenaria">Alvenaria</option>
+                    <option value="Concreto">Concreto</option>
+                    <option value="Metalica">Metalica</option>
                     <option value="Madeira">Madeira</option>
-                    <option value="Metal">Metal</option>
+                    <option value="Mista">Mista</option>
+                    <option value="Sem">Sem</option>
+                    <option value="Outros">Outros</option>
                 </select>
             </td>
+
         </tr>
 
         <tr>
+            <td><b><i>PAREDE</i></b></td>
             <td><b><i>AR CONDICIONADO CENTRAL</i></b></td>
             <td><b><i>ESCADA ROLANTE</i></b></td>
             <td><b><i>ELEVADOR</i></b></td>
@@ -758,6 +835,18 @@ button:hover {
         </tr>    
     
         <tr>
+
+            <td>
+                <select id="tipoParede3" name="tipoParede3">
+                    <option value="Selecione">Selecione</option>
+                    <option value="Tijolo">Tijolo</option>
+                    <option value="Concrto">Concreto</option>
+                    <option value="Madeira">Madeira</option>
+                    <option value="Especial">Especial</option>
+                    <option value="Sem">Sem</option>
+                </select>
+        </td>
+    
             <td>
                 <select id="tipoAr3" name="tipoAr3">
                     <option value="selecione">Selecione</option>
@@ -879,7 +968,7 @@ button:hover {
             <td><b><i>ESQUADRIAS</b</i></td>
             <td><b><i>FORRO</b</i></td>
             <td><b><i>PINTURA</b</i></td>
-            <td><b><i>MATERIAL</b</i></td>
+            <td><b><i>ESTRUTURA</b</i></td>
         </tr>
 
         <tr>
@@ -923,17 +1012,22 @@ button:hover {
                     <option value="Não">Não</option>
                 </select>
             </td>
+
             <td>
-                <select id="tipoMaterial4" name="tipoMaterial4">
+                <select id="tipoEstrutura4" name="tipoEstrutura4">
                     <option value="Selecione">Selecione</option>
-                    <option value="Alvenaria">Alvenaria</option>
+                    <option value="Concreto">Concreto</option>
+                    <option value="Metalica">Metalica</option>
                     <option value="Madeira">Madeira</option>
-                    <option value="Metal">Metal</option>
+                    <option value="Mista">Mista</option>
+                    <option value="Sem">Sem</option>
+                    <option value="Outros">Outros</option>
                 </select>
             </td>
         </tr>
 
         <tr>
+            <td><b><i>PAREDE</i></b></td>
             <td><b><i>AR CONDICIONADO CENTRAL</i></b></td>
             <td><b><i>ESCADA ROLANTE</i></b></td>
             <td><b><i>ELEVADOR</i></b></td>
@@ -941,6 +1035,18 @@ button:hover {
         </tr>    
     
         <tr>
+            <td>
+                <select id="tipoParede4" name="tipoParede4">
+                    <option value="Selecione">Selecione</option>
+                    <option value="Tijolo">Tijolo</option>
+                    <option value="Concrto">Concreto</option>
+                    <option value="Madeira">Madeira</option>
+                    <option value="Especial">Especial</option>
+                    <option value="Sem">Sem</option>
+                </select>
+        </td>
+    
+
             <td>
                 <select id="tipoAr4" name="tipoAr4">
                     <option value="selecione">Selecione</option>
@@ -1060,7 +1166,7 @@ button:hover {
             <td><b><i>ESQUADRIAS</b</i></td>
             <td><b><i>FORRO</b</i></td>
             <td><b><i>PINTURA</b</i></td>
-            <td><b><i>MATERIAL</b</i></td>
+            <td><b><i>ESTRUTURA</b</i></td>
         </tr>
 
         <tr>
@@ -1104,17 +1210,23 @@ button:hover {
                     <option value="Não">Não</option>
                 </select>
             </td>
+            
             <td>
-                <select id="tipoMaterial5" name="tipoMaterial5">
+                <select id="tipoEstrutura5" name="tipoEstrutura5">
                     <option value="Selecione">Selecione</option>
-                    <option value="Alvenaria">Alvenaria</option>
+                    <option value="Concreto">Concreto</option>
+                    <option value="Metalica">Metalica</option>
                     <option value="Madeira">Madeira</option>
-                    <option value="Metal">Metal</option>
+                    <option value="Mista">Mista</option>
+                    <option value="Sem">Sem</option>
+                    <option value="Outros">Outros</option>
                 </select>
             </td>
+
         </tr>
 
         <tr>
+            <td><b><i>PAREDE</i></b></td>
             <td><b><i>AR CONDICIONADO CENTRAL</i></b></td>
             <td><b><i>ESCADA ROLANTE</i></b></td>
             <td><b><i>ELEVADOR</i></b></td>
@@ -1122,6 +1234,18 @@ button:hover {
         </tr>    
     
         <tr>
+
+            <td>
+                <select id="tipoParede5" name="tipoParede5">
+                    <option value="Selecione">Selecione</option>
+                    <option value="Tijolo">Tijolo</option>
+                    <option value="Concrto">Concreto</option>
+                    <option value="Madeira">Madeira</option>
+                    <option value="Especial">Especial</option>
+                    <option value="Sem">Sem</option>
+                </select>
+           </td>
+    
             <td>
                 <select id="tipoAr5" name="tipoAr5">
                     <option value="selecione">Selecione</option>
@@ -1242,7 +1366,7 @@ button:hover {
             <td><b><i>ESQUADRIAS</b</i></td>
             <td><b><i>FORRO</b</i></td>
             <td><b><i>PINTURA</b</i></td>
-            <td><b><i>MATERIAL</b</i></td>
+            <td><b><i>ESTRUTURA</b</i></td>
         </tr>
 
         <tr>
@@ -1286,17 +1410,23 @@ button:hover {
                     <option value="Não">Não</option>
                 </select>
             </td>
+           
             <td>
-                <select id="tipoMaterial6" name="tipoMaterial6">
+                <select id="tipoEstrutura6" name="tipoEstrutura6">
                     <option value="Selecione">Selecione</option>
-                    <option value="Alvenaria">Alvenaria</option>
+                    <option value="Concreto">Concreto</option>
+                    <option value="Metalica">Metalica</option>
                     <option value="Madeira">Madeira</option>
-                    <option value="Metal">Metal</option>
+                    <option value="Mista">Mista</option>
+                    <option value="Sem">Sem</option>
+                    <option value="Outros">Outros</option>
                 </select>
             </td>
+
         </tr>
 
         <tr>
+            <td><b><i>PAREDE</i></b></td>
             <td><b><i>AR CONDICIONADO CENTRAL</i></b></td>
             <td><b><i>ESCADA ROLANTE</i></b></td>
             <td><b><i>ELEVADOR</i></b></td>
@@ -1304,6 +1434,18 @@ button:hover {
         </tr>    
     
         <tr>
+
+            <td>
+                <select id="tipoParede6" name="tipoParede6">
+                    <option value="Selecione">Selecione</option>
+                    <option value="Tijolo">Tijolo</option>
+                    <option value="Concrto">Concreto</option>
+                    <option value="Madeira">Madeira</option>
+                    <option value="Especial">Especial</option>
+                    <option value="Sem">Sem</option>
+                </select>
+            </td>
+
             <td>
                 <select id="tipoAr6" name="tipoAr6">
                     <option value="selecione">Selecione</option>
@@ -1424,7 +1566,7 @@ button:hover {
             <td><b><i>ESQUADRIAS</b</i></td>
             <td><b><i>FORRO</b</i></td>
             <td><b><i>PINTURA</b</i></td>
-            <td><b><i>MATERIAL</b</i></td>
+            <td><b><i>ESTRUTURA</b</i></td>
         </tr>
 
         <tr>
@@ -1468,17 +1610,23 @@ button:hover {
                     <option value="Não">Não</option>
                 </select>
             </td>
+            
             <td>
-                <select id="tipoMaterial7" name="tipoMaterial7">
+                <select id="tipoEstrutura7" name="tipoEstrutura7">
                     <option value="Selecione">Selecione</option>
-                    <option value="Alvenaria">Alvenaria</option>
+                    <option value="Concreto">Concreto</option>
+                    <option value="Metalica">Metalica</option>
                     <option value="Madeira">Madeira</option>
-                    <option value="Metal">Metal</option>
+                    <option value="Mista">Mista</option>
+                    <option value="Sem">Sem</option>
+                    <option value="Outros">Outros</option>
                 </select>
             </td>
+
         </tr>
 
         <tr>
+            <td><b><i>PAREDE</i></b></td>
             <td><b><i>AR CONDICIONADO CENTRAL</i></b></td>
             <td><b><i>ESCADA ROLANTE</i></b></td>
             <td><b><i>ELEVADOR</i></b></td>
@@ -1486,6 +1634,18 @@ button:hover {
         </tr>    
     
         <tr>
+
+            <td>
+                <select id="tipoParede7" name="tipoParede7">
+                    <option value="Selecione">Selecione</option>
+                    <option value="Tijolo">Tijolo</option>
+                    <option value="Concrto">Concreto</option>
+                    <option value="Madeira">Madeira</option>
+                    <option value="Especial">Especial</option>
+                    <option value="Sem">Sem</option>
+                </select>
+            </td>
+    
             <td>
                 <select id="tipoAr7" name="tipoAr7">
                     <option value="selecione">Selecione</option>
@@ -1606,7 +1766,7 @@ button:hover {
             <td><b><i>ESQUADRIAS</b</i></td>
             <td><b><i>FORRO</b</i></td>
             <td><b><i>PINTURA</b</i></td>
-            <td><b><i>MATERIAL</b</i></td>
+            <td><b><i>ESTRUTURA</b</i></td>
         </tr>
 
         <tr>
@@ -1650,17 +1810,23 @@ button:hover {
                     <option value="Não">Não</option>
                 </select>
             </td>
+
             <td>
-                <select id="tipoMaterial8" name="tipoMaterial8">
+                <select id="tipoEstrutura8" name="tipoEstrutura8">
                     <option value="Selecione">Selecione</option>
-                    <option value="Alvenaria">Alvenaria</option>
+                    <option value="Concreto">Concreto</option>
+                    <option value="Metalica">Metalica</option>
                     <option value="Madeira">Madeira</option>
-                    <option value="Metal">Metal</option>
+                    <option value="Mista">Mista</option>
+                    <option value="Sem">Sem</option>
+                    <option value="Outros">Outros</option>
                 </select>
             </td>
+
         </tr>
 
         <tr>
+            <td><b><i>PAREDE</i></b></td>
             <td><b><i>AR CONDICIONADO CENTRAL</i></b></td>
             <td><b><i>ESCADA ROLANTE</i></b></td>
             <td><b><i>ELEVADOR</i></b></td>
@@ -1668,6 +1834,18 @@ button:hover {
         </tr>    
     
         <tr>
+
+            <td>
+                <select id="tipoParede8" name="tipoParede8">
+                    <option value="Selecione">Selecione</option>
+                    <option value="Tijolo">Tijolo</option>
+                    <option value="Concrto">Concreto</option>
+                    <option value="Madeira">Madeira</option>
+                    <option value="Especial">Especial</option>
+                    <option value="Sem">Sem</option>
+                </select>
+            </td>
+    
             <td>
                 <select id="tipoAr8" name="tipoAr8">
                     <option value="selecione">Selecione</option>
@@ -1683,7 +1861,6 @@ button:hover {
                     <option value="Sim">Sim</option>
                 </select>
             </td>
-    
     
             <td>
                 <select id="tipoElevador8" name="tipoElevador8">
@@ -1788,7 +1965,7 @@ button:hover {
             <td><b><i>ESQUADRIAS</b</i></td>
             <td><b><i>FORRO</b</i></td>
             <td><b><i>PINTURA</b</i></td>
-            <td><b><i>MATERIAL</b</i></td>
+            <td><b><i>ESTRUTURA</b</i></td>
         </tr>
 
         <tr>
@@ -1832,17 +2009,23 @@ button:hover {
                     <option value="Não">Não</option>
                 </select>
             </td>
+          
             <td>
-                <select id="tipoMaterial9" name="tipoMaterial9">
+                <select id="tipoEstrutura9" name="tipoEstrutura9">
                     <option value="Selecione">Selecione</option>
-                    <option value="Alvenaria">Alvenaria</option>
+                    <option value="Concreto">Concreto</option>
+                    <option value="Metalica">Metalica</option>
                     <option value="Madeira">Madeira</option>
-                    <option value="Metal">Metal</option>
+                    <option value="Mista">Mista</option>
+                    <option value="Sem">Sem</option>
+                    <option value="Outros">Outros</option>
                 </select>
             </td>
+
         </tr>
 
         <tr>
+            <td><b><i>PAREDE</i></b></td>
             <td><b><i>AR CONDICIONADO CENTRAL</i></b></td>
             <td><b><i>ESCADA ROLANTE</i></b></td>
             <td><b><i>ELEVADOR</i></b></td>
@@ -1850,6 +2033,18 @@ button:hover {
         </tr>    
     
         <tr>
+
+            <td>
+                <select id="tipoParede9" name="tipoParede9">
+                    <option value="Selecione">Selecione</option>
+                    <option value="Tijolo">Tijolo</option>
+                    <option value="Concrto">Concreto</option>
+                    <option value="Madeira">Madeira</option>
+                    <option value="Especial">Especial</option>
+                    <option value="Sem">Sem</option>
+                </select>
+            </td>
+
             <td>
                 <select id="tipoAr9" name="tipoAr9">
                     <option value="selecione">Selecione</option>
@@ -1969,7 +2164,7 @@ button:hover {
             <td><b><i>ESQUADRIAS</b</i></td>
             <td><b><i>FORRO</b</i></td>
             <td><b><i>PINTURA</b</i></td>
-            <td><b><i>MATERIAL</b</i></td>
+            <td><b><i>ESTRUTURA</b</i></td>
         </tr>
 
         <tr>
@@ -2013,17 +2208,23 @@ button:hover {
                     <option value="Não">Não</option>
                 </select>
             </td>
+           
             <td>
-                <select id="tipoMaterial10" name="tipoMaterial10">
+                <select id="tipoEstrutura10" name="tipoEstrutura10">
                     <option value="Selecione">Selecione</option>
-                    <option value="Alvenaria">Alvenaria</option>
+                    <option value="Concreto">Concreto</option>
+                    <option value="Metalica">Metalica</option>
                     <option value="Madeira">Madeira</option>
-                    <option value="Metal">Metal</option>
+                    <option value="Mista">Mista</option>
+                    <option value="Sem">Sem</option>
+                    <option value="Outros">Outros</option>
                 </select>
             </td>
+
         </tr>
 
         <tr>
+            <td><b><i>PAREDE</i></b></td>
             <td><b><i>AR CONDICIONADO CENTRAL</i></b></td>
             <td><b><i>ESCADA ROLANTE</i></b></td>
             <td><b><i>ELEVADOR</i></b></td>
@@ -2031,6 +2232,18 @@ button:hover {
         </tr>    
     
         <tr>
+
+            <td>
+                <select id="tipoParede10" name="tipoParede10">
+                    <option value="Selecione">Selecione</option>
+                    <option value="Tijolo">Tijolo</option>
+                    <option value="Concrto">Concreto</option>
+                    <option value="Madeira">Madeira</option>
+                    <option value="Especial">Especial</option>
+                    <option value="Sem">Sem</option>
+                </select>
+            </td>
+
             <td>
                 <select id="tipoAr10" name="tipoAr10">
                     <option value="selecione">Selecione</option>
@@ -2118,13 +2331,15 @@ function salvarEmPDF() {
 
     doc.setFontSize(fontePequena);
     doc.text("Inscrição Imobiliária: " + document.getElementById("inscricao").value, 10, 10);
-    doc.text("Quadra: " + document.getElementById("quadra").value, 10, 20);
-    doc.text("Lote: " + document.getElementById("lote").value, 10, 30);
-    doc.text("Documento (s) Digitalizado (s) (Sim ou Não): " + document.getElementById("documentoDigitalizado").value, 10, 40);
-    doc.text("Número da Matricula: " + document.getElementById("numeroMatricula").value, 10, 50);
-    doc.text("Bairro: " + document.getElementById("bairro").value, 10, 60);
-    doc.text("Nome do Requerente: " + document.getElementById("nomeRequerente").value, 10, 70);
-    doc.text("CPF/CNPJ: " + document.getElementById("cpfCnpj").value, 10, 80);
+    doc.text("Quadra: " + document.getElementById("quadra").value, 10, 15);
+    doc.text("Lote: " + document.getElementById("lote").value, 10, 20);
+    doc.text("Documento (s) Digitalizado (s) (Sim ou Não): " + document.getElementById("documentoDigitalizado").value, 10, 25);
+    doc.text("Número da Matricula: " + document.getElementById("numeroMatricula").value, 10, 30);
+    doc.text("Bairro: " + document.getElementById("bairro").value, 10, 35);
+    doc.text("Nome do Requerente: " + document.getElementById("nomeRequerente").value, 10, 40);
+    doc.text("CPF/CNPJ: " + document.getElementById("cpfCnpj").value, 10, 45);
+    doc.text("Nome do Servidor (Responsável pela coleta de dados): " + document.getElementById("nomeServidor").value, 10, 50);
+    doc.text("Cargo do Servidor: " + document.getElementById("cargoServidor").value, 10, 55);
 
     let posY = 90;
 
@@ -2138,13 +2353,14 @@ function salvarEmPDF() {
         const tiposEsquadrias = document.getElementById("tiposEsquadrias" + i);
         const tiposForros = document.getElementById("tiposForros" + i);
         const tiposPintura = document.getElementById("tiposPintura" + i);
-        const tipoMaterial = document.getElementById("tipoMaterial" + i);
+        const tipoEstrutura = document.getElementById("tipoEstrutura" + i);
+        const tipoParede = document.getElementById("tipoParede" + i);
         const tipoAr = document.getElementById("tipoAr" + i);
         const tipoEscada = document.getElementById("tipoEscada" + i);
         const tipoElevador = document.getElementById("tipoElevador" + i);
         const areaPiscina = document.getElementById("areaPiscina" + i);
 
-        if (tipoEdificacao && tipoUtilizacao && areaTotalProjeto && tipoCobertura && tipoPiso && quantidadeSanitarios && tiposEsquadrias && tiposForros && tiposPintura && tipoMaterial && tipoAr && tipoEscada && tipoElevador && areaPiscina) {
+        if (tipoEdificacao && tipoUtilizacao && areaTotalProjeto && tipoCobertura && tipoPiso && quantidadeSanitarios && tiposEsquadrias && tiposForros && tiposPintura && tipoEstrutura && tipoParede && tipoAr && tipoEscada && tipoElevador && areaPiscina) {
             console.log(`Edificação ${i}:`, {
                 tipoEdificacao,
                 tipoUtilizacao,
@@ -2155,7 +2371,8 @@ function salvarEmPDF() {
                 tiposEsquadrias,
                 tiposForros,
                 tiposPintura,
-                tipoMaterial,
+                tipoEstrutura,
+                tipoParede,
                 tipoAr,
                 tipoEscada,
                 tipoElevador,
@@ -2183,7 +2400,8 @@ function salvarEmPDF() {
                     ['Esquadrias', tiposEsquadrias.value],
                     ['Forro', tiposForros.value],
                     ['Pintura', tiposPintura.value],
-                    ['Material', tipoMaterial.value],
+                    ['Estrutura', tipoEstrutura.value],
+                    ['Parede', tipoParede.value],
                     ['Ar Condicionado', tipoAr.value],
                     ['Escada Rolante', tipoEscada.value],
                     ['Elevador', tipoElevador.value],
