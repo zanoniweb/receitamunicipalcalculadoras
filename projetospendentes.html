@@ -2282,8 +2282,8 @@ button:hover {
     </table>
 
     
-    <button class="btn" onclick="novoCalculo()">CARREGAR PARA NOVO PREENCHIMENTO</button>
-    <button onclick="print()">IMPRIMIR</button>
+    <button class="btn" onclick="novoCalculo()">Carregar para novo preenchimento</button>
+    <button onclick="print()">Imprimir</button>
     <button onclick="salvarEmPDF()">Salvar como PDF</button>
 
     
@@ -2333,9 +2333,9 @@ function salvarEmPDF() {
     doc.text("Inscrição Imobiliária: " + document.getElementById("inscricao").value, 10, 10);
     doc.text("Quadra: " + document.getElementById("quadra").value, 10, 15);
     doc.text("Lote: " + document.getElementById("lote").value, 10, 20);
-    doc.text("Documento (s) Digitalizado (s) (Sim ou Não): " + document.getElementById("documentoDigitalizado").value, 10, 25);
-    doc.text("Número da Matricula: " + document.getElementById("numeroMatricula").value, 10, 30);
-    doc.text("Bairro: " + document.getElementById("bairro").value, 10, 35);
+    doc.text("Bairro: " + document.getElementById("bairro").value, 10, 25);
+    doc.text("Documento (s) Digitalizado (s) (Sim ou Não): " + document.getElementById("documentoDigitalizado").value, 10, 30);
+    doc.text("Número da Matricula: " + document.getElementById("numeroMatricula").value, 10, 35);
     doc.text("Nome do Requerente: " + document.getElementById("nomeRequerente").value, 10, 40);
     doc.text("CPF/CNPJ: " + document.getElementById("cpfCnpj").value, 10, 45);
     doc.text("Nome do Servidor (Responsável pela coleta de dados): " + document.getElementById("nomeServidor").value, 10, 50);
