@@ -54,6 +54,10 @@
             width: 25%; /* Ajusta a largura do campo do Cargo do Analista das metragens edificadas */
         }
 
+        #nomeServidor {
+            width: 25%; /* Ajusta a largura do campo nome do servidor responsável pela coleta de dados */
+        }
+
         button {
             margin: 5px;
             padding: 10px 20px;
@@ -99,8 +103,14 @@
 
 <br><br>
 
-<label for="areaTotalProjeto">ÁREA TOTAL DO PROJETO APROVADO PELA SECRETARIA MUNICIPAL DE OBRAS:</label>
+<label for="areaTotalProjeto">Área total do projeto aprovado pela Secretaria Municipal de Obras:</label>
 <input type="number" id="areaTotalProjeto" step="0.00001">
+
+<br><br>
+
+<label for="nomeServidor">Nome do Servidor (Responsável pela coleta de dados):</label>
+<input type="text" id="nomeServidor" name="nomeServidor" required>
+
 <br><br>
 
 <table id="tabelaAreas">
@@ -109,18 +119,20 @@
             <th colspan="2">Responsável Pela Análise:</th>
             <th colspan="8">
                 <select id="analiseMetragem" name="analiseMetragem">
-                    <option value="selecione">Selecione</option>
-                    <option value="agente_fazendario">Agente Fazendário</option>
-                    <option value="assistente_administrativoI">Assistente Administrativo I</option>
-                    <option value="assistente_administrativoII">Assistente Administrativo II</option>
-                    <option value="assistente_administrativoIII">Assistente Administrativo III</option>
-                    <option value="assistente_administrativoIV">Assistente Administrativo IV</option>
-                    <option value="assistente_administrativoV">Assistente Administrativo V</option>
-                    <option value="assistente_administrativoVI">Assistente Administrativo VI</option>
-                    <option value="assistente_administrativo_terceirizado">Assistente Administrativo Terceirizado</option>
-                    <option value="auditor_fiscal">Auditor Fiscal</option>
-                    <option value="diretor_departamento_imobiliario">Diretor do Departamento Imobiliário</option>
-                    <option value="outro">Outro</option>
+                    <option value="Selecione">Selecione</option>
+                    <option value="Agente_Fazendario">Agente Fazendário</option>
+                    <option value="Arquiteto">Arquiteto</option>
+                    <option value="Assistente_AdministrativoI">Assistente Administrativo I</option>
+                    <option value="Assistente_AdministrativoII">Assistente Administrativo II</option>
+                    <option value="Assistente_AdministrativoIII">Assistente Administrativo III</option>
+                    <option value="Assistente_AdministrativoIV">Assistente Administrativo IV</option>
+                    <option value="Assistente_AdministrativoV">Assistente Administrativo V</option>
+                    <option value="Assistente_AdministrativoVI">Assistente Administrativo VI</option>
+                    <option value="Assistente_Administrativo_Terceirizado">Assistente Administrativo Terceirizado</option>
+                    <option value="Auditor_Fiscal">Auditor Fiscal</option>
+                    <option value="Diretor_Departamento_Imobiliario">Diretor do Departamento Imobiliário</option>
+                    <option value="Engenheiro">Engenheiro</option>
+                    <option value="Outro">Outro</option>
                 </select>
             </th>
             <th></th>
