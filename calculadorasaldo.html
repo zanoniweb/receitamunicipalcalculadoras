@@ -3,6 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
     <title>Simulação de Dívida Ativa: Saldos</title>
     <style>
         ol {
@@ -29,6 +34,7 @@
         }
         body {
             font-family: Arial, sans-serif;
+            font-size: 10px;
             margin: 20px;
         }
         table, th, td {
@@ -86,6 +92,7 @@
         <li><a href="calculadoradiferencadatas.html">Calculadora Diferença: Datas</a></li>
         <li><a href="calculadorahistoricaiptu.html">Calculadora Evolução Histórica IPTU</a></li>
         <li><a href="calculadoravalorpercentual.html">Calculadora Variação de Valor e Percentual: IPTU</a></li>
+        <li><a href="prescricao.html">Formulário Prescrição</a></li>
         <li><a href="micromanual.html">Micro Manual</a></li>
         <li><a href="projetospendentes.html">Projetos Pendentes Edificações</a></li>
     
@@ -95,7 +102,6 @@
 
 
 <body>
-
 
     <center>
 
@@ -183,16 +189,20 @@
         </table>
         
         <div class="buttons">
+
             <button type="button" onclick="calcular()">Calcular</button>
             <button type="reset">Limpar</button>
             <button class="btn" onclick="novoCalculo()">Carregar para novo Cálculo</button>
             <button onclick="print()">Imprimir</button>
+            <button type="button" onclick="salvarPDF()">Salvar PDF</button>
+
         </div>
         
         <center>
             <div id="resultado"></div>
         </center>
         
+
         <script>
 
         function formatarInscricao() {
@@ -303,6 +313,47 @@ function calcular() {
 function novoCalculo() {
     window.location.href = 'calculadorasaldo.html';
 }
+
+function salvarPDF() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    // Adiciona o título
+    doc.setFontSize(16);
+    doc.text("Calculadora Saldos (Dívida Ativa): IPTU", 10, 10);
+
+    // Captura os valores corretamente
+    const inscricao = document.getElementById("inscricao")?.value || "N/A";
+    const tributoSelect = document.getElementById("tributo");
+    const tributo = tributoSelect ? tributoSelect.options[tributoSelect.selectedIndex].text : "N/A";
+    const simulacaoSelect = document.getElementById("simulacao");
+    const simulacao = simulacaoSelect ? simulacaoSelect.options[simulacaoSelect.selectedIndex].text : "N/A";
+    const resultado = document.getElementById("resultado")?.innerText.trim() || "N/A";
+
+    // Adiciona os dados ao PDF
+    doc.setFontSize(12);
+    doc.text(`Inscrição: ${inscricao}`, 10, 20);
+    doc.text(`Tributo: ${tributo}`, 10, 30);
+    doc.text(`Simulação: ${simulacao}`, 10, 40);
+    doc.text("Resultado:", 10, 50);
+
+    // Quebra de linha para melhor formatação
+    const resultadoLinhas = doc.splitTextToSize(resultado, 180);
+    doc.text(resultadoLinhas, 10, 60);
+
+    // Captura a tabela como imagem e adiciona ao PDF
+    html2canvas(document.querySelector("#tabelaSaldos")).then(canvas => {
+        const imgData = canvas.toDataURL("image/png");
+        const imgWidth = 190;
+        const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+        doc.addImage(imgData, "PNG", 10, 80, imgWidth, imgHeight);
+        doc.save("Simulacao_Divida_Ativa.pdf");
+    }).catch(error => {
+        console.error("Erro ao gerar o PDF:", error);
+    });
+}
+
         </script>
 
 <center>

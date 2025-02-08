@@ -3,6 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.13/jspdf.plugin.autotable.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+
     <title>Calculdora Para Auferição de Áreas Edificadas.</title>
     <style>
        ol {
@@ -84,18 +92,26 @@
 </head>
 
 <header>
+
     <ol>
+
         <li><a href="index.html">Boas Vindas</a></li>
         <li><a href="calculadoradiferencadatas.html">Calculadora Diferença: Datas</a></li>
         <li><a href="calculadorahistoricaiptu.html">Calculadora Evolução Histórica IPTU</a></li>
         <li><a href="calculadorasaldo.html">Calculadora Saldos: IPTU</a></li>
         <li><a href="calculadoravalorpercentual.html">Calculadora Variação de Valor e Percentual: IPTU</a></li>
+        <li><a href="prescricao.html">Formulário Prescrição</a></li>
         <li><a href="micromanual.html">Micro Manual</a></li>
         <li><a href="projetospendentes.html">Projetos Pendentes Edificações</a></li>
+
     </ol>
+    
 </header>
 
 <body>
+
+<table id="tabela1">
+    
 <h2>Calculadora Para Auferição de Áreas Edificadas</h2>
 
 <label for="inscricao">Inscrição Imobiliária:</label>
@@ -132,6 +148,7 @@
                     <option value="Auditor_Fiscal">Auditor Fiscal</option>
                     <option value="Diretor_Departamento_Imobiliario">Diretor do Departamento Imobiliário</option>
                     <option value="Engenheiro">Engenheiro</option>
+                    <option value="Fiscal_de_Obras">Fiscal de Obras</option>
                     <option value="Outro">Outro</option>
                 </select>
             </th>
@@ -222,9 +239,14 @@
 <button class="btn" onclick="limpar()">Limpar</button>
 <button class="btn" onclick="novoCalculo()">Carregar para novo Cálculo</button>
 <button onclick="print()">Imprimir</button>
+<button onclick="salvarPDF()">Salvar PDF</button>
+
 
 <h2>Resultado da Análise Técnica:</h2>
-<div id="resultado"></div>
+<div id="resultadoElement">
+</div>
+
+</table id="tabela1">
 
 <br><br><br><br>
 
@@ -270,7 +292,7 @@ function calcular() {
         totalArea += parseFloat(somaParcial);
     }
 
-    let resultadoElement = document.getElementById("resultado");
+    let resultadoElement = document.getElementById("resultadoElement");
     let diff = totalArea - areaTotalProjeto;
 
     if (areaTotalProjeto === 0) {
@@ -296,9 +318,44 @@ function limpar() {
 
 function novoCalculo() {     window.location.href = 'calculadoraareas.html'; }
 
-</script>
+function salvarPDF() {
+    const { jsPDF } = window.jspdf;
+    let doc = new jsPDF();
+
+    // Captura os valores dos campos de entrada
+    let inscricao = document.getElementById("inscricao").value;
+    let areaTotal = document.getElementById("areaTotalProjeto").value;
+    let nomeServidor = document.getElementById("nomeServidor").value;
+    let analiseMetragem = document.getElementById("analiseMetragem").value;
+    let resultadoElement = document.getElementById("resultadoElement").textContent; // Captura o resultado corretamente
+
+    // Adiciona os dados ao PDF
+    doc.setFontSize(14);
+    doc.text("Calculadora Para Auferição de Áreas Edificadas", 20, 20);
+    doc.setFontSize(12);
+    doc.text(`Inscrição Imobiliária: ${inscricao}`, 20, 30);
+    doc.text(`Área Total do Projeto: ${areaTotal} m²`, 20, 40);
+    doc.text(`Nome do Servidor: ${nomeServidor}`, 20, 50);
+    doc.text(`Análise da Metragem: ${analiseMetragem}`, 20, 60);
+
+    // Quebra o texto do resultado para evitar corte
+    let resultadoFormatado = doc.splitTextToSize(`Resultado: ${resultadoElement}`, 170); // Largura ajustada para o PDF
+    doc.text(resultadoFormatado, 20, 70); 
+
+    // Captura a tabela e converte para imagem
+    html2canvas(document.getElementById("tabelaAreas")).then(canvas => {
+        let imgData = canvas.toDataURL("image/png");
+        let imgWidth = 180; // Largura da imagem no PDF
+        let imgHeight = (canvas.height * imgWidth) / canvas.width; // Ajusta a altura proporcionalmente
+
+        doc.addImage(imgData, "PNG", 15, 90, imgWidth, imgHeight);
+        doc.save("relatorio_metragem.pdf");
+    });
+}
+
 
 </script>
 
 </body>
+
 </html>

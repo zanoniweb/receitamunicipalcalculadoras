@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Prescrição</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <style>
+
+        ol {
+            display: flex; /* INICIO DO CÓDIGO DA ESTILIZAÇÃO DO MENU */
+            justify-content: space-between;
+            list-style-type: none;
+            font-family: Geneva;
+            background-color: black;
+            color: white;
+        }
+        a {
+            font-family: Geneva;
+            font-size: 20px;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            padding: 5px 5px;
+        }
+        a:hover {
+            color: blue;
+        }
+        a:active { 
+            color: red; /* FINAL DO CÓDIGO DA ESTILIZAÇÃO DO MENU */
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        .container {
+            width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 2px solid #000;
+            background: #fff;
+        }
+
+        .header {
+            text-align: center;
+        }
+
+        .logo {
+            width: 200px; /* Aumentado o tamanho da logo */
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        h2, h3 {
+            text-align: center; /* INICIO DO CÓDIGO DA ESTILIZAÇÃO DO FORMULÁRIO E DA TABELA */
+            margin-bottom: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 10px;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 5px;
+            border: 1px solid #000;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        th, td {
+            border: 1px solid black; /* FINAL DO CÓDIGO DA ESTILIZAÇÃO DO FORMULÁRIO E DA TABELA */
+            padding: 5px;
+            text-align: left;
+        }
+
+        button {
+            margin: 5px;  /* INICIO DO CÓDIGO DA ESTILIZAÇÃO DOS BOTÕES */
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #4cae4c; /* FINAL DO CÓDIGO DA ESTILIZAÇÃO DOS BOTÕES */
+        }
+
+        @media print { 
+            #noprint { display: none; } /* CODIGO PARA GERAR O COMANDO DE IMPRESSÃO NO SITE WEB */
+            body { background: #fff; }
+        }
+
+        #menu {
+        background: #333; /* CODIGO PARA NÃO APRESENTAR MENU NA CRIAÇÃO DO ARQUIVO EM PDF */
+        color: white;
+        padding: 10px;
+        text-align: center;
+        }
+
+    </style>
+
+</head>
+
+<div id="menu">
+
+<header>
+    <ol>
+        <li><a href="index.html">Boas Vindas</a></li>
+        <li><a href="calculadoraareas.html">Calculadora Áreas: Edificadas</a></li>
+        <li><a href="calculadoradiferencadatas.html">Calculadora Diferença: Datas</a></li>
+        <li><a href="calculadorahistoricaiptu.html">Calculadora Evolução Histórica IPTU</a></li>
+        <li><a href="calculadorasaldo.html">Calculadora Saldos: IPTU</a></li>
+        <li><a href="calculadoravalorpercentual.html">Calculadora Variação de Valor e Percentual: IPTU</a></li>
+        <li><a href="micromanual.html">Micro Manual</a></li>
+        <li><a href="projetospendentes.html">Projetos Pendentes Edificações</a></li>
+    </ol>
+</header>
+</div>
+
+<div id="conteudo">
+
+<body>
+
+    <div class="container" id="formulario">
+        <div class="header">
+            <img src="https://www.cambe.pr.gov.br/wp-content/uploads/2021/02/Brasao_Prefeitura_21-24_transp-e1628080573185.png" class="logo" alt="Logo">
+            <h2>Prefeitura Municipal de Cambé</h2>
+            <h3>Secretaria Municipal de Fazenda</h3>
+        </div>
+
+        <h3>EXCLUSIVO PARA PRESCRIÇÃO</h3>
+
+    <div class="form-group">
+        <label for="revisao_select">Selecione uma opção:</label>
+        <select id="revisao_select">
+            <option value="" disabled selected>Escolha uma opção</option>
+            <option value="revisao">Revisão de Parcelamento para Prescrição</option>
+            <option value="prescricao">Prescrição</option>
+        </select>
+    </div>
+
+        <table>
+            <tr>
+                <th>Contribuinte</th>
+                <td><input type="text" id="contribuinte"></td>
+            </tr>
+            <tr>
+                <th>E-mail</th>
+                <td><input type="email" id="email_contribuinte"></td>
+            </tr>
+
+            <tr>
+                <th>Inscrição Imobiliária</th>
+                <td><input type="text" id="inscricao" maxlength="19" placeholder="Digite a inscrição" oninput="formatarInscricao()"></td>
+            </tr>
+            
+            <tr>
+                <th>Endereço</th>
+                <td><input type="text" id="endereco"></td>
+            </tr>
+            <tr>
+                <th>Bairro</th>
+                <td><input type="text" id="bairro"></td>
+            </tr>
+            <tr>
+            <th>CPF</th>
+                <td>   
+               <div class="form-group">
+                <input type="text" id="cpf_proprietario" maxlength="14" placeholder="000.000.000-00">
+               </div>          
+                </td>
+            </tr>
+
+            <tr>
+                <th>Quadra</th>
+                <td><input type="text" id="quadra"></td>
+            </tr>
+
+            <tr>
+                <th>Lote</th>
+                <td><input type="text" id="Lote"></td>
+            </tr>
+
+            <tr>
+                <th>Complemento</th>
+                <td><input type="text" id="complemento"></td>
+            </tr>
+
+            <tr>
+                <th>RG</th>
+                <td><input type="text" id="rg"></td>
+            </tr>
+
+            <tr>
+                <th>Telefones</th>
+                <td><input type="text" id="telefones"></td>
+            </tr>
+
+        </table>
+
+        <h3>Requerente</h3>
+        <table>
+            <tr>
+                <th>Nome</th>
+                <td><input type="text" id="requerente"></td>
+            </tr>
+            <tr>
+                <th>E-mail</th>
+                <td><input type="email" id="email_requerente"></td>
+            </tr>
+            <tr>
+                <th>Vínculo Proprietário</th>
+                <td><input type="text" id="vinculo"></td>
+            </tr>
+            <tr>
+                <th>Endereço</th>
+                <td><input type="text" id="endereco_requerente"></td>
+            </tr>
+            <tr>
+                <th>Bairro</th>
+                <td><input type="text" id="bairro_requerente"></td>
+            </tr>
+            <tr>
+                <th>CPF</th>
+                <td> 
+                <div class="form-group">
+                    <input type="text" id="cpf_possuidor" maxlength="14" placeholder="000.000.000-00">
+                </div>          
+                </td>
+            </tr>
+            <tr>
+                <th>RG</th>
+                <td><input type="text" id="rg_requerente"></td>
+            </tr>
+
+            <tr>
+                <th>Telefones</th>
+                <td><input type="text" id="telefones"></td>
+            </tr>
+
+        </table>
+
+        <p>Senhor, Secretário:</p>
+        
+        <div class="documento">
+            <p><b>RECONHECIMENTO DE PRESCRIÇÃO DOS DÉBITOS TRIBUTÁRIOS</b> - Tendo em vista o extrato de débitos emitido, no expediente de <input type="text" id="data_do_extrato" placeholder="Data do Extrato">, em 2 (duas) vias de igual teor e forma a que se referem os, tomando conhecimento do montante da dívida no valor de <input type="text" id="valor_do_extrato" placeholder="Valor do Extrato"> e do período ali mencionado, com atualização dos débitos até a presente data, na qualidade de representante legal do proprietário do imóvel ou da empresa proprietária do imóvel aqui identificado ou proprietário do mesmo, requer o reconhecimento de prescrição dos débitos tributários referente ao(s) exercício(s) ou contrato <input type="text" id="anos_prescritos" placeholder="Anos Prescritos">, bem assim o cancelamento/extinção do crédito tributário, em prazo superior a 5 (cinco) anos no cadastro imobiliário.</p>
+            
+            <p>Nestes Termos,<br>Pede Deferimento,</p>
+            
+            <p><input type="text" id="nome_requerente" placeholder="Nome do Requerente"><br>(assinatura por extenso)</p>
+            
+            <p><input type="text" id="nome_do_atendente" placeholder="Nome do Atendente"><br><input type="text" id="data_e_horario_do_atendimento" placeholder="Data e Horário do Atendimento"></p>
+        </div>
+
+        </div>
+
+<!--COMEÇO DO CÓDIGO DE BOTÕES-->
+
+        <button class="btn" onclick="novoCalculo()">Carregar para novo preenchimento.</button>
+        <button onclick="print()">Imprimir</button>
+        <button onclick="gerarPDF()">Salvar PDF</button>
+
+<!--FINAL DO CÓDIGO DE BOTÕES-->
+
+    <script>
+
+        // Preencher automaticamente a data e horário do atendimento
+        const now = new Date();
+        const data_e_horario_formatado = now.toLocaleDateString() + ', ' + now.toLocaleTimeString();
+        document.getElementById('data_e_horario_do_atendimento').value = data_e_horario_formatado;
+
+        function formatarInscricao() {
+            const input = document.getElementById('inscricao');
+            let valor = input.value;
+
+            // Remove qualquer caractere que não seja número
+            valor = valor.replace(/\D/g, '');
+
+            // Aplica a máscara XX.XXX.XXX.XXXX.XXX
+            if (valor.length > 2) valor = valor.replace(/^(\d{2})(\d)/, '$1.$2');
+            if (valor.length > 6) valor = valor.replace(/^(\d{2})\.(\d{3})(\d)/, '$1.$2.$3');
+            if (valor.length > 9) valor = valor.replace(/^(\d{2})\.(\d{3})\.(\d{3})(\d)/, '$1.$2.$3.$4');
+            if (valor.length > 13) valor = valor.replace(/^(\d{2})\.(\d{3})\.(\d{3})\.(\d{4})(\d)/, '$1.$2.$3.$4.$5');
+            
+            // Atualiza o valor do campo de entrada
+            input.value = valor;
+        }
+
+        // CÓDIGO JAVASCRIPT PARA CPF COM PONTO E TRAÇO
+        function formatCPF(input) {
+        let value = input.value;
+
+        // Remover todos os caracteres que não são números
+        value = value.replace(/\D/g, '');
+
+        // Aplicar a formatação conforme o usuário digita
+        if (value.length > 3 && value.length <= 6) {
+            value = value.replace(/(\d{3})(\d)/, '$1.$2');
+        } else if (value.length > 6 && value.length <= 9) {
+            value = value.replace(/(\d{3})(\d{3})(\d)/, '$1.$2.$3');
+        } else if (value.length > 9) {
+            value = value.replace(/(\d{3})(\d{3})(\d{3})(\d{1,2})/, '$1.$2.$3-$4');
+        }
+
+        // Atualizar o campo de entrada
+        input.value = value;
+    }
+
+    // Adicionar o evento para os dois campos
+    document.getElementById('cpf_proprietario').addEventListener('input', function () {
+        formatCPF(this);
+    });
+
+    document.getElementById('cpf_possuidor').addEventListener('input', function () {
+        formatCPF(this);
+    });
+
+    function gerarPDF() {
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF({
+            orientation: "portrait", // Retrato
+            unit: "px", // Unidade em pixels
+            format: [595, 842] // A4 em pixels (tamanho exato)
+        });
+
+        const elemento = document.getElementById("conteudo"); // Captura apenas o conteúdo sem o menu
+
+        html2canvas(elemento, {
+            scale: 2, // Aumenta a qualidade
+            useCORS: true // Suporte a imagens externas
+        }).then(canvas => {
+            const imgData = canvas.toDataURL("image/png");
+
+            const imgWidth = 595; // Largura do A4
+            const imgHeight = (canvas.height * imgWidth) / canvas.width; // Mantém a proporção
+
+            doc.addImage(imgData, "PNG", 0, 0, imgWidth, imgHeight);
+            doc.save("conteudo.pdf");
+        });
+    }
+
+        function novoCalculo() {     window.location.href = 'prescricao.html'; }
+
+    </script>
+
+<center>
+    <i>    
+    <footer>
+    
+    Site desenvolvido por Juliano <img src="https://d1yei2z3i6k35z.cloudfront.net/6946809/65e45ac72773e_zanoni.1.png" alt="Logo de Juliano Zanoni">
+    
+    </footer>
+    </i>
+</center>
+
+
+</body>
+</html>
