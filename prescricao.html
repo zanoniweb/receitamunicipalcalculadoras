@@ -133,7 +133,7 @@
 </header>
 </div>
 
-<div id="conteudo">
+
 
 <body>
 
@@ -263,18 +263,34 @@
             
             <p>Nestes Termos,<br>Pede Deferimento,</p>
             
-            <p><input type="text" id="nome_requerente" placeholder="Nome do Requerente"><br>(assinatura por extenso)</p>
-            
-            <p><input type="text" id="nome_do_atendente" placeholder="Nome do Atendente"><br><input type="text" id="data_e_horario_do_atendimento" placeholder="Data e Horário do Atendimento"></p>
-        </div>
+            <p style="text-align: center;">
+                <input type="text" id="nome_requerente" placeholder="Nome do Requerente" style="display: block; margin: 0 auto; text-align: center;">
+                <br>(assinatura por extenso)
+            </p>
+ 
+            <br>
+
+            <center>
+            <b>    
+            <p>NÃO SERÁ DADO ANDAMENTO NESTE PROTOCOLO SE NÃO TIVER 1 CÓPIA DA MATRÍCULA ATUALIZADA, 1 CÓPIA DO CONTRATO DE COMPRA E VENDA (Se for o responsável ou possuidor), 1 CÓPIA DO RG E CPF (do contribuinte e requerente), 2 VIAS DO EXTRATO DE DÉBITOS, CERTIDÃO DE CASAMENTO, DE ÓBITO (SE FOR O CASO), PROCURAÇÃO E OUTROS QUE SE FIZEREM NECESSÁRIOS.</p>
+            </b>
+            </center>
+
+           <br>
+           <input type="text" id="data_e_horario_do_atendimento" placeholder="Data e Horário do Atendimento"></p>
+           </div>
 
         </div>
 
 <!--COMEÇO DO CÓDIGO DE BOTÕES-->
 
+        <center>
+
         <button class="btn" onclick="novoCalculo()">Carregar para novo preenchimento.</button>
         <button onclick="print()">Imprimir</button>
-        <button onclick="gerarPDF()">Salvar PDF</button>
+        <button id="noprint" onclick="gerarPDF()">Salvar PDF</button>
+
+        </center>
 
 <!--FINAL DO CÓDIGO DE BOTÕES-->
 
@@ -332,28 +348,24 @@
     });
 
     function gerarPDF() {
-        const { jsPDF } = window.jspdf;
-        const doc = new jsPDF({
-            orientation: "portrait", // Retrato
-            unit: "px", // Unidade em pixels
-            format: [595, 842] // A4 em pixels (tamanho exato)
-        });
+            const { jsPDF } = window.jspdf;
+            let form = document.getElementById("formulario");
+            let botoes = document.getElementById("noprint");
 
-        const elemento = document.getElementById("conteudo"); // Captura apenas o conteúdo sem o menu
+            // Esconde os botões
+            botoes.style.display = "none";
 
-        html2canvas(elemento, {
-            scale: 2, // Aumenta a qualidade
-            useCORS: true // Suporte a imagens externas
-        }).then(canvas => {
-            const imgData = canvas.toDataURL("image/png");
+            html2canvas(form).then(canvas => {
+                let imgData = canvas.toDataURL("image/png");
+                let pdf = new jsPDF({ unit: 'cm', format: [18, 28] });
 
-            const imgWidth = 595; // Largura do A4
-            const imgHeight = (canvas.height * imgWidth) / canvas.width; // Mantém a proporção
+                pdf.addImage(imgData, "PNG", 0, 0, 18, 28);
+                pdf.save("formulario.pdf");
 
-            doc.addImage(imgData, "PNG", 0, 0, imgWidth, imgHeight);
-            doc.save("conteudo.pdf");
-        });
-    }
+                // Exibe os botões novamente
+                botoes.style.display = "block";
+            });
+        }
 
         function novoCalculo() {     window.location.href = 'prescricao.html'; }
 
