@@ -348,24 +348,30 @@
     });
 
     function gerarPDF() {
-            const { jsPDF } = window.jspdf;
-            let form = document.getElementById("formulario");
-            let botoes = document.getElementById("noprint");
+    const { jsPDF } = window.jspdf;
+    let form = document.getElementById("formulario");
+    let botoes = document.getElementById("noprint");
 
-            // Esconde os botões
-            botoes.style.display = "none";
+    // Esconde os botões
+    botoes.style.display = "none";
 
-            html2canvas(form).then(canvas => {
-                let imgData = canvas.toDataURL("image/png");
-                let pdf = new jsPDF({ unit: 'cm', format: [18, 28] });
+    html2canvas(form).then(canvas => {
+        let imgData = canvas.toDataURL("image/png");
 
-                pdf.addImage(imgData, "PNG", 0, 0, 18, 28);
-                pdf.save("formulario.pdf");
+        // Define o tamanho do PDF como A4 (largura = 21cm, altura = 29.7cm)
+        let pdf = new jsPDF({ unit: 'cm', format: 'a4' });
 
-                // Exibe os botões novamente
-                botoes.style.display = "block";
-            });
-        }
+        let pageWidth = pdf.internal.pageSize.getWidth(); // Largura da página A4 (21 cm)
+        let imgWidth = 18; // Largura da imagem no PDF (ajustável conforme necessário)
+        let xPosition = (pageWidth - imgWidth) / 2; // Calcula a posição centralizada
+
+        pdf.addImage(imgData, "PNG", xPosition, 0, imgWidth, 28);
+        pdf.save("formulario.pdf");
+
+        // Exibe os botões novamente
+        botoes.style.display = "block";
+    });
+}
 
         function novoCalculo() {     window.location.href = 'prescricao.html'; }
 
