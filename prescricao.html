@@ -33,7 +33,6 @@
 
         body {
             font-family: Arial, sans-serif;
-            margin: 20px;
         }
 
         .container {
@@ -69,22 +68,54 @@
             display: block;
         }
 
-        input, textarea {
-            width: 100%;
+         /* Estilo para os campos de entrada transparentes */
+
+         #campo {
+            width: 35ch; /* Largura baseada na largura do caractere '0' */
             padding: 5px;
-            border: 1px solid #000;
+            border: 2px solid rgba(0, 0, 0, 0); /* Borda transparente */
+            transition: width 0.3s ease; /* Animação suave */
         }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 10px;
+        /* Centraliza o campo de assinatura */
+        .assinatura {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .assinatura input {
+            display: block;
+            margin: 0 auto;
+            text-align: center;
         }
 
-        th, td {
-            border: 1px solid black; /* FINAL DO CÓDIGO DA ESTILIZAÇÃO DO FORMULÁRIO E DA TABELA */
+        th {
+            width: 25%; /* Ajuste a largura da coluna para 25%, por exemplo */
             padding: 5px;
             text-align: left;
+            border: 1px solid black;
+        }
+
+        td {
+            width: 75%; /* Ajuste a largura da coluna para o restante, 75% */
+            padding: 5px;
+            text-align: left;
+            border: 1px solid black;
+        }
+
+        input {
+            width: 340px; /* Largura inicial */
+            border-radius: 0; /* Borda retangular (sem arredondamento) */
+            border: 2px solid transparent; /* Borda transparente */
+            text-align: center;
+        }
+
+
+        .tabela-contribuinte colgroup col:nth-child(1) {
+            width: 50%;
+        }
+
+        .tabela-contribuinte colgroup col:nth-child(2) {
+            width: 50%;
         }
 
         button {
@@ -107,10 +138,10 @@
         }
 
         #menu {
-        background: #333; /* CODIGO PARA NÃO APRESENTAR MENU NA CRIAÇÃO DO ARQUIVO EM PDF */
-        color: white;
-        padding: 10px;
-        text-align: center;
+            background: #333; /* CODIGO PARA NÃO APRESENTAR MENU NA CRIAÇÃO DO ARQUIVO EM PDF */
+            color: white;
+            padding: 10px;
+            text-align: center;
         }
 
     </style>
@@ -155,10 +186,16 @@
         </select>
     </div>
 
-        <table>
+    <center>
+ <table class="tabela-contribuinte">
+
+    <colgroup>
+        <col style="width: 30%;">
+        <col style="width: 70%;">
+  
             <tr>
                 <th>Contribuinte</th>
-                <td><input type="text" id="contribuinte"></td>
+                <td><input type="text" id="contribuinte" maxlength="30" placeholder="Nome Completo (sem abreviação)"</td>
             </tr>
             <tr>
                 <th>E-mail</th>
@@ -214,11 +251,14 @@
 
         </table>
 
+
+        <div id="tabelaRequerenteContainer">
+
         <h3>Requerente</h3>
         <table>
             <tr>
                 <th>Nome</th>
-                <td><input type="text" id="requerente"></td>
+                <td><input type="text" id="requerente" maxlength="30" placeholder="Nome Completo (sem abreviação)"></td>
             </tr>
             <tr>
                 <th>E-mail</th>
@@ -256,18 +296,31 @@
 
         </table>
 
+    </colgroup>
+
+        </div>
+        
+    </center>
+
         <p>Senhor, Secretário:</p>
         
         <div class="documento">
-            <p><b>RECONHECIMENTO DE PRESCRIÇÃO DOS DÉBITOS TRIBUTÁRIOS</b> - Tendo em vista o extrato de débitos emitido, no expediente de <input type="text" id="data_do_extrato" placeholder="Data do Extrato">, em 2 (duas) vias de igual teor e forma a que se referem os, tomando conhecimento do montante da dívida no valor de <input type="text" id="valor_do_extrato" placeholder="Valor do Extrato"> e do período ali mencionado, com atualização dos débitos até a presente data, na qualidade de representante legal do proprietário do imóvel ou da empresa proprietária do imóvel aqui identificado ou proprietário do mesmo, requer o reconhecimento de prescrição dos débitos tributários referente ao(s) exercício(s) ou contrato <input type="text" id="anos_prescritos" placeholder="Anos Prescritos">, bem assim o cancelamento/extinção do crédito tributário, em prazo superior a 5 (cinco) anos no cadastro imobiliário.</p>
+            <p><b>RECONHECIMENTO DE PRESCRIÇÃO DOS DÉBITOS TRIBUTÁRIOS</b> - Tendo em vista o extrato de débitos emitido, no expediente de <center><input type="text" id="data_do_extrato" placeholder="Data do Extrato"></center>, em 2 (duas) vias de igual teor e forma a que se referem os, tomando conhecimento do montante da dívida no valor de <center><input type="text" id="valor_do_extrato" placeholder="Valor do Extrato"></center>
+                e do período ali mencionado, com atualização dos débitos até a presente data, na qualidade de representante legal do proprietário do imóvel ou da empresa proprietária do imóvel aqui identificado ou proprietário do mesmo, requer o reconhecimento de prescrição dos débitos tributários referente ao(s) exercício(s) ou contrato <br> 
+                <center><input type="text" id="anos_prescritos" placeholder="Anos Prescritos" maxlength="100" size="100"></center>, <br>
+                bem assim o cancelamento/extinção do crédito tributário, em prazo superior a 5 (cinco) anos no cadastro imobiliário.
+            </p>
             
             <p>Nestes Termos,<br>Pede Deferimento,</p>
             
-            <p style="text-align: center;">
-                <input type="text" id="nome_requerente" placeholder="Nome do Requerente" style="display: block; margin: 0 auto; text-align: center;">
+            <div class="assinatura">
+            
+                <input type="text" id="nome_requerente" placeholder="Nome do Requerente (sem abreveaturas)" maxlength="100" size="100">
+            
                 <br>(assinatura por extenso)
-            </p>
- 
+
+            </div>
+
             <br>
 
             <center>
@@ -289,6 +342,7 @@
         <button class="btn" onclick="novoCalculo()">Carregar para novo preenchimento.</button>
         <button onclick="print()">Imprimir</button>
         <button id="noprint" onclick="gerarPDF()">Salvar PDF</button>
+        <button onclick="toggleTabelaRequerente()">Ocultar/Exibir Tabela do Requerente</button>
 
         </center>
 
@@ -374,6 +428,17 @@
 }
 
         function novoCalculo() {     window.location.href = 'prescricao.html'; }
+
+
+        function toggleTabelaRequerente() {
+            var container = document.getElementById('tabelaRequerenteContainer');
+            if (container.style.display === 'none') {
+                container.style.display = 'block';
+            } else {
+                container.style.display = 'none';
+            }
+        }
+
 
     </script>
 
