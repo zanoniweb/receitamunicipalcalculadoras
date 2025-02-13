@@ -133,11 +133,6 @@
             background-color: #4cae4c; /* FINAL DO CÓDIGO DA ESTILIZAÇÃO DOS BOTÕES */
         }
 
-        @media print { 
-            #noprint { display: none; } /* CODIGO PARA GERAR O COMANDO DE IMPRESSÃO NO SITE WEB */
-            body { background: #fff; }
-        }
-
         #menu {
             background: #333; /* CODIGO PARA NÃO APRESENTAR MENU NA CRIAÇÃO DO ARQUIVO EM PDF */
             color: white;
@@ -145,6 +140,14 @@
             text-align: center;
         }
 
+        #quadro-container {
+            display: block;
+            border: 1px solid black;
+            padding: 10px;
+            margin-top: 10px;
+        }
+
+      
     </style>
 
 </head>
@@ -178,6 +181,11 @@
 
         <h3>EXCLUSIVO PARA PRESCRIÇÃO</h3>
 
+        <div id="quadro-container">
+            <p>Aqui aparecerá o protocolo.</p>
+        </div>
+        
+
     <div class="form-group">
         <label for="revisao_select">Selecione uma opção:</label>
         <select id="revisao_select">
@@ -210,7 +218,7 @@
             
             <tr>
                 <th>Endereço</th>
-                <td><input type="text" id="endereco"></td>
+                <td><input type="text" id="endereco"  maxlength="50"></td>
             </tr>
             <tr>
                 <th>Bairro</th>
@@ -237,7 +245,7 @@
 
             <tr>
                 <th>Complemento</th>
-                <td><input type="text" id="complemento"></td>
+                <td><input type="text" id="complemento"  maxlength="50"></td>
             </tr>
 
             <tr>
@@ -271,7 +279,11 @@
             </tr>
             <tr>
                 <th>Endereço</th>
-                <td><input type="text" id="endereco_requerente"></td>
+                <td><input type="text" id="endereco_requerente"  maxlength="50"></td>
+            </tr>
+            <tr>
+                <th>Complemento</th>
+                <td><input type="text" id="complemento"  maxlength="50"></td>
             </tr>
             <tr>
                 <th>Bairro</th>
@@ -341,7 +353,6 @@
         <center>
 
         <button class="btn" onclick="novoCalculo()">Carregar para novo preenchimento.</button>
-        <button onclick="print()">Imprimir</button>
         <button id="noprint" onclick="gerarPDF()">Salvar PDF</button>
         <button onclick="toggleTabelaRequerente()">Ocultar/Exibir Tabela do Requerente</button>
 
@@ -431,6 +442,7 @@
         function novoCalculo() {     window.location.href = 'prescricao.html'; }
 
 
+         // FUNÇÃO PARA OCULTAR A TABELA DO REQUERENTE
         function toggleTabelaRequerente() {
             var container = document.getElementById('tabelaRequerenteContainer');
             if (container.style.display === 'none') {
@@ -440,6 +452,39 @@
             }
         }
 
+          // FUNÇÃO PARA POSTAR O QUADRO DE PROTOCOLO
+          document.addEventListener("DOMContentLoaded", function() {
+    let quadroContainer = document.getElementById("quadro-container");
+    
+    if (quadroContainer) {
+        quadroContainer.innerHTML = `
+            <table border="1">
+                <tr>
+                PREFEITURA MUNICIPAL DE CAMBÉ
+                </tr>
+<br>
+                <tr>
+                INÍCIO PROTOCOLO: DEPARTAMENTO DE RECEITAS IMOBILIÁRIAS
+                </tr>
+<br>
+                 <tr>
+                PROTOCOLO: _________________/20____
+                </tr>
+<br>
+                <tr>
+                EM: _____/________/20____
+<br>
+                <tr>
+                PROTOCOLISTA   
+                </tr>
+<br>
+                <tr>
+                FONE:___________________________    
+                </tr>      
+            </table>
+        `;
+    }
+});
 
     </script>
 
